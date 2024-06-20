@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onix Manager</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+        }
+        .container img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            object-position: top;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #aaa;
+        }
+        p {
+            font-size: 1em;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none; /* Asegura que el texto dentro del enlace no tenga subrayado */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #444;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="imagen.jpg" alt="Descripción de la imagen">
+        <h1>Onix Manager</h1>
+        <h2>Emprendedor & Asesor Digital</h2>
+        <p>Experto en la creación de soluciones digitales y asesoramiento financiero descentralizado. Mi misión es ayudarte a alcanzar tus objetivos a través de servicios personalizados y de alta calidad.</p>
+        <a href="https://calendly.com/onixmanager/consultoria" class="cta-button">Reservar Cita Gratis</a>
+    </div>
+</body>
+</html>
