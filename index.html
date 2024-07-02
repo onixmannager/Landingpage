@@ -5,81 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onix Manager - Asesoría Digital y Financiera</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0; /* Cambio de fondo a un blanco grisáceo */
-            color: #333; /* Cambio de color de texto para mayor contraste */
+            background-color: #f0f0f0;
+            color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
-            padding: 0;
+            padding: 0 20px;
         }
         .container {
-            width: 90%;
-            max-width: 800px;
+            width: 100%;
+            max-width: 800px; /* Ajuste máximo para escritorio */
             padding: 20px;
             box-sizing: border-box;
-            background-color: #fff; /* Cambio de fondo del contenedor a blanco */
-            border-radius: 10px; /* Bordes redondeados para el contenedor */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para efecto de elevación */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0; /* Añadir margen vertical */
         }
         .container img {
-            width: 100%;
+            width: 80%;
             height: auto;
-            max-height: 300px;
-            object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
-            border-radius: 50%; /* Bordes redondeados para hacer un círculo */
+            max-height: 240px;
+            object-fit: cover;
+            border-radius: 50%;
             display: block;
-            margin-bottom: 20px;
-            object-position: center top; /* Centra la imagen verticalmente manteniendo la cabeza visible */
+            margin: 20px auto; /* Centra la imagen horizontalmente */
+            object-position: center top;
         }
         h1 {
-            font-size: 3em;
+            font-size: 2.5em; /* Ajuste de tamaño de fuente para ser igual en web y móvil */
             margin: 10px 0 20px;
         }
         h2 {
-            font-size: 1.8em;
+            font-size: 1.5em; /* Ajuste de tamaño de fuente para ser igual en web y móvil */
             margin: 10px 0;
-            color: #888; /* Color de subtítulo más suave */
+            color: #888;
         }
         p {
-            font-size: 1.1em;
+            font-size: 1em; /* Ajuste de tamaño de fuente para ser igual en web y móvil */
             margin: 20px 0;
             line-height: 1.6;
         }
         .cta-button {
             display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.2em;
+            padding: 12px 30px; /* Ajuste de padding para ser igual en web y móvil */
+            font-size: 1em; /* Ajuste de tamaño de fuente para ser igual en web y móvil */
             color: #fff;
-            background-color: #007bff; /* Color de fondo del botón azul */
-            border: 2px solid #007bff; /* Borde del botón azul */
+            background-color: #007bff;
+            border: 2px solid #007bff;
             border-radius: 50px;
             cursor: pointer;
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
         .cta-button:hover {
-            background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
-            border-color: #0056b3; /* Color del borde del botón al pasar el ratón */
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
         }
         @media (max-width: 600px) {
             h1 {
-                font-size: 2.5em;
+                font-size: 2em; /* Ajuste de tamaño de fuente para móvil */
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.2em; /* Ajuste de tamaño de fuente para móvil */
             }
             p {
-                font-size: 1em;
+                font-size: 0.9em; /* Ajuste de tamaño de fuente para móvil */
             }
             .cta-button {
-                padding: 12px 30px;
-                font-size: 1em;
+                padding: 10px 20px; /* Ajuste de padding para móvil */
+                font-size: 0.9em; /* Ajuste de tamaño de fuente para móvil */
             }
         }
     </style>
@@ -92,5 +101,6 @@
         <p>Soy experto en la creación de soluciones digitales y en el asesoramiento financiero descentralizado. Mi misión es ayudarte a alcanzar tus objetivos a través de servicios personalizados y de alta calidad.</p>
         <a href="https://calendly.com/onixmanager/consultoria" class="cta-button">Reserva tu Consultoría Gratis</a>
     </div>
+    <footer>2024@OnixManager Derechos Reservados</footer>
 </body>
 </html>
