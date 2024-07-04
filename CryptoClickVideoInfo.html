@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Fullscreen</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            position: relative; /* Añadido para posicionar el menú encima */
+        }
+        #player {
+            position: absolute;
+            top: 60px; /* Ajuste para dejar espacio para los botones */
+            left: 0;
+            width: 100%;
+            height: calc(100% - 60px); /* Ajuste para que el video ocupe el resto de la pantalla */
+        }
+        .menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: black; /* Fondo negro para la sección del menú */
+            text-align: center;
+            z-index: 1000; /* Asegura que esté encima del reproductor */
+            padding: 10px 0; /* Espacio interno para los botones */
+        }
+        .menu button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            outline: none;
+        }
+        .menu button:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor para el menú -->
+    <div class="menu">
+        <button onclick="window.history.back()">Volver atrás</button>
+        <button onclick="window.location.href='https://www.ejemplo.com'">Saber más</button>
+    </div>
+
+    <!-- Contenedor para el reproductor de YouTube -->
+    <div id="player"></div>
+
+    <script>
+        // Cargar la API de YouTube iframe Player
+        function onYouTubeIframeAPIReady() {
+            // Crear un nuevo reproductor de YouTube
+            const player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: 'fW19F8vemEI', // ID del video de YouTube
+                playerVars: {
+                    autoplay: 1,
+                    controls: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    fs: 1,
+                    iv_load_policy: 3,
+                    mute: 1, // Iniciar en silencio
+                    playsinline: 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+
+            // Función para activar el sonido cuando el reproductor está listo
+            function onPlayerReady(event) {
+                event.target.unMute(); // Activar el sonido del reproductor
+            }
+        }
+    </script>
+
+    <!-- Incluir el script de la API de YouTube iframe Player -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Predictor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+        nav {
+            background-color: #f2f2f2;
+            color: #000;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 5;
+            margin: 4;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 5px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.9em;
+            padding: 7px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #e0e0e0;
+        }
+        .header {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .header img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+            display: inline-block;
+        }
+        .button-container a:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 8px rgba(0, 123, 255, 0.2);
+        }
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section:nth-child(even) {
+            text-align: right;
+            background-color: #f2f2f2;
+        }
+        .section:nth-child(odd) {
+            text-align: left;
+            background-color: #fff;
+        }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            .section h2 {
+                font-size: 1.5em;
+            }
+            .section p {
+                font-size: 1em;
+            }
+            .button-container a {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="herramientas.htl">Herramientas</a></li>
+            <li><a href="iapredictor.html">IA Predictor</a></li>
+            <li><a href="cryptoclick.html">Crypto Click</a></li>
+            <li><a href="comunidad.html">Comunidad</a></li>
+            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+        </ul>
+    </nav>
+
+    <div class="header">
+        <img src="OIG3.jpeg" alt="Imagen de cabecera">
+
+        <div id="tittle" class="tittle">
+            <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IA Predictor Crypto</h1>
+        
+        <div class="button-container">
+         
+            <a href="https://onixmannager.github.io/Landingpage/">Accede a la IA</a>
+        </div>
+    </div>
+
+    <div class="content">
+              
+        <div id="descripcion-general" class="section">
+            <h2>Descripción General</h2>
+            <p>Nuestro <strong>"IA Predictor"</strong> es una herramienta basada en inteligencia artificial que predice precios futuros de criptomonedas.<br>
+            Utiliza datos históricos y algoritmos de aprendizaje automático para realizar estas predicciones.<br>
+            Aquí te explicamos los componentes clave y el flujo de trabajo del predictor.</p>
+        </div>
+
+        <div id="componentes-clave" class="section">
+            <h2>Componentes Clave</h2>
+            <p><strong>Obtención de Datos:</strong><br>
+            <strong>API de CoinMarketCap (CMC):</strong> Recopilamos el precio actual de Bitcoin usando la API de CoinMarketCap.<br>
+            <strong>Archivo de Datos Históricos:</strong> Cargamos datos históricos de precios y volúmenes desde un archivo local.</p>
+        </div>
+
+        <div id="preprocesamiento-datos" class="section">
+            <h2>Preprocesamiento de Datos</h2>
+            <p><strong>Normalización:</strong> Los precios históricos se normalizan para que los modelos puedan aprender mejor las relaciones en los datos.<br>
+            <strong>Creación de Características:</strong> Creamos características semanales a partir de los datos históricos para entrenar los modelos.</p>
+        </div>
+
+        <div id="modelos-aprendizaje" class="section">
+            <h2>Modelos de Aprendizaje Automático</h2>
+            <p><strong>MLPRegressor (Perceptrón Multicapa):</strong> Un modelo de red neuronal utilizado para hacer predicciones.<br>
+            <strong>RandomForestRegressor:</strong> Un modelo de bosque aleatorio utilizado para hacer predicciones.<br>
+            <strong>Pipeline:</strong> Utilizamos un pipeline para escalar los datos y aplicar el modelo.</p>
+        </div>
+
+        <div id="entrenamiento-modelos" class="section">
+            <h2>Entrenamiento de Modelos</h2>
+            <p><strong>TimeSeriesSplit:</strong> Dividimos los datos en series temporales para entrenar y validar los modelos.</p>
+        </div>
+
+        <div id="predicciones" class="section">
+            <h2>Predicciones</h2>
+            <p><strong>Predicción Secuencial:</strong> Utilizamos los modelos entrenados para predecir los precios de Bitcoin para los próximos 7 días.<br>
+            <strong>Consenso de Predicciones:</strong> Calculamos un consenso entre las predicciones de ambos modelos para obtener un pronóstico más robusto.</p>
+        </div>
+
+        <div id="estrategias-compra-venta" class="section">
+            <h2>Estrategias de Compra/Venta</h2>
+            <p><strong>Cálculo de Precios:</strong> Determinamos los precios de compra y venta óptimos basados en las predicciones de los modelos.<br>
+            <strong>Estrategia Intradía:</strong> Calculamos estrategias basadas en pequeñas fluctuaciones intradía para maximizar las oportunidades de compra y venta.</p>
+        </div>
+
+        <div class="button-container">
+            <a href="https://onixmannager.github.io/Landingpage/">Accede a la IA</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Color de fondo */
+            color: #333; /* Color del texto */
+        }
+        nav {
+            background-color: #f2f2f2; /* Color de fondo del menú */
+            color: #333; /* Color del texto del menú */
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            margin-right: 5px; /* Reducir el espacio entre las pestañas */
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333; /* Color del texto del enlace del menú */
+            font-weight: bold;
+            font-size: 1em; /* Tamaño de fuente del menú */
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #e0e0e0; /* Color de fondo del enlace del menú al pasar el ratón */
+        }
+        .content {
+            display: flex;
+            flex-wrap: wrap; /* Permitir que las secciones se envuelvan en dispositivos pequeños */
+            justify-content: center; /* Centrar las secciones horizontalmente */
+            padding: 20px;
+            max-width: 1400px; /* Ajustamos el ancho máximo del contenido */
+            margin: 0 auto;
+        }
+        .section {
+            flex-basis: calc(25% - 20px); /* Ancho de cada sección en pantallas grandes */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff; /* Color de fondo de las secciones */
+            min-height: 100px; /* Altura mínima para las secciones */
+            margin-right: 20px; /* Espacio entre las secciones */
+            margin-bottom: 20px; /* Espacio entre las secciones */
+        }
+        .section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #333; /* Color del título de la sección */
+        }
+        .section p {
+            margin-bottom: 15px; /* Espacio después del párrafo */
+        }
+        .section a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff; /* Color del texto del enlace de la sección */
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .section a:hover {
+            color: #0056b3; /* Cambio de color al pasar el ratón */
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333; /* Color de fondo del pie de página */
+            color: #fff; /* Color del texto del pie de página */
+        }
+
+        /* Media query para dispositivos móviles */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column; /* Apilar las secciones en dispositivos móviles */
+                align-items: center; /* Centrar las secciones verticalmente en dispositivos móviles */
+            }
+            .section {
+                flex-basis: 100%; /* Ancho completo en dispositivos móviles */
+                margin-right: 0; /* Eliminar el margen derecho en dispositivos móviles */
+                margin-bottom: 15px; /* Espacio entre las secciones */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="herramientas.htl">Herramientas</a></li>
+            <li><a href="iapredictor.html">IA Predictor</a></li>
+            <li><a href="cryptoclick.html">Crypto Click</a></li>
+            <li><a href="comunidad.html">Comunidad</a></li>
+            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="section">
+            <h2>Herramientas para Análizar Mercados</h2>
+            <p>Herramientas o sitios web que nos ayudan a recopilar datos de mercado en vivo.</p>
+            <a href="AnalisisMercado.html">Ver Herramientas</a>
+        </div>
+        <div class="section">
+            <h2>Intercambios Centralizados</h2>
+            <p>Los intercambios de criptomonedas centralizados más populares y seguros del mercado.</p>
+            <a href="IntercambiosCentralizados.html">Ver Intercambios</a>
+        </div>
+        <div class="section">
+            <h2>Seguridad en Blockchain</h2>
+            <p>Consejos y mejores prácticas para asegurar tus activos en la blockchain.</p>
+            <a href="#">Leer Más</a>
+        </div>
+        <div class="section">
+            <h2>Desarrollo de Aplicaciones Blockchain</h2>
+            <p>Aprende a desarrollar aplicaciones descentralizadas (dApps) en plataformas blockchain.</p>
+            <a href="#">Explorar más</a>
+        </div>
+        <div class="section">
+            <h2>Plataformas DeFi</h2>
+            <p>Todo sobre las plataformas de finanzas descentralizadas (DeFi) y cómo utilizarlas.</p>
+            <a href="#">Descubrir</a>
+        </div>
+        <div class="section">
+            <h2>Trading Avanzado de Criptomonedas</h2>
+            <p>Estrategias y técnicas para el trading avanzado en el mercado de criptomonedas.</p>
+            <a href="#">Explorar</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
