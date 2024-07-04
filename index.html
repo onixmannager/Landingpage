@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onix Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Fondo blanco */
+            color: #333; /* Color del texto */
+        }
+        nav {
+            background-color: #f2f2f2; /* Fondo del menú un poco más oscuro */
+            color: #000; /* Color del texto del menú */
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra ligera */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Permite que los elementos se dividan en múltiples filas si es necesario */
+        }
+        nav ul li {
+            margin: 1px 1px; /* Ajusta el margen para dar espacio entre los elementos del menú */
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #000; /* Color del texto del enlace del menú */
+            font-weight: bold;
+            font-size: 0.9em; /* Tamaño de fuente del menú */
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #e0e0e0; /* Color de fondo del enlace del menú al pasar el ratón */
+        }
+        .header {
+            width: 100%;
+            position: relative;
+            overflow: hidden; /* Evita el desbordamiento de la imagen */
+        }
+        .header img {
+            width: 100vw; /* Ajusta la imagen al ancho completo de la ventana */
+            height: auto;
+            display: block; /* Elimina márgenes externos */
+        }
+        .header .title {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #000;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente blanco */
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 1200px; /* Limita el ancho del título */
+            margin: 0 auto; /* Centra el título */
+        }
+        .header .title h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* Color de fondo de la sección */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section:nth-child(even) {
+            text-align: right;
+            background-color: #f2f2f2; /* Color de fondo alternado para secciones pares */
+        }
+        .section:nth-child(odd) {
+            text-align: left;
+            background-color: #fff; /* Color de fondo alternado para secciones impares */
+        }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #333; /* Color del título de la sección */
+        }
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333; /* Color de fondo del pie de página */
+            color: #fff; /* Color del texto del pie de página */
+        }
+        @media (max-width: 768px) {
+            .header .title h1 {
+                font-size: 1.5em;
+            }
+            .section h2 {
+                font-size: 1.5em; /* Ajusta el tamaño del texto en pantallas más pequeñas */
+            }
+            .section p {
+                font-size: 1em; /* Ajusta el tamaño del texto en pantallas más pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="herramientas.htl">Herramientas</a></li>
+            <li><a href="iapredictor.html">IA Predictor</a></li>
+            <li><a href="cryptoclick.html">Crypto Click</a></li>
+            <li><a href="comunidad.html">Comunidad</a></li>
+            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+        </ul>
+    </nav>
+
+    <div class="header">
+        <img src="Barba.jpg" alt="imagen de cabecera">
+        <div class="title">
+            <h1>Bienvenido a Onix Manager</h1>
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="inicio" class="section">
+            <h2>Sobre Nosotros</h2>
+            <p>Bienvenido a la plataforma Onix Manager, tu puerta de entrada al futuro digital donde las oportunidades son ilimitadas. Especializados en criptomonedas, blockchain y tecnología emergente, nuestro compromiso es proporcionarte no solo conocimiento, sino también las herramientas y recursos que necesitas para destacar en este emocionante universo digital.</p>
+        </div>
+
+        <div id="educacion" class="section">
+            <h2>Educación de Excelencia y Accesible</h2>
+            <p>Accede a una amplia oferta de cursos gratuitos impartidos por expertos en criptomonedas. Desde fundamentos básicos hasta estrategias avanzadas de trading y análisis técnico, nuestra plataforma te prepara para triunfar en el mercado digital.</p>
+        </div>
+
+        <div id="herramientas" class="section">
+            <h2>Herramientas Avanzadas para Inversiones Inteligentes</h2>
+            <p>Utiliza nuestras herramientas de análisis y seguimiento para tomar decisiones informadas de inversión. Con gráficos interactivos, indicadores técnicos y alertas en tiempo real, maximiza tus oportunidades en el mercado de criptoactivos.</p>
+        </div>
+
+        <div id="ia" class="section">
+            <h2>Predicciones Precisas con IA</h2>
+            <p>Experimenta nuestra IA avanzada para predicciones de precios de criptomonedas. Basada en datos históricos y algoritmos avanzados, nuestra tecnología te proporciona insights precisos para mejorar tu estrategia de inversión.</p>
+        </div>
+
+        <div id="cryptoclick" class="section">
+    <h2>Crypto Click: Gana NFTs, Tokens y Dividendos</h2>
+    <p>En Onix Manager, estamos revolucionando la interacción en el mundo cripto con nuestro proyecto tokenizado, Crypto Click. Diseñado para que todos nuestros usuarios sean los primeros en beneficiarse.<br>
+        Crypto Click te ofrece la oportunidad única de ganar NFTs, tokens y dividendos simplemente interactuando con contenido relevante.</p>
+
+        </div>
+
+        <div id="comunidad" class="section">
+            <h2>Únete a Nuestra Comunidad Global</h2>
+            <p>Al unirte a Onix Manager, no solo adquieres conocimientos en criptomonedas, sino que te integras a una red global de innovadores y emprendedores digitales. Aprovecha eventos exclusivos, seminarios web y colaboraciones que impulsarán tu éxito en este emocionante campo.</p>
+            <p>Prepárate para explorar, aprender y prosperar con Onix Manager. Únete hoy mismo y comienza tu viaje hacia un futuro digital lleno de oportunidades.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
