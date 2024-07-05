@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>IA Predictor</title>
     <style>
         * {
@@ -156,46 +157,44 @@
               
         <div id="descripcion-general" class="section">
             <h2>Descripción General</h2>
-            <p>Nuestro <strong>"IA Predictor"</strong> es una herramienta basada en inteligencia artificial que predice precios futuros de criptomonedas.<br>
-            Utiliza datos históricos y algoritmos de aprendizaje automático para realizar estas predicciones.<br>
-            Aquí te explicamos los componentes clave y el flujo de trabajo del predictor.</p>
+            <p>Nuestro <strong>"IA Predictor"</strong> es una avanzada herramienta de predicción de precios de criptomonedas basada en inteligencia artificial. Utilizando datos históricos y algoritmos de aprendizaje automático, proporciona predicciones precisas sobre el comportamiento futuro del mercado de criptomonedas. A continuación, describimos los componentes clave y el flujo de trabajo de nuestro predictor.</p>
         </div>
 
         <div id="componentes-clave" class="section">
             <h2>Componentes Clave</h2>
             <p><strong>Obtención de Datos:</strong><br>
-            <strong>API de CoinMarketCap (CMC):</strong> Recopilamos el precio actual de Bitcoin usando la API de CoinMarketCap.<br>
-            <strong>Archivo de Datos Históricos:</strong> Cargamos datos históricos de precios y volúmenes desde un archivo local.</p>
+            <strong>API de CoinMarketCap (CMC):</strong> Recopilamos el precio actual de Bitcoin utilizando la API de CoinMarketCap.<br>
+            <strong>Archivo de Datos Históricos:</strong> Cargamos datos históricos de precios y volúmenes desde un archivo local para un análisis exhaustivo.</p>
         </div>
 
         <div id="preprocesamiento-datos" class="section">
             <h2>Preprocesamiento de Datos</h2>
-            <p><strong>Normalización:</strong> Los precios históricos se normalizan para que los modelos puedan aprender mejor las relaciones en los datos.<br>
-            <strong>Creación de Características:</strong> Creamos características semanales a partir de los datos históricos para entrenar los modelos.</p>
+            <p><strong>Normalización:</strong> Los precios históricos se normalizan para mejorar la capacidad de los modelos de aprendizaje automático de identificar patrones en los datos.<br>
+            <strong>Creación de Características:</strong> Generamos características semanales a partir de los datos históricos para optimizar el entrenamiento de los modelos.</p>
         </div>
 
         <div id="modelos-aprendizaje" class="section">
             <h2>Modelos de Aprendizaje Automático</h2>
-            <p><strong>MLPRegressor (Perceptrón Multicapa):</strong> Un modelo de red neuronal utilizado para hacer predicciones.<br>
-            <strong>RandomForestRegressor:</strong> Un modelo de bosque aleatorio utilizado para hacer predicciones.<br>
-            <strong>Pipeline:</strong> Utilizamos un pipeline para escalar los datos y aplicar el modelo.</p>
+            <p><strong>MLPRegressor (Perceptrón Multicapa):</strong> Utilizamos este modelo de red neuronal para realizar predicciones precisas.<br>
+            <strong>RandomForestRegressor:</strong> Este modelo de bosque aleatorio complementa las predicciones del MLPRegressor para mejorar la robustez del pronóstico.<br>
+            <strong>Pipeline:</strong> Implementamos un pipeline para escalar los datos y aplicar los modelos de manera eficiente.</p>
         </div>
 
         <div id="entrenamiento-modelos" class="section">
             <h2>Entrenamiento de Modelos</h2>
-            <p><strong>TimeSeriesSplit:</strong> Dividimos los datos en series temporales para entrenar y validar los modelos.</p>
+            <p><strong>TimeSeriesSplit:</strong> Dividimos los datos en series temporales para asegurar un entrenamiento y validación precisos de los modelos, respetando la secuencia temporal de los datos.</p>
         </div>
 
         <div id="predicciones" class="section">
             <h2>Predicciones</h2>
             <p><strong>Predicción Secuencial:</strong> Utilizamos los modelos entrenados para predecir los precios de Bitcoin para los próximos 7 días.<br>
-            <strong>Consenso de Predicciones:</strong> Calculamos un consenso entre las predicciones de ambos modelos para obtener un pronóstico más robusto.</p>
+            <strong>Consenso de Predicciones:</strong> Combinamos las predicciones de ambos modelos para obtener un pronóstico más sólido y confiable.</p>
         </div>
 
         <div id="estrategias-compra-venta" class="section">
             <h2>Estrategias de Compra/Venta</h2>
-            <p><strong>Cálculo de Precios:</strong> Determinamos los precios de compra y venta óptimos basados en las predicciones de los modelos.<br>
-            <strong>Estrategia Intradía:</strong> Calculamos estrategias basadas en pequeñas fluctuaciones intradía para maximizar las oportunidades de compra y venta.</p>
+            <p><strong>Cálculo de Precios:</strong> Determinamos los precios de compra y venta óptimos basados en las predicciones generadas por los modelos.<br>
+            <strong>Estrategia Intradía:</strong> Desarrollamos estrategias basadas en pequeñas fluctuaciones intradía para maximizar las oportunidades de compra y venta, optimizando así el rendimiento de las inversiones.</p>
         </div>
 
         <div class="button-container">
