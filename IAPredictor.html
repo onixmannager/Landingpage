@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onix Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Fondo blanco */
+            color: #333; /* Color del texto */
+        }
+        nav {
+            background-color: #f2f2f2; /* Fondo del menú un poco más oscuro */
+            color: #000; /* Color del texto del menú */
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra ligera */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Permite que los elementos se dividan en múltiples filas si es necesario */
+        }
+        nav ul li {
+            margin: 1px 1px; /* Ajusta el margen para dar espacio entre los elementos del menú */
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #000; /* Color del texto del enlace del menú */
+            font-weight: bold;
+            font-size: 0.9em; /* Tamaño de fuente del menú */
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #e0e0e0; /* Color de fondo del enlace del menú al pasar el ratón */
+        }
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* Color de fondo de la sección */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section:nth-child(even) {
+            text-align: right;
+            background-color: #f2f2f2; /* Color de fondo alternado para secciones pares */
+        }
+        .section:nth-child(odd) {
+            text-align: left;
+            background-color: #fff; /* Color de fondo alternado para secciones impares */
+        }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #333; /* Color del título de la sección */
+        }
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Color azul */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3; /* Cambio de color al pasar el ratón */
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333; /* Color de fondo del pie de página */
+            color: #fff; /* Color del texto del pie de página */
+        }
+        @media (max-width: 768px) {
+            .section h2 {
+                font-size: 1.5em; /* Ajusta el tamaño del texto en pantallas más pequeñas */
+            }
+            .section p {
+                font-size: 1em; /* Ajusta el tamaño del texto en pantallas más pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="Herramientas.html">Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
+            <li><a href="CryptoClickInfoVideo.html">Crypto Click</a></li>
+            <li><a href="comunidad.html">Comunidad</a></li>
+            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div id="btc" class="section">
+            <h2>Predicción BTC/USDT</h2>
+            <p>Texto de ejemplo para la predicción de Bitcoin frente al Tether (USDT).</p>
+            <button class="button" onclick="obtenerPrediccion('btc')">Obtener Predicción</button>
+            <p id="btcPrediction"></p>
+        </div>
+
+        <div id="eth" class="section">
+            <h2>Predicción ETH/USDT</h2>
+            <p>Texto de ejemplo para la predicción de Ethereum frente al Tether (USDT).</p>
+            <button class="button" onclick="obtenerPrediccion('eth')">Obtener Predicción</button>
+            <p id="ethPrediction"></p>
+        </div>
+
+        <div id="sol" class="section">
+            <h2>Predicción SOL/USDT</h2>
+            <p>Texto de ejemplo para la predicción de Solana frente al Tether (USDT).</p>
+            <button class="button" onclick="obtenerPrediccion('sol')">Obtener Predicción</button>
+            <p id="solPrediction"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        async function obtenerPrediccion(cripto) {
+            try {
+                const response = await fetch(`/api/predict?cripto=${cripto}`);
+                if (!response.ok) {
+                    throw new Error('Esta función está deshabilitada porque estamos trabajando en ella.Gracias por tu paciencia');
+                }
+                const data = await response.json();
+                document.getElementById(`${cripto}Prediction`).textContent = `Predicción para ${cripto.toUpperCase()}: ${data.prediccion}`;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById(`${cripto}Prediction`).textContent = 'Esta función está deshabilitada porque estamos trabajando en ella.Gracias por tu paciencia';
+            }
+        }
+    </script>
+</body>
+</html>
