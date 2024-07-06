@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias Cripto</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Meta etiquetas para Open Graph -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+
+    <!-- Meta etiquetas para Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            text-align: center; /* Centrar el contenido general */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Altura mínima de la ventana de visualización */
+        }
+        nav {
+            background-color: #f2f2f2;
+            color: #000;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 5px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 1em;
+            padding: 5px 5px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .header {
+            position: relative;
+            overflow: hidden;
+        }
+        .header img {
+            width: 200px; /* Tamaño más pequeño de la imagen */
+            height: auto;
+            display: block;
+            border-radius: 50%; /* Hace la imagen más redonda */
+            margin: 20px auto; /* Ajuste el margen de la imagen */
+        }
+        .title {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto 10px; /* Ajuste el margen superior e inferior del título */
+            text-align: center;
+        }
+        .title h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #000;
+        }
+        .content {
+            flex: 1; /* Hace que ocupe el espacio restante */
+            max-width: 1400px; /* Aumentamos el ancho máximo de los contenidos */
+            margin: 10px auto; /* Ajuste el margen superior e inferior del contenido */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between; /* Distribuye las columnas */
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+        }
+        .column {
+            flex: 0 1 calc(50% - 40px); /* Ajusta el tamaño de cada columna con margen */
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra horizontalmente el contenido */
+        }
+        .section {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Alineación de texto al centro */
+            margin-bottom: 20px; /* Espacio entre secciones */
+        }
+        .section:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .section:nth-child(odd) {
+            background-color: #fff;
+        }
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .section .social-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra verticalmente el contenido */
+            gap: 10px; /* Espacio entre botones */
+            margin-top: 10px; /* Espacio superior entre elementos */
+        }
+        .social-button {
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            padding: 12px 24px;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            margin-bottom: 10px; /* Espacio inferior entre botones */
+        }
+        .social-button:hover {
+            color: #fff;
+        }
+        .social-button.telegram {
+            background-color: #007BFF;
+            color: #fff;
+            border-color: #007BFF;
+        }
+        .social-button.facebook {
+            background-color: #007BFF;
+            color: #fff;
+            border-color: #007BFF;
+        }
+        .social-button.twitter {
+            background-color: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        .social-button.youtube {
+            background-color: #FF0000;
+            color: #fff;
+            border-color: #FF0000;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: #fff;
+            width: 100%;
+            clear: both; /* Limpia el float */
+        }
+        @media (max-width: 768px) {
+            .title h1 {
+                font-size: 1.5em; /* Reducir el tamaño del título */
+            }
+            .section h2 {
+                font-size: 1.5em; /* Reducir el tamaño de los subtítulos */
+            }
+            .section p {
+                font-size: 1em; /* Reducir el tamaño del texto */
+            }
+            .social-button {
+                font-size: 0.8em; /* Reducir el tamaño de los botones sociales */
+                padding: 8px 16px; /* Reducir el padding de los botones sociales */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="Herramientas.html">Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
+            <li><a href="comunidad.html">Comunidad</a></li>
+            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="content">
+        <div class="column">
+            <div class="section">
+                <h2>Telegram</h2>
+                <div class="social-buttons">
+                    <a href="https://t.me/onixmanagervip" target="_blank" class="social-button telegram">Onix Manager</a>
+                    <a href="https://t.me/onixmanagervip" target="_blank" class="social-button telegram">CryptoClick</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2> Youtube</h2>
+                <a href="https://www.youtube.com/onixmanager" target="_blank" class="social-button youtube">Onix Manager</a>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="section">
+                <h2>Twitter</h2>
+                <div class="social-buttons">
+                    <a href="https://twitter.com/onixmanager" target="_blank" class="social-button twitter">Onix Manager</a>
+                                            <a href="https://twitter.com/onixmanager" target="_blank" class="social-button twitter">CryptoClick</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="section">
+                                        <h2>Facebook</h2>
+                                        <a href="https://www.facebook.com/onixmanager" target="_blank" class="social-button facebook">Onix Manager</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <footer>
+                                <p>&copy; 2024 Noticias Cripto. Todos los derechos reservados.</p>
+                            </footer>
+                        </body>
+                        </html>
