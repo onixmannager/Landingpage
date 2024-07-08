@@ -34,28 +34,34 @@
         nav {
             background-color: #f2f2f2; /* Color de fondo del menú */
             color: #333; /* Color del texto del menú */
+            text-align:nav {
+            background-color: #f2f2f2;
+            color: #000;
             text-align: center;
             padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         nav ul li {
-            display: inline-block;
-            margin-right: 5px; /* Reducir el espacio entre las pestañas */
+            margin: 1px 1px;
         }
         nav ul li a {
             text-decoration: none;
-            color: #333; /* Color del texto del enlace del menú */
+            color: #000;
             font-weight: bold;
-            font-size: 1em; /* Tamaño de fuente del menú */
-            padding: 5px;
+            font-size: 0.9em;
+            padding: 10px;
             transition: all 0.3s ease;
         }
         nav ul li a:hover {
-            background-color: #e0e0e0; /* Color de fondo del enlace del menú al pasar el ratón */
+            background-color: #e0e0e0;
         }
         .content {
             display: flex;
