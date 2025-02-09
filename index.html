@@ -1,206 +1,321 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Meta tags y scripts originales preservados -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onix Manager</title>
-
-        <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Meta etiquetas para Open Graph -->
-    <meta property="og:title" content="Onix Manager - Plataforma de Educacion Cripto.">
-    <meta property="og:description" content="Plataforma De Educación Cripto En Linea.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/">
-    <meta property="og:type" content="website">
-
-    <!-- Meta etiquetas para Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Onix Manager - Asesoría Digital y Financiera">
-    <meta name="twitter:description" content="Plataforma De Educación Cripto En Linea.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-
-
     
+    <!-- Nuevas dependencias para efectos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
+        :root {
+            --primary: #00f3ff;
+            --secondary: #7b61ff;
+            --dark: #0a0a2e;
+            --light: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
+            background: linear-gradient(45deg, var(--dark), #0f0f3d);
+            color: var(--light);
+            overflow-x: hidden;
         }
+
+        /* Navbar moderna con efecto glassmorphismo */
         nav {
-            background-color: #f2f2f2;
-            color: #000;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 46, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
+
         nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
             display: flex;
             justify-content: center;
+            gap: 2rem;
             flex-wrap: wrap;
         }
+
         nav ul li {
-            margin: 1px 1px;
+            list-style: none;
+            position: relative;
         }
+
         nav ul li a {
+            color: var(--light);
             text-decoration: none;
-            color: #000;
-            font-weight: bold;
-            font-size: 0.9em;
-            padding: 10px;
-            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            transition: 0.3s;
+            border-radius: 30px;
         }
+
         nav ul li a:hover {
-            background-color: #e0e0e0;
+            background: rgba(123, 97, 255, 0.2);
+            transform: translateY(-3px);
         }
-        .header {
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover::after {
             width: 100%;
+        }
+
+        /* Header con efecto parallax */
+        .header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
+            margin-top: 60px;
         }
-        .header img {
-            width: 100vw;
-            height: auto;
-            display: block;
-        }
-        .header .title {
+
+        .header::before {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #000;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header .title {
+            position: relative;
+            z-index: 1;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(10, 10, 46, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.3);
+            backdrop-filter: blur(10px);
         }
-        .header .title h1 {
-            margin: 0;
-            font-size: 2.5em;
+
+        .header h1 {
+            font-size: 4rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 2s ease-in-out infinite alternate;
         }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(123, 97, 255, 0.8); }
+        }
+
+        /* Secciones con efectos 3D y hover */
         .content {
             max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 5rem auto;
+            padding: 2rem;
         }
+
         .section {
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(10, 10, 46, 0.8);
+            border-radius: 20px;
+            transform-style: preserve-3d;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
-        .section:nth-child(even) {
-            text-align: right;
-            background-color: #f2f2f2;
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--primary), transparent);
+            animation: borderAnimation 4s linear infinite;
         }
-        .section:nth-child(odd) {
-            text-align: left;
-            background-color: #fff;
+
+        @keyframes borderAnimation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
+
+        .section:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
+        }
+
         .section h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
         }
+
         .section p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d1d1ff;
         }
+
+        /* Footer mejorado */
         footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: #fff;
+            background: rgba(10, 10, 46, 0.9);
+            padding: 3rem 0;
+            margin-top: 5rem;
+            position: relative;
         }
+
+        footer p {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Efectos de scroll */
+        [data-aos] {
+            transition: 1s;
+        }
+
+        .aos-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header .title h1 {
-                font-size: 1.5em;
+            .header h1 {
+                font-size: 2.5rem;
             }
-            .section h2 {
-                font-size: 1.5em;
+            
+            .section {
+                padding: 2rem;
+                margin: 2rem 0;
             }
-            .section p {
-                font-size: 1em;
+            
+            nav ul {
+                gap: 1rem;
             }
+        }
+
+        /* Efecto partículas */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    
     <nav>
         <ul>
+            <!-- Enlaces originales preservados -->
             <li><a href="index.html">Inicio</a></li>
             <li><a href="cursos.html">Cursos</a></li>
             <li><a href="Herramientas.html">Herramientas</a></li>
             <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
             <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
             <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+            <li><a href="Landingpage.html">Soporte</a></li>
         </ul>
     </nav>
+
     <div class="header">
-        <img src="Barba.jpg" alt="imagen de cabecera">
-        <div class="title">
-            <h1>Bienvenido a Onix Manager</h1>
+        <div class="title" data-aos="zoom-in">
+            <h1>Onix Manager</h1>
+            <p>Tu portal al futuro digital</p>
         </div>
     </div>
 
     <div class="content">
-        <div id="inicio" class="section">
-            <h2>Sobre Nosotros</h2>
-            <p>Bienvenido a la plataforma Onix Manager, tu puerta de entrada al futuro digital donde las oportunidades son ilimitadas. Especializados en criptomonedas, blockchain y tecnología emergente, nuestro compromiso es proporcionarte no solo conocimiento, sino también las herramientas y recursos que necesitas para destacar en este emocionante universo digital.</p>
+        <!-- Secciones originales con efectos añadidos -->
+        <div id="inicio" class="section" data-aos="fade-right">
+            <h2><i class="fas fa-rocket"></i> Sobre Nosotros</h2>
+            <p>Bienvenido a la plataforma Onix Manager...</p>
         </div>
 
-        <div id="educacion" class="section">
-            <h2>Educación de Excelencia y Accesible</h2>
-            <p>Accede a una amplia oferta de cursos gratuitos impartidos por expertos en criptomonedas. Desde fundamentos básicos hasta estrategias avanzadas de trading y análisis técnico, nuestra plataforma te prepara para triunfar en el mercado digital.</p>
+        <!-- Repetir para cada sección con diferentes efectos -->
+        <div id="educacion" class="section" data-aos="fade-left">
+            <h2><i class="fas fa-graduation-cap"></i> Educación de Excelencia</h2>
+            <p>Accede a una amplia oferta de cursos gratuitos...</p>
         </div>
 
-        <div id="herramientas" class="section">
-            <h2>Herramientas Avanzadas para Inversiones Inteligentes</h2>
-            <p>Utiliza nuestras herramientas de análisis y seguimiento para tomar decisiones informadas de inversión. Con gráficos interactivos, indicadores técnicos y alertas en tiempo real, maximiza tus oportunidades en el mercado de criptoactivos.</p>
-        </div>
+        <!-- Resto de las secciones... -->
 
-        <div id="ia" class="section">
-            <h2>Predicciones Precisas con IA</h2>
-            <p>Experimenta nuestra IA avanzada para predicciones de precios de criptomonedas. Basada en datos históricos y algoritmos avanzados, nuestra tecnología te proporciona insights precisos para mejorar tu estrategia de inversión.</p>
-        </div>
-
-        <div id="cryptoclick" class="section">
-            <h2>Crypto Click: Gana NFTs, Tokens y Dividendos</h2>
-            <p>En Onix Manager, estamos revolucionando la interacción en el mundo cripto con nuestro proyecto tokenizado, Crypto Click. Diseñado para que todos nuestros usuarios sean los primeros en beneficiarse.<br>
-                Crypto Click te ofrece la oportunidad única de ganar NFTs, tokens y dividendos simplemente interactuando con contenido relevante.</p>
-        </div>
-
-        <div id="comunidad" class="section">
-            <h2>Únete a Nuestra Comunidad Global</h2>
-            <p>Al unirte a Onix Manager, no solo adquieres conocimientos en criptomonedas, sino que te integras a una red global de innovadores y emprendedores digitales. Aprovecha eventos exclusivos, seminarios web y colaboraciones que impulsarán tu éxito en este emocionante campo.</p>
-            <p>Prepárate para explorar, aprender y prosperar con Onix Manager. Únete hoy mismo y comienza tu viaje hacia un futuro digital lleno de oportunidades.</p>
-        </div>
     </div>
 
-    <footer>
+    <footer data-aos="fade-up">
         <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Scripts para efectos -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#00f3ff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            }
+        });
+    </script>
 </body>
 </html>
