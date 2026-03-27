@@ -105,21 +105,117 @@
         color: var(--white);
     }
     .nav-logo-text span { color: var(--gold); }
-    nav ul { display:flex; gap:.1rem; list-style:none; align-items:center; }
+
+    /* Desktop nav links */
+    nav ul {
+        display: flex; gap: .1rem; list-style: none; align-items: center;
+    }
     nav ul li a {
-        display: flex; align-items:center; gap:.4rem;
+        display: flex; align-items: center; gap: .4rem;
         padding: .45rem .85rem;
         border-radius: 7px;
         font-size: .83rem; font-weight: 500;
         color: var(--text);
         transition: color .2s, background .2s;
     }
-    nav ul li a i { font-size: .75rem; opacity:.65; }
+    nav ul li a i { font-size: .75rem; opacity: .65; }
     nav ul li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
     .nav-cta a {
         background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
         color: var(--bg) !important;
         font-weight: 600 !important;
+    }
+
+    /* ===================== HAMBURGER BUTTON ===================== */
+    .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px; height: 40px;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 0;
+        flex-shrink: 0;
+        transition: border-color .2s;
+    }
+    .nav-hamburger:hover { border-color: rgba(255,255,255,0.22); }
+    .nav-hamburger span {
+        display: block;
+        width: 18px; height: 1.5px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: transform .3s ease, opacity .3s ease;
+        transform-origin: center;
+    }
+    /* X state */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ===================== MOBILE DRAWER ===================== */
+    .nav-drawer {
+        display: none;
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: rgba(9,11,15,0.97);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem 1.5rem;
+        z-index: 899;
+        transform: translateY(-8px);
+        opacity: 0;
+        transition: transform .25s ease, opacity .25s ease;
+        pointer-events: none;
+    }
+    .nav-drawer.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+    .nav-drawer ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+    }
+    .nav-drawer ul li a {
+        display: flex; align-items: center; gap: .7rem;
+        padding: .75rem 1rem;
+        border-radius: 8px;
+        font-size: .92rem; font-weight: 500;
+        color: var(--text2);
+        transition: color .2s, background .2s;
+    }
+    .nav-drawer ul li a i {
+        font-size: .8rem;
+        width: 16px; text-align: center;
+        color: var(--gold); opacity: .85;
+    }
+    .nav-drawer ul li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav-drawer .nav-cta-mobile a {
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        color: var(--bg) !important;
+        font-weight: 600;
+        justify-content: center;
+        margin-top: .5rem;
+    }
+    .nav-drawer .nav-cta-mobile a i { color: var(--bg); opacity: 1; }
+    .nav-drawer-divider {
+        height: 1px;
+        background: var(--border);
+        margin: .75rem 0;
+    }
+
+    /* ===================== SHOW/HIDE PER BREAKPOINT ===================== */
+    @media (max-width: 768px) {
+        nav ul { display: none; }
+        .nav-hamburger { display: flex; }
+        .nav-drawer { display: block; }
+        .nav-inner { padding: 0 1.25rem; }
     }
 
     /* ===================== HERO ===================== */
@@ -134,14 +230,12 @@
         min-height: calc(100vh - 98px);
         overflow: hidden;
     }
-    /* diagonal texture */
     .hero::before {
         content:''; position:absolute; inset:0;
         background: repeating-linear-gradient(-55deg, transparent, transparent 60px,
             rgba(232,160,32,0.015) 60px, rgba(232,160,32,0.015) 61px);
         pointer-events:none;
     }
-    /* gold glow */
     .hero-glow {
         position:absolute; right:-5%; top:45%;
         transform:translateY(-50%);
@@ -459,8 +553,6 @@
     }
     @media(max-width:768px){
         .page-section { padding:4rem 1.25rem; }
-        nav ul li a { padding:.38rem .55rem; font-size:.78rem; }
-        nav ul li a i { display:none; }
         .why-grid { grid-template-columns:1fr; }
         .courses-grid { grid-template-columns:1fr; }
         .cta-band { padding:3rem 1.5rem; }
@@ -488,6 +580,8 @@
                 <div class="nav-logo-mark">O</div>
                 <span class="nav-logo-text">Onix <span>Manager</span></span>
             </div>
+
+            <!-- Desktop menu -->
             <ul>
                 <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
@@ -496,6 +590,27 @@
                 <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
                 <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
                 <li class="nav-cta"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
+            </ul>
+
+            <!-- Hamburger button (mobile only) -->
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile drawer -->
+        <div class="nav-drawer" id="nav-drawer">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+                <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+                <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+                <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+                <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+                <div class="nav-drawer-divider"></div>
+                <li class="nav-cta-mobile"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
             </ul>
         </div>
     </nav>
@@ -867,7 +982,38 @@
         base=Math.max(80000,base+(Math.random()-.48)*35);
         document.getElementById('btc-price').textContent='$'+base.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
     },2600);
+
+    /* ---- HAMBURGER MENU ---- */
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('nav-drawer');
+
+    hamburger.addEventListener('click', () => {
+        const isOpen = drawer.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close drawer when a link is clicked
+    drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close drawer on outside click
+    document.addEventListener('click', (e) => {
+        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
     </script>
 </body>
-                   
 </html>
