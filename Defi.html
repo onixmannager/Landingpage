@@ -1,202 +1,402 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seguridad En Blockchain</title>
-
-    <!-- Favicon -->
+    <title>Plataformas DeFi — Onix Manager</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Meta etiquetas para Open Graph -->
-    <meta property="og:title" content="Onix Manager - Plataforma de Educacion Cripto.">
-    <meta property="og:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta property="og:title" content="Onix Manager - Plataformas DeFi y Finanzas Descentralizadas">
+    <meta property="og:description" content="Descubre qué son las finanzas descentralizadas, cómo funcionan, sus componentes clave y los riesgos a considerar.">
     <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/">
+    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/Defi.html">
     <meta property="og:type" content="website">
-
-    <!-- Meta etiquetas para Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Onix Manager - Asesoría Digital y Financiera">
-    <meta name="twitter:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta name="twitter:title" content="Onix Manager - Plataformas DeFi y Finanzas Descentralizadas">
+    <meta name="twitter:description" content="Descubre qué son las finanzas descentralizadas, cómo funcionan, sus componentes clave y los riesgos a considerar.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background-color: #f0f0f0; /* Color de fondo */
-            color: #333; /* Color del texto */
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 20px;
+        :root {
+            --bg:         #090b0f;
+            --bg2:        #0e1117;
+            --surface:    #13161e;
+            --surface2:   #1a1e28;
+            --gold:       #e8a020;
+            --gold-light: #f5bc50;
+            --gold-dim:   rgba(232,160,32,0.12);
+            --green:      #00c896;
+            --green-dim:  rgba(0,200,150,0.1);
+            --red:        #e05252;
+            --blue:       #7c8cff;
+            --blue-dim:   rgba(124,140,255,0.1);
+            --white:      #f0f2f5;
+            --text:       #8b95a8;
+            --text2:      #c4cad6;
+            --border:     rgba(255,255,255,0.07);
+            --border-g:   rgba(232,160,32,0.2);
+            --ff-display: 'Playfair Display', Georgia, serif;
+            --ff-body:    'IBM Plex Sans', sans-serif;
+            --ff-mono:    'IBM Plex Mono', monospace;
         }
-        header {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 2px solid #ccc; /* Color del borde inferior */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text2); font-family:var(--ff-body); font-size:1rem; line-height:1.6; overflow-x:hidden; }
+        a { color:inherit; text-decoration:none; }
+
+        /* Ticker */
+        .ticker-wrap { background:var(--bg2); border-bottom:1px solid var(--border); overflow:hidden; height:34px; display:flex; align-items:center; }
+        .ticker-inner { display:flex; gap:3rem; white-space:nowrap; animation:tickerScroll 28s linear infinite; }
+        @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .ticker-item { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--ff-mono); font-size:.72rem; }
+        .t-sym { color:var(--white); font-weight:500; }
+        .t-pri { color:var(--text); }
+        .t-up  { color:var(--green); }
+        .t-dn  { color:var(--red); }
+        .t-sep { color:var(--border); }
+
+        /* Nav */
+        nav { position:sticky; top:0; z-index:900; background:rgba(9,11,15,0.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        .nav-inner { max-width:1280px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .nav-logo { display:flex; align-items:center; gap:.7rem; }
+        .nav-logo-mark { width:32px; height:32px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--bg); font-weight:800; }
+        .nav-logo-text { font-family:var(--ff-display); font-weight:700; font-size:1.15rem; color:var(--white); }
+        .nav-logo-text span { color:var(--gold); }
+        nav ul { display:flex; gap:.1rem; list-style:none; align-items:center; }
+        nav ul li a { display:flex; align-items:center; gap:.4rem; padding:.45rem .85rem; border-radius:7px; font-size:.83rem; font-weight:500; color:var(--text); transition:color .2s, background .2s; }
+        nav ul li a i { font-size:.75rem; opacity:.65; }
+        nav ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        nav ul li a.active { color:var(--gold); background:rgba(232,160,32,0.07); }
+        .nav-cta a { background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important; color:var(--bg) !important; font-weight:600 !important; }
+
+        /* Hamburger */
+        .nav-hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:1px solid var(--border); border-radius:8px; cursor:pointer; padding:0; flex-shrink:0; }
+        .nav-hamburger:hover { border-color:rgba(255,255,255,0.22); }
+        .nav-hamburger span { display:block; width:18px; height:1.5px; background:var(--white); border-radius:2px; transition:transform .3s ease, opacity .3s ease; transform-origin:center; }
+        .nav-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+        /* Drawer */
+        .nav-drawer { display:none; position:fixed; top:64px; left:0; right:0; background:rgba(9,11,15,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:1rem 1.5rem 1.5rem; z-index:899; transform:translateY(-8px); opacity:0; transition:transform .25s ease, opacity .25s ease; pointer-events:none; }
+        .nav-drawer.open { opacity:1; transform:translateY(0); pointer-events:all; }
+        .nav-drawer ul { list-style:none; display:flex; flex-direction:column; gap:.25rem; }
+        .nav-drawer ul li a { display:flex; align-items:center; gap:.7rem; padding:.75rem 1rem; border-radius:8px; font-size:.92rem; font-weight:500; color:var(--text2); }
+        .nav-drawer ul li a i { font-size:.8rem; width:16px; text-align:center; color:var(--gold); opacity:.85; }
+        .nav-drawer ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        .nav-drawer .nav-cta-mobile a { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--bg) !important; font-weight:600; justify-content:center; margin-top:.5rem; }
+        .nav-drawer-divider { height:1px; background:var(--border); margin:.75rem 0; }
+        @media(max-width:768px) {
+            nav ul { display:none; }
+            .nav-hamburger { display:flex; }
+            .nav-drawer { display:block; }
+            .nav-inner { padding:0 1.25rem; }
         }
 
-        h1 {
-            color: #333; /* Color del título principal */
-            font-size: 2.5em;
-            margin: 0;
+        /* Page header */
+        .page-header {
+            max-width:1280px; margin:0 auto;
+            padding:4rem 2rem 2rem;
+            border-bottom:1px solid var(--border);
+        }
+        .page-eyebrow {
+            display:inline-flex; align-items:center; gap:.6rem;
+            font-family:var(--ff-mono); font-size:.7rem;
+            letter-spacing:.2em; text-transform:uppercase;
+            color:var(--gold); margin-bottom:1rem;
+        }
+        .page-eyebrow::before { content:''; width:26px; height:1px; background:var(--gold); }
+        .page-header h1 {
+            font-family:var(--ff-display);
+            font-size:clamp(2rem,4vw,3rem);
+            font-weight:800; color:var(--white);
+            line-height:1.2;
+        }
+        .page-header h1 em { font-style:italic; color:var(--gold); }
+        .page-header p { font-size:.95rem; color:var(--text); max-width:580px; margin-top:.85rem; }
+
+        /* Grid de contenido */
+        .defi-grid {
+            max-width:1280px;
+            margin:0 auto;
+            padding:3rem 2rem 5rem;
+            display:flex;
+            flex-direction:column;
+            gap:1.8rem;
+        }
+        .defi-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:20px;
+            padding:1.8rem;
+            transition:border-color 0.3s;
+        }
+        .defi-card:hover {
+            border-color:var(--border-g);
+        }
+        .defi-card h2 {
+            font-family:var(--ff-display);
+            font-size:1.5rem;
+            font-weight:700;
+            color:var(--white);
+            margin-bottom:1rem;
+            display:flex;
+            align-items:center;
+            gap:.6rem;
+        }
+        .defi-card h2 i {
+            color:var(--gold);
+            font-size:1.3rem;
+        }
+        .defi-card p {
+            color:var(--text2);
+            line-height:1.75;
+            margin-bottom:1rem;
+        }
+        .defi-card strong {
+            color:var(--gold);
+            font-weight:600;
+        }
+        .defi-card ul, .defi-card ol {
+            margin-left:1.5rem;
+            margin-bottom:1rem;
+            color:var(--text2);
+        }
+        .defi-card li {
+            margin-bottom:0.5rem;
         }
 
-        .tool {
-            margin-bottom: 10px; /* Espacio reducido entre herramientas */
-            background: #fff; /* Color de fondo del contenedor */
-            padding: 15px; /* Espacio interno reducido */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-        }
-        .tool h3 {
-            margin: 10px 0 5px 0;
-            font-size: 1.3em; /* Tamaño del título de la herramienta */
-            color: #333; /* Color del título de la herramienta */
-        }
-        .description, .features {
-            margin: 5px 0;
-            font-size: 1em; /* Tamaño del texto descriptivo */
-            color: #666; /* Color del texto descriptivo */
-        }
-        .description strong, .features strong {
-            color: #007bff; /* Color de los elementos destacados */
-        }
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            border-top: 2px solid #ccc; /* Color del borde superior */
-            margin-top: 40px;
-            color: #f0f0f0; /* Blanco con tono grisáceo */
-            background-color: #333; /* Color de fondo negro */
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            .tool h3 {
-                font-size: 1.1em;
-            }
-            .description, .features {
-                font-size: 0.9em;
-            }
-        }
-        /* Estilos para el menú de navegación */
-        nav {
-            background-color: #f2f2f2;
-            color: #000;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        nav ul li {
-            margin: 1px 1px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-            font-size: 0.9em;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-        nav ul li a:hover {
-            background-color: #e0e0e0;
-        }
+        /* Footer */
+        .footer-outer { background:var(--bg2); border-top:1px solid var(--border); margin-top:2rem; }
+        .footer-grid { max-width:1280px; margin:0 auto; padding:4rem 2rem 2rem; display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:3rem; }
+        .fb-logo { display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem; }
+        .fb-logo-m { width:30px; height:30px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:.82rem; color:var(--bg); font-weight:800; }
+        .fb-logo-t { font-family:var(--ff-display); font-weight:700; font-size:.98rem; color:var(--white); }
+        .footer-brand > p { font-size:.82rem; color:var(--text); line-height:1.7; margin-bottom:1.4rem; }
+        .f-disclaimer { font-size:.7rem; color:rgba(139,149,168,0.45); line-height:1.6; padding:.9rem 1rem; border:1px solid var(--border); border-radius:8px; background:rgba(255,255,255,0.02); }
+        .footer-col h4 { font-family:var(--ff-mono); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text); margin-bottom:1.1rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:.5rem; }
+        .footer-col ul li a { font-size:.83rem; color:var(--text); transition:color .2s; }
+        .footer-col ul li a:hover { color:var(--gold); }
+        .footer-bottom { max-width:1280px; margin:0 auto; padding:1.4rem 2rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+        .footer-bottom p { font-size:.75rem; color:rgba(139,149,168,0.38); }
+        .fb-links { display:flex; gap:1.5rem; }
+        .fb-links a { font-size:.75rem; color:rgba(139,149,168,0.38); transition:color .2s; }
+        .fb-links a:hover { color:var(--text); }
 
-        /* Estilos para las secciones */
-        section {
-            margin: 10px 0; /* Espacio reducido entre secciones */
-        }
+        /* reveal */
+        .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
 
-        .section-left {
-            text-align: left;
+        @media(max-width:1024px) {
+            .footer-grid { grid-template-columns:1fr 1fr; }
+            .footer-brand { grid-column:1/-1; }
         }
-
-        .section-right {
-            text-align: right;
+        @media(max-width:768px) {
+            .page-header { padding:3rem 1.25rem 1.5rem; }
+            .defi-grid { padding:2rem 1.25rem 4rem; gap:1.2rem; }
+            .defi-card { padding:1.2rem; }
+            .defi-card h2 { font-size:1.3rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
         }
     </style>
-
 </head>
 <body>
-    <nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner" id="ticker"></div></div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <div class="nav-logo-mark">O</div>
+            <span class="nav-logo-text">Onix <span>Manager</span></span>
+        </div>
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="Herramientas.html">Herramientas</a></li>
-            <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
-            <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
-            <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html" class="active"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <li class="nav-cta"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
         </ul>
-    </nav>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <div class="nav-drawer-divider"></div>
+            <li class="nav-cta-mobile"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <header>
-        <h1>Plataformas (DeFi) y cómo utilizarlas</h1>
-    </header>
+<!-- HEADER -->
+<div class="page-header reveal">
+    <div class="page-eyebrow">Finanzas descentralizadas</div>
+    <h1>Plataformas <em>DeFi</em> y cómo utilizarlas</h1>
+    <p>Descubre el ecosistema de las finanzas descentralizadas: préstamos, staking, exchanges descentralizados y más. Aprende sus componentes clave, riesgos y oportunidades.</p>
+</div>
 
-    <section class="section-left">
-        <div class="tool">
-            <h3>Las plataformas de finanzas descentralizadas (DeFi)</h3>
-            <p>Las plataformas de finanzas descentralizadas (DeFi) representan una innovación disruptiva en el ámbito financiero global al facilitar transacciones directas y sin intermediarios a través de contratos inteligentes ejecutados en blockchain. Estas plataformas están diseñadas para ofrecer una gama diversa de servicios financieros de manera accesible y transparente, permitiendo a los usuarios realizar préstamos, ganar intereses, intercambiar activos, y más, sin depender de instituciones financieras tradicionales.</p>
+<!-- CONTENIDO DEFI -->
+<div class="defi-grid">
+
+    <!-- Introducción -->
+    <div class="defi-card reveal">
+        <h2><i class="fas fa-chart-line"></i> Las plataformas de finanzas descentralizadas (DeFi)</h2>
+        <p>Las plataformas de finanzas descentralizadas (DeFi) representan una innovación disruptiva en el ámbito financiero global al facilitar transacciones directas y sin intermediarios a través de contratos inteligentes ejecutados en blockchain. Estas plataformas están diseñadas para ofrecer una gama diversa de servicios financieros de manera accesible y transparente, permitiendo a los usuarios realizar préstamos, ganar intereses, intercambiar activos, y más, sin depender de instituciones financieras tradicionales.</p>
+    </div>
+
+    <!-- Componentes clave -->
+    <div class="defi-card reveal">
+        <h2><i class="fas fa-cogs"></i> Componentes clave de las plataformas DeFi</h2>
+        <p><strong>1. Contratos inteligentes:</strong> Fundamentales en DeFi, estos protocolos autónomos se ejecutan automáticamente cuando se cumplen ciertas condiciones predefinidas, garantizando la seguridad y la transparencia en todas las transacciones.</p>
+        <p><strong>2. Préstamos y préstamos flash:</strong> Los usuarios pueden prestar y pedir prestado activos digitales directamente entre sí, utilizando contratos inteligentes que establecen las condiciones de los préstamos y las tasas de interés de manera automatizada y sin necesidad de intermediarios.</p>
+        <p><strong>3. Staking y ganancias pasivas:</strong> Mediante el staking, los usuarios pueden bloquear sus activos en una plataforma DeFi para respaldar la seguridad y la operación de la red blockchain, a cambio de recompensas en forma de intereses o tokens.</p>
+        <p><strong>4. Intercambios descentralizados (DEX):</strong> Facilitan el intercambio directo de activos digitales entre usuarios sin necesidad de una entidad centralizada. Los DEX utilizan protocolos como AMM (Automated Market Makers) para establecer precios y ejecutar transacciones de manera eficiente.</p>
+        <p><strong>5. Liquidez y pools de liquidez:</strong> Los usuarios pueden proporcionar liquidez a los DEX mediante el depósito de activos en pools de liquidez, obteniendo a cambio recompensas por las transacciones realizadas con esos activos.</p>
+    </div>
+
+    <!-- Consideraciones y riesgos -->
+    <div class="defi-card reveal">
+        <h2><i class="fas fa-shield-alt"></i> Consideraciones y riesgos</h2>
+        <p><strong>1. Seguridad:</strong> A pesar de las ventajas de la tecnología blockchain, los contratos inteligentes pueden ser vulnerables a errores de codificación o ataques malintencionados. Es esencial investigar y utilizar solo plataformas DeFi reputadas y auditadas.</p>
+        <p><strong>2. Volatilidad:</strong> Los activos digitales son conocidos por su alta volatilidad de precios, lo que puede afectar significativamente el valor de las inversiones realizadas en plataformas DeFi.</p>
+        <p><strong>3. Educación y diligencia debida:</strong> Antes de participar en cualquier plataforma DeFi, los usuarios deben familiarizarse con los conceptos básicos de blockchain, comprender cómo funcionan los contratos inteligentes y evaluar cuidadosamente los proyectos en los que desean invertir.</p>
+    </div>
+
+    <!-- Perspectivas futuras -->
+    <div class="defi-card reveal">
+        <h2><i class="fas fa-rocket"></i> Perspectivas futuras y oportunidades</h2>
+        <p>A medida que las plataformas DeFi continúan evolucionando, ofrecen nuevas formas para que individuos y empresas accedan a servicios financieros globales de manera más inclusiva y eficiente. La comunidad DeFi está en constante expansión, con innovaciones emergentes como los protocolos de gobernanza descentralizada y la tokenización de activos tradicionales, que prometen transformar aún más el panorama financiero mundial.</p>
+    </div>
+
+    <!-- Verificación de direcciones -->
+    <div class="defi-card reveal">
+        <h2><i class="fas fa-check-circle"></i> Verificación de Direcciones y Transacciones</h2>
+        <p>Antes de enviar cualquier criptomoneda, verifica dos veces la dirección del destinatario para evitar errores que puedan resultar en pérdida de fondos irreversibles. Utiliza siempre el sistema de copiado y pegado para evitar errores tipográficos, y verifica los primeros y últimos caracteres de la dirección.</p>
+    </div>
+
+    <!-- Reflexión final -->
+    <div class="defi-card reveal">
+        <h2><i class="fas fa-lightbulb"></i> Reflexión</h2>
+        <p>Las plataformas DeFi representan una revolución en las finanzas al democratizar el acceso a servicios tradicionalmente reservados a instituciones financieras. Aunque ofrecen oportunidades emocionantes como préstamos descentralizados y ganancias pasivas, también conllevan riesgos significativos como la seguridad de los contratos inteligentes y la volatilidad de los activos digitales. Para participar de manera segura, es crucial educarse sobre blockchain y ejercer diligencia debida al elegir plataformas. A medida que DeFi sigue evolucionando, promete transformar aún más el panorama financiero global, pero la precaución y la comprensión son fundamentales para navegar este espacio emergente con éxito.</p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer-outer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="fb-logo">
+                <div class="fb-logo-m">O</div>
+                <span class="fb-logo-t">Onix Manager</span>
+            </div>
+            <p>Plataforma de educación financiera y cripto para inversores de todos los niveles. Aprendizaje práctico, herramientas reales.</p>
+            <div class="f-disclaimer">⚠️ El trading e inversión en criptomonedas conlleva riesgos significativos. El contenido es educativo y no constituye asesoramiento financiero. Invierte solo lo que puedas permitirte perder.</div>
         </div>
-    </section>
-
-    <section class="section-right">
-        <div class="tool">
-            <h3>Componentes clave de las plataformas DeFi</h3>
-            <p>1. <strong>Contratos inteligentes:</strong> Fundamentales en DeFi, estos protocolos autónomos se ejecutan automáticamente cuando se cumplen ciertas condiciones predefinidas, garantizando la seguridad y la transparencia en todas las transacciones.</p>
-            <p>2. <strong>Préstamos y préstamos flash:</strong> Los usuarios pueden prestar y pedir prestado activos digitales directamente entre sí, utilizando contratos inteligentes que establecen las condiciones de los préstamos y las tasas de interés de manera automatizada y sin necesidad de intermediarios.</p>
-            <p>3. <strong>Staking y ganancias pasivas:</strong> Mediante el staking, los usuarios pueden bloquear sus activos en una plataforma DeFi para respaldar la seguridad y la operación de la red blockchain, a cambio de recompensas en forma de intereses o tokens.</p>
-            <p>4. <strong>Intercambios descentralizados (DEX):</strong> Facilitan el intercambio directo de activos digitales entre usuarios sin necesidad de una entidad centralizada. Los DEX utilizan protocolos como AMM (Automated Market Makers) para establecer precios y ejecutar transacciones de manera eficiente.</p>
-            <p>5. <strong>Liquidez y pools de liquidez:</strong> Los usuarios pueden proporcionar liquidez a los DEX mediante el depósito de activos en pools de liquidez, obteniendo a cambio recompensas por las transacciones realizadas con esos activos.</p>
+        <div class="footer-col">
+            <h4>Plataforma</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
         </div>
-    </section>
-
-    <section class="section-left">
-        <div class="tool">
-            <h3>Consideraciones y riesgos</h3>
-            <p><strong>1. Seguridad:</strong> A pesar de las ventajas de la tecnología blockchain, los contratos inteligentes pueden ser vulnerables a errores de codificación o ataques malintencionados. Es esencial investigar y utilizar solo plataformas DeFi reputadas y auditadas.</p>
-            <p><strong>2. Volatilidad:</strong> Los activos digitales son conocidos por su alta volatilidad de precios, lo que puede afectar significativamente el valor de las inversiones realizadas en plataformas DeFi.</p>
-            <p><strong>3. Educación y diligencia debida:</strong> Antes de participar en cualquier plataforma DeFi, los usuarios deben familiarizarse con los conceptos básicos de blockchain, comprender cómo funcionan los contratos inteligentes y evaluar cuidadosamente los proyectos en los que desean invertir.</p>
+        <div class="footer-col">
+            <h4>Productos</h4>
+            <ul>
+                <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
+                <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+            </ul>
         </div>
-    </section>
-
-    <section class="section-right">
-        <div class="tool">
-            <h3>Perspectivas futuras y oportunidades</h3>
-            <p>A medida que las plataformas DeFi continúan evolucionando, ofrecen nuevas formas para que individuos y empresas accedan a servicios financieros globales de manera más inclusiva y eficiente. La comunidad DeFi está en constante expansión, con innovaciones emergentes como los protocolos de gobernanza descentralizada y la tokenización de activos tradicionales, que prometen transformar aún más el panorama financiero mundial.</p>
+        <div class="footer-col">
+            <h4>Soporte</h4>
+            <ul>
+                <li><a href="Landingpage.html">Centro de ayuda</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="Landingpage.html">Contacto</a></li>
+            </ul>
         </div>
-    </section>
-
-    <section class="section-left">
-        <div class="tool">
-            <h3>Verificación de Direcciones y Transacciones</h3>
-            <p>Antes de enviar cualquier criptomoneda, verifica dos veces la dirección del destinatario para evitar errores que puedan resultar en pérdida de fondos irreversibles. Utiliza siempre el sistema de copiado y pegado para evitar errores tipográficos, y verifica los primeros y últimos caracteres de la dirección.</p>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Onix Manager — Todos los derechos reservados.</p>
+        <div class="fb-links">
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Cookies</a>
         </div>
-    </section>
-    <section class="section-right">
-        <div class="tool">
-            <h3>Reflexión</h3>
-            <p>Las plataformas DeFi representan una revolución en las finanzas al democratizar el acceso a servicios tradicionalmente reservados a instituciones financieras. Aunque ofrecen oportunidades emocionantes como préstamos descentralizados y ganancias pasivas, también conllevan riesgos significativos como la seguridad de los contratos inteligentes y la volatilidad de los activos digitales. Para participar de manera segura, es crucial educarse sobre blockchain y ejercer diligencia debida al elegir plataformas. A medida que DeFi sigue evolucionando, promete transformar aún más el panorama financiero global, pero la precaución y la comprensión son fundamentales para navegar este espacio emergente con éxito.</p>
-        </div>
-    </section>
+    </div>
+</div>
 
-        <footer>
-        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
-        </footer>
-        </body>
-        </html>
+<script>
+const TICKERS = [
+    {sym:'BTC/USDT',price:'$83,420',ch:'+2.84%',up:true},
+    {sym:'ETH/USDT',price:'$1,980', ch:'+1.42%',up:true},
+    {sym:'SOL/USDT',price:'$134.20',ch:'-0.88%',up:false},
+    {sym:'BNB/USDT',price:'$612.00',ch:'+0.55%',up:true},
+    {sym:'XRP/USDT',price:'$2.14',  ch:'+3.12%',up:true},
+    {sym:'ADA/USDT',price:'$0.74',  ch:'-1.20%',up:false},
+    {sym:'AVAX/USDT',price:'$22.80',ch:'+1.78%',up:true},
+    {sym:'DOT/USDT',price:'$5.40',  ch:'+0.34%',up:true},
+    {sym:'LINK/USDT',price:'$13.90',ch:'+0.91%',up:true},
+    {sym:'MATIC/USDT',price:'$0.52',ch:'-2.10%',up:false},
+];
+(function buildTicker(){
+    const el = document.getElementById('ticker');
+    const all = [...TICKERS,...TICKERS];
+    el.innerHTML = all.map(d=>`
+        <div class="ticker-item">
+            <span class="t-sym">${d.sym}</span>
+            <span class="t-pri">${d.price}</span>
+            <span class="${d.up?'t-up':'t-dn'}">${d.ch}</span>
+            <span class="t-sep">·</span>
+        </div>`).join('');
+})();
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const hamburger = document.getElementById('nav-hamburger');
+const drawer    = document.getElementById('nav-drawer');
+hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    });
+});
+document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+});
+</script>
+</body>
+</html>
