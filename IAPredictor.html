@@ -1,189 +1,447 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onix Manager</title>
-
-    <!-- Favicon -->
+    <title>IA Predictor — Onix Manager</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Meta etiquetas para Open Graph -->
-    <meta property="og:title" content="Onix Manager - Plataforma de Educacion Cripto.">
-    <meta property="og:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta property="og:title" content="Onix Manager - IA Predictor">
+    <meta property="og:description" content="Predicciones impulsadas por inteligencia artificial para BTC, ETH y SOL.">
     <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/">
+    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/IAPredictorinicio.html">
     <meta property="og:type" content="website">
-
-    <!-- Meta etiquetas para Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Onix Manager - Asesoría Digital y Financiera">
-    <meta name="twitter:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta name="twitter:title" content="Onix Manager - IA Predictor">
+    <meta name="twitter:description" content="Predicciones impulsadas por inteligencia artificial para BTC, ETH y SOL.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-
-
-
-    
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg:         #090b0f;
+            --bg2:        #0e1117;
+            --surface:    #13161e;
+            --surface2:   #1a1e28;
+            --gold:       #e8a020;
+            --gold-light: #f5bc50;
+            --gold-dim:   rgba(232,160,32,0.12);
+            --green:      #00c896;
+            --green-dim:  rgba(0,200,150,0.1);
+            --red:        #e05252;
+            --blue:       #7c8cff;
+            --blue-dim:   rgba(124,140,255,0.1);
+            --white:      #f0f2f5;
+            --text:       #8b95a8;
+            --text2:      #c4cad6;
+            --border:     rgba(255,255,255,0.07);
+            --border-g:   rgba(232,160,32,0.2);
+            --ff-display: 'Playfair Display', Georgia, serif;
+            --ff-body:    'IBM Plex Sans', sans-serif;
+            --ff-mono:    'IBM Plex Mono', monospace;
         }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff; /* Fondo blanco */
-            color: #333; /* Color del texto */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text2); font-family:var(--ff-body); font-size:1rem; line-height:1.6; overflow-x:hidden; }
+        a { color:inherit; text-decoration:none; }
+
+        /* Nav */
+        nav { position:sticky; top:0; z-index:900; background:rgba(9,11,15,0.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        .nav-inner { max-width:1280px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .nav-logo { display:flex; align-items:center; gap:.7rem; }
+        .nav-logo-mark { width:32px; height:32px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--bg); font-weight:800; }
+        .nav-logo-text { font-family:var(--ff-display); font-weight:700; font-size:1.15rem; color:var(--white); }
+        .nav-logo-text span { color:var(--gold); }
+        nav ul { display:flex; gap:.1rem; list-style:none; align-items:center; }
+        nav ul li a { display:flex; align-items:center; gap:.4rem; padding:.45rem .85rem; border-radius:7px; font-size:.83rem; font-weight:500; color:var(--text); transition:color .2s, background .2s; }
+        nav ul li a i { font-size:.75rem; opacity:.65; }
+        nav ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        nav ul li a.active { color:var(--gold); background:rgba(232,160,32,0.07); }
+        .nav-cta a { background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important; color:var(--bg) !important; font-weight:600 !important; }
+
+        /* Hamburger */
+        .nav-hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:1px solid var(--border); border-radius:8px; cursor:pointer; padding:0; flex-shrink:0; }
+        .nav-hamburger:hover { border-color:rgba(255,255,255,0.22); }
+        .nav-hamburger span { display:block; width:18px; height:1.5px; background:var(--white); border-radius:2px; transition:transform .3s ease, opacity .3s ease; transform-origin:center; }
+        .nav-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+        /* Drawer */
+        .nav-drawer { display:none; position:fixed; top:64px; left:0; right:0; background:rgba(9,11,15,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:1rem 1.5rem 1.5rem; z-index:899; transform:translateY(-8px); opacity:0; transition:transform .25s ease, opacity .25s ease; pointer-events:none; }
+        .nav-drawer.open { opacity:1; transform:translateY(0); pointer-events:all; }
+        .nav-drawer ul { list-style:none; display:flex; flex-direction:column; gap:.25rem; }
+        .nav-drawer ul li a { display:flex; align-items:center; gap:.7rem; padding:.75rem 1rem; border-radius:8px; font-size:.92rem; font-weight:500; color:var(--text2); }
+        .nav-drawer ul li a i { font-size:.8rem; width:16px; text-align:center; color:var(--gold); opacity:.85; }
+        .nav-drawer ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        .nav-drawer .nav-cta-mobile a { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--bg) !important; font-weight:600; justify-content:center; margin-top:.5rem; }
+        .nav-drawer-divider { height:1px; background:var(--border); margin:.75rem 0; }
+        @media(max-width:768px) {
+            nav ul { display:none; }
+            .nav-hamburger { display:flex; }
+            .nav-drawer { display:block; }
+            .nav-inner { padding:0 1.25rem; }
         }
-        nav {
-            background-color: #f2f2f2; /* Fondo del menú un poco más oscuro */
-            color: #000; /* Color del texto del menú */
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra ligera */
+
+        /* Page header */
+        .page-header {
+            max-width:1280px; margin:0 auto;
+            padding:4rem 2rem 2rem;
+            border-bottom:1px solid var(--border);
         }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* Permite que los elementos se dividan en múltiples filas si es necesario */
+        .page-eyebrow {
+            display:inline-flex; align-items:center; gap:.6rem;
+            font-family:var(--ff-mono); font-size:.7rem;
+            letter-spacing:.2em; text-transform:uppercase;
+            color:var(--gold); margin-bottom:1rem;
         }
-        nav ul li {
-            margin: 1px 1px; /* Ajusta el margen para dar espacio entre los elementos del menú */
+        .page-eyebrow::before { content:''; width:26px; height:1px; background:var(--gold); }
+        .page-header h1 {
+            font-family:var(--ff-display);
+            font-size:clamp(2rem,4vw,3rem);
+            font-weight:800; color:var(--white);
+            line-height:1.2;
         }
-        nav ul li a {
-            text-decoration: none;
-            color: #000; /* Color del texto del enlace del menú */
-            font-weight: bold;
-            font-size: 0.9em; /* Tamaño de fuente del menú */
-            padding: 10px;
-            transition: all 0.3s ease;
+        .page-header h1 em { font-style:italic; color:var(--gold); }
+        .page-header p { font-size:.95rem; color:var(--text); max-width:580px; margin-top:.85rem; }
+
+        /* Grid de predicciones */
+        .predictions-grid {
+            max-width:1280px;
+            margin:0 auto;
+            padding:3rem 2rem 5rem;
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+            gap:1.8rem;
         }
-        nav ul li a:hover {
-            background-color: #e0e0e0; /* Color de fondo del enlace del menú al pasar el ratón */
+        .pred-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:24px;
+            padding:1.8rem;
+            transition:transform 0.2s ease, border-color 0.3s;
+            display:flex;
+            flex-direction:column;
         }
-        .content {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff; /* Color de fondo de la sección */
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .pred-card:hover {
+            transform:translateY(-5px);
+            border-color:var(--border-g);
         }
-        .section {
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .pred-icon {
+            width:56px;
+            height:56px;
+            background:var(--gold-dim);
+            border-radius:18px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:1.2rem;
         }
-        .section:nth-child(even) {
-            text-align: right;
-            background-color: #f2f2f2; /* Color de fondo alternado para secciones pares */
+        .pred-icon i {
+            font-size:2rem;
+            color:var(--gold);
         }
-        .section:nth-child(odd) {
-            text-align: left;
-            background-color: #fff; /* Color de fondo alternado para secciones impares */
+        .pred-card h2 {
+            font-family:var(--ff-display);
+            font-size:1.5rem;
+            font-weight:700;
+            color:var(--white);
+            margin-bottom:0.5rem;
         }
-        .section h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #333; /* Color del título de la sección */
+        .pred-sub {
+            font-family:var(--ff-mono);
+            font-size:0.7rem;
+            color:var(--text);
+            margin-bottom:1.5rem;
+            letter-spacing:0.5px;
         }
-        .section p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #555;
+        .pred-message {
+            background:rgba(255,255,255,0.03);
+            border-radius:12px;
+            padding:1rem;
+            margin-bottom:1.5rem;
+            font-size:0.9rem;
+            color:var(--text);
+            border-left:2px solid var(--gold);
         }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff; /* Color azul */
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
+        .pred-message i {
+            margin-right:6px;
+            color:var(--gold);
         }
-        .button:hover {
-            background-color: #0056b3; /* Cambio de color al pasar el ratón */
+        /* Efecto de parpadeo para "Próximamente" */
+        .blink-text {
+            animation: softPulse 1.5s infinite;
         }
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333; /* Color de fondo del pie de página */
-            color: #fff; /* Color del texto del pie de página */
+        @keyframes softPulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; text-shadow: 0 0 3px rgba(232,160,32,0.3); }
+            100% { opacity: 0.6; }
         }
-        @media (max-width: 768px) {
-            .section h2 {
-                font-size: 1.5em; /* Ajusta el tamaño del texto en pantallas más pequeñas */
-            }
-            .section p {
-                font-size: 1em; /* Ajusta el tamaño del texto en pantallas más pequeñas */
-            }
+        .btn-predict {
+            background:linear-gradient(135deg, var(--gold), var(--gold-light));
+            border:none;
+            border-radius:40px;
+            padding:0.8rem 1.5rem;
+            font-family:var(--ff-body);
+            font-weight:600;
+            font-size:0.85rem;
+            color:var(--bg);
+            cursor:pointer;
+            transition:all 0.2s ease;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:0.5rem;
+            width:100%;
+            margin-top:0.5rem;
+            position:relative;
+            overflow:hidden;
+        }
+        .btn-predict::before {
+            content:'';
+            position:absolute;
+            top:0;
+            left:-100%;
+            width:100%;
+            height:100%;
+            background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition:left 0.6s;
+        }
+        .btn-predict:hover::before {
+            left:100%;
+        }
+        .btn-predict:hover {
+            transform:translateY(-2px);
+            box-shadow:0 6px 20px rgba(232,160,32,0.4);
+        }
+        .pred-result {
+            margin-top:1rem;
+            padding:0.8rem;
+            background:rgba(0,0,0,0.3);
+            border-radius:12px;
+            font-size:0.85rem;
+            color:var(--text2);
+            border:1px dashed var(--border);
+            transition:all 0.2s;
+        }
+
+        /* Footer */
+        .footer-outer { background:var(--bg2); border-top:1px solid var(--border); margin-top:2rem; }
+        .footer-grid { max-width:1280px; margin:0 auto; padding:4rem 2rem 2rem; display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:3rem; }
+        .fb-logo { display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem; }
+        .fb-logo-m { width:30px; height:30px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:.82rem; color:var(--bg); font-weight:800; }
+        .fb-logo-t { font-family:var(--ff-display); font-weight:700; font-size:.98rem; color:var(--white); }
+        .footer-brand > p { font-size:.82rem; color:var(--text); line-height:1.7; margin-bottom:1.4rem; }
+        .f-disclaimer { font-size:.7rem; color:rgba(139,149,168,0.45); line-height:1.6; padding:.9rem 1rem; border:1px solid var(--border); border-radius:8px; background:rgba(255,255,255,0.02); }
+        .footer-col h4 { font-family:var(--ff-mono); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text); margin-bottom:1.1rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:.5rem; }
+        .footer-col ul li a { font-size:.83rem; color:var(--text); transition:color .2s; }
+        .footer-col ul li a:hover { color:var(--gold); }
+        .footer-bottom { max-width:1280px; margin:0 auto; padding:1.4rem 2rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+        .footer-bottom p { font-size:.75rem; color:rgba(139,149,168,0.38); }
+        .fb-links { display:flex; gap:1.5rem; }
+        .fb-links a { font-size:.75rem; color:rgba(139,149,168,0.38); transition:color .2s; }
+        .fb-links a:hover { color:var(--text); }
+
+        /* reveal */
+        .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        @media(max-width:1024px) {
+            .footer-grid { grid-template-columns:1fr 1fr; }
+            .footer-brand { grid-column:1/-1; }
+        }
+        @media(max-width:768px) {
+            .page-header { padding:3rem 1.25rem 1.5rem; }
+            .predictions-grid { padding:2rem 1.25rem 4rem; gap:1.2rem; }
+            .pred-card { padding:1.2rem; }
+            .pred-icon { width:48px; height:48px; }
+            .pred-icon i { font-size:1.5rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
+
+<!-- NAV (sin ticker) -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <div class="nav-logo-mark">O</div>
+            <span class="nav-logo-text">Onix <span>Manager</span></span>
+        </div>
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="Herramientas.html">Herramientas</a></li>
-            <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
-            <li><a href="CryptoClickInfoVideo.html">Crypto Click</a></li>
-            <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html" class="active"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <li class="nav-cta"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
         </ul>
-    </nav>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <div class="nav-drawer-divider"></div>
+            <li class="nav-cta-mobile"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <div class="content">
-        <div id="btc" class="section">
-            <h2>Predicción BTC/USDT</h2>
-            <p>Próximamente Disponible...</p>
-            <button class="button" onclick="obtenerPrediccion('btc')">Obtener Predicción</button>
-            <p id="btcPrediction"></p>
-        </div>
+<!-- HEADER -->
+<div class="page-header reveal">
+    <div class="page-eyebrow">Inteligencia Artificial</div>
+    <h1>Predictor <em>Onix AI</em></h1>
+    <p>Análisis predictivo basado en machine learning y datos históricos. Próximamente predicciones en tiempo real para los principales pares de trading.</p>
+</div>
 
-        <div id="eth" class="section">
-            <h2>Predicción ETH/USDT</h2>
-            <p> Próximamente Disponible...</p>
-            <button class="button" onclick="obtenerPrediccion('eth')">Obtener Predicción</button>
-            <p id="ethPrediction"></p>
+<!-- PREDICCIONES -->
+<div class="predictions-grid">
+    <!-- BTC -->
+    <div class="pred-card reveal">
+        <div class="pred-icon"><i class="fab fa-bitcoin"></i></div>
+        <h2>BTC/USDT</h2>
+        <div class="pred-sub">Bitcoin / Tether</div>
+        <div class="pred-message">
+            <i class="fas fa-microchip"></i> <span class="blink-text">Próximamente Disponible...</span>
         </div>
-
-        <div id="sol" class="section">
-            <h2>Predicción SOL/USDT</h2>
-            <p>Próximamente Disponible...</p>
-            <button class="button" onclick="obtenerPrediccion('sol')">Obtener Predicción</button>
-            <p id="solPrediction"></p>
-        </div>
+        <button class="btn-predict" onclick="obtenerPrediccion('btc')">
+            <i class="fas fa-robot"></i> Generar predicción AI
+        </button>
+        <div id="btcPrediction" class="pred-result"></div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
-    </footer>
+    <!-- ETH -->
+    <div class="pred-card reveal">
+        <div class="pred-icon"><i class="fab fa-ethereum"></i></div>
+        <h2>ETH/USDT</h2>
+        <div class="pred-sub">Ethereum / Tether</div>
+        <div class="pred-message">
+            <i class="fas fa-microchip"></i> <span class="blink-text">Próximamente Disponible...</span>
+        </div>
+        <button class="btn-predict" onclick="obtenerPrediccion('eth')">
+            <i class="fas fa-robot"></i> Generar predicción AI
+        </button>
+        <div id="ethPrediction" class="pred-result"></div>
+    </div>
 
-    <script>
-        async function obtenerPrediccion(cripto) {
-            try {
-                const response = await fetch(`/api/predict?cripto=${cripto}`);
-                if (!response.ok) {
-                    throw new Error('Esta función está deshabilitada porque estamos trabajando en ella.Gracias por tu paciencia');
-                }
-                const data = await response.json();
-                document.getElementById(`${cripto}Prediction`).textContent = `Predicción para ${cripto.toUpperCase()}: ${data.prediccion}`;
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById(`${cripto}Prediction`).textContent = 'Esta función está deshabilitada porque estamos trabajando en ella.Gracias por tu paciencia';
+    <!-- SOL -->
+    <div class="pred-card reveal">
+        <div class="pred-icon"><i class="fas fa-chart-line"></i></div>
+        <h2>SOL/USDT</h2>
+        <div class="pred-sub">Solana / Tether</div>
+        <div class="pred-message">
+            <i class="fas fa-microchip"></i> <span class="blink-text">Próximamente Disponible...</span>
+        </div>
+        <button class="btn-predict" onclick="obtenerPrediccion('sol')">
+            <i class="fas fa-robot"></i> Generar predicción AI
+        </button>
+        <div id="solPrediction" class="pred-result"></div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-outer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="fb-logo">
+                <div class="fb-logo-m">O</div>
+                <span class="fb-logo-t">Onix Manager</span>
+            </div>
+            <p>Plataforma de educación financiera y cripto para inversores de todos los niveles. Aprendizaje práctico, herramientas reales.</p>
+            <div class="f-disclaimer">⚠️ El trading e inversión en criptomonedas conlleva riesgos significativos. El contenido es educativo y no constituye asesoramiento financiero. Invierte solo lo que puedas permitirte perder.</div>
+        </div>
+        <div class="footer-col">
+            <h4>Plataforma</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Productos</h4>
+            <ul>
+                <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
+                <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Soporte</h4>
+            <ul>
+                <li><a href="Landingpage.html">Centro de ayuda</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="Landingpage.html">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Onix Manager — Todos los derechos reservados.</p>
+        <div class="fb-links">
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Cookies</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function obtenerPrediccion(cripto) {
+        try {
+            const response = await fetch(`/api/predict?cripto=${cripto}`);
+            if (!response.ok) {
+                throw new Error('Esta función está deshabilitada porque estamos trabajando en ella. Gracias por tu paciencia');
             }
+            const data = await response.json();
+            document.getElementById(`${cripto}Prediction`).textContent = `Predicción para ${cripto.toUpperCase()}: ${data.prediccion}`;
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById(`${cripto}Prediction`).textContent = '⚠️ Esta función está deshabilitada porque estamos trabajando en ella. Gracias por tu paciencia';
         }
-    </script>
+    }
+
+    // Menú hamburguesa y efecto reveal
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    },{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer    = document.getElementById('nav-drawer');
+    hamburger.addEventListener('click', () => {
+        const isOpen = drawer.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+    document.addEventListener('click', (e) => {
+        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 </body>
 </html>
