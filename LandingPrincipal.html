@@ -257,6 +257,16 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(232,160,32,0.3);
         }
+        .contact-note {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            color: var(--text);
+            background: var(--gold-dim);
+            padding: 0.8rem;
+            border-radius: 16px;
+            border-left: 3px solid var(--gold);
+        }
         /* Footer */
         .footer {
             border-top: 1px solid var(--border);
@@ -287,13 +297,13 @@
             <div class="hero-content">
                 <div class="hero-badge">Bienvenido</div>
                 <h1>Hola, soy <span>Onix Manager</span></h1>
-                <p>Emprendedor digital, experto en tecnología blockchain y creador de soluciones educativas para el mundo cripto. Mi misión es acercar las finanzas descentralizadas a todos con herramientas prácticas y contenido de valor.</p>
+                <p>Emprendedor digital, experto en tecnología blockchain y creador de negocios online. Combino mi pasión por las finanzas descentralizadas con el desarrollo de proyectos digitales que generan valor real y soluciones prácticas para la web3.</p>
                 <div style="margin-top: 1.5rem;">
                     <a href="#contacto" class="social-btn" style="background: var(--gold-dim); border-color: var(--gold); color: var(--gold);">Contáctame</a>
                 </div>
             </div>
             <div class="hero-image">
-                <!-- Reemplaza esta imagen con tu foto real. Coloca tu archivo en la misma carpeta o usa una URL -->
+                <!-- Reemplaza esta imagen con tu foto real -->
                 <img src="https://via.placeholder.com/220x220?text=Tu+Foto" alt="Onix Manager" class="profile-pic" id="profile-img">
                 <p style="font-size: 0.7rem; margin-top: 0.5rem; color: var(--text);">* Reemplaza esta imagen con la tuya</p>
             </div>
@@ -303,7 +313,7 @@
         <div class="section reveal">
             <div class="section-header">
                 <div class="eyebrow">Sobre mí</div>
-                <h2>Más de 5 años impulsando la educación financiera y tecnológica</h2>
+                <h2>Más de 5 años impulsando la educación tecnológica y los proyectos digitales</h2>
             </div>
             <div class="cards-grid">
                 <div class="card">
@@ -312,14 +322,14 @@
                     <p>He formado a miles de personas en el mundo de las criptomonedas, blockchain y trading, con cursos prácticos y accesibles.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Asesor Financiero</h3>
-                    <p>Ayudo a inversores a entender el ecosistema DeFi, gestionar riesgos y tomar decisiones informadas.</p>
-                </div>
-                <div class="card">
                     <div class="card-icon"><i class="fas fa-code"></i></div>
                     <h3>Creador de Proyectos Digitales</h3>
-                    <p>Desarrollo plataformas educativas, herramientas de análisis y comunidades para el sector cripto.</p>
+                    <p>Desarrollo plataformas educativas, herramientas de análisis y comunidades para el sector cripto, siempre con foco en la innovación.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Estratega de Negocios Online</h3>
+                    <p>Ayudo a emprendedores a lanzar y escalar sus proyectos digitales, desde la idea hasta la ejecución, aprovechando las oportunidades de la economía digital.</p>
                 </div>
             </div>
         </div>
@@ -344,9 +354,9 @@
                     <a href="index.html" class="card-link">Explorar <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+                    <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3>Zona VIP Trends</h3>
-                    <p>Análisis de mercado y señales de trading para miembros exclusivos.</p>
+                    <p>Agencia de publicidad y gestión de redes sociales. Potenciamos marcas en el ecosistema digital con estrategias personalizadas.</p>
                     <a href="#" class="card-link">Próximamente <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="card">
@@ -354,6 +364,12 @@
                     <h3>Cinonix</h3>
                     <p>Contenido audiovisual y entretenimiento con foco en tecnología y finanzas.</p>
                     <a href="#" class="card-link">Próximamente <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-coins"></i></div>
+                    <h3>CryptoClick</h3>
+                    <p>Plataforma de noticias, análisis y recursos educativos sobre el mundo cripto.</p>
+                    <a href="CryptoClickVideoInfo.html" class="card-link">Explorar <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -373,7 +389,7 @@
             </div>
         </div>
 
-        <!-- Formulario de contacto (mailto) -->
+        <!-- Formulario de contacto con nota profesional -->
         <div class="section reveal" id="contacto">
             <div class="section-header">
                 <div class="eyebrow">Escríbeme</div>
@@ -388,11 +404,14 @@
                         <input type="email" name="email" placeholder="Tu email" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="mensaje" placeholder="¿En qué puedo ayudarte?"></textarea>
+                        <textarea name="mensaje" placeholder="Cuéntame en qué puedo ayudarte..."></textarea>
                     </div>
                     <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
                 </form>
-                <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem; color: var(--text);">Al hacer clic se abrirá tu cliente de correo. Envíame un mensaje directo.</p>
+                <div class="contact-note">
+                    <i class="fas fa-lightbulb"></i> ¿Necesitas crear o diseñar un proyecto o negocio digital? ¿Tienes alguna consulta sobre desarrollo web, blockchain o estrategias online? Estaré encantado de ayudarte. Escríbeme y conversemos.
+                </div>
+                <p style="font-size: 0.7rem; text-align: center; margin-top: 0.8rem; color: var(--text);">Al hacer clic se abrirá tu cliente de correo. Envíame un mensaje directo.</p>
             </div>
         </div>
 
