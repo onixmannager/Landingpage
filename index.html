@@ -1023,42 +1023,5 @@
     });
     </script>
 
-
-
-
-
-    
-<script>
-const TICKERS = [
-    {sym:'BTC/USDT',price:'$83,420',ch:'+2.84%',up:true},
-    {sym:'ETH/USDT',price:'$1,980', ch:'+1.42%',up:true},
-    {sym:'SOL/USDT',price:'$134.20',ch:'-0.88%',up:false},
-    {sym:'BNB/USDT',price:'$612.00',ch:'+0.55%',up:true},
-    {sym:'XRP/USDT',price:'$2.14',  ch:'+3.12%',up:true},
-    {sym:'ADA/USDT',price:'$0.74',  ch:'-1.20%',up:false},
-    {sym:'AVAX/USDT',price:'$22.80',ch:'+1.78%',up:true},
-    {sym:'DOT/USDT',price:'$5.40',  ch:'+0.34%',up:true},
-    {sym:'LINK/USDT',price:'$13.90',ch:'+0.91%',up:true},
-    {sym:'MATIC/USDT',price:'$0.52',ch:'-2.10%',up:false},
-];
-(function buildTicker(){
-    const el = document.getElementById('ticker');
-    const all = [...TICKERS,...TICKERS];
-    el.innerHTML = all.map(d=>`
-        <div class="ticker-item">
-            <span class="t-sym">${d.sym}</span>
-            <span class="t-pri">${d.price}</span>
-            <span class="${d.up?'t-up':'t-dn'}">${d.ch}</span>
-            <span class="t-sep">·</span>
-        </div>`).join('');
-})();
-
-
-</script>
-
-
-
-
-    
 </body>
 </html>
