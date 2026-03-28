@@ -113,14 +113,15 @@
         ════════════════════════════════ */
         .projects-bento {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(7, 1fr);
             gap: 1rem;
         }
         .bento-card:nth-child(1) { grid-column: span 2; }
         .bento-card:nth-child(2) { grid-column: span 2; }
         .bento-card:nth-child(3) { grid-column: span 2; }
-        .bento-card:nth-child(4) { grid-column: span 3; }
-        .bento-card:nth-child(5) { grid-column: span 3; }
+        .bento-card:nth-child(4) { grid-column: span 2; }
+        .bento-card:nth-child(5) { grid-column: span 2; }
+        .bento-card:nth-child(6) { grid-column: span 2; }
 
         /* accent colors por proyecto */
         .bento-card:nth-child(1) { --ac: #00b4d8; }
@@ -128,31 +129,9 @@
         .bento-card:nth-child(3) { --ac: #a78bfa; }
         .bento-card:nth-child(4) { --ac: #f59e0b; }
         .bento-card:nth-child(5) { --ac: #34d399; }
+        .bento-card:nth-child(6) { --ac: #00b4d8; }
 
 
-
-
-
-
-        /* Para que la sexta tarjeta ocupe todo el ancho de la fila */
-.bento-card:nth-child(6) {
-    grid-column: span 6;
-}
-
-/* (Opcional) Ajuste en móvil para mantener consistencia */
-@media (max-width: 900px) {
-    .bento-card:nth-child(6) {
-        grid-column: span 2;   /* si quieres que también ocupe dos columnas en tablet */
-    }
-}
-
-
-
-
-
-
-
-        
 
         .bento-card {
             background: var(--surface);
@@ -372,7 +351,7 @@
 
 
 
-            <div class="bento-card reveal rd1">
+            <div class="bento-card reveal rd6">
                 <div class="bento-tag"> IA · Analista de Mercados</div>
                 <div class="bento-icon"><i class="fas fa-chart-line"></i></div>
                 <h3>Onix Ai Analist Predictor</h3>
