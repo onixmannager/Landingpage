@@ -1,254 +1,414 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias Cripto</title>
-
-    <!-- Favicon -->
+    <title>Comunidad — Onix Manager</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Meta etiquetas para Open Graph -->
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
+    <meta property="og:title" content="Onix Manager - Comunidad">
+    <meta property="og:description" content="Únete a nuestros canales de Telegram, Twitter, YouTube, Facebook e Instagram. Conéctate con la comunidad cripto.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
+    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/comunidad.html">
     <meta property="og:type" content="website">
-
-    <!-- Meta etiquetas para Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
-
+    <meta name="twitter:title" content="Onix Manager - Comunidad">
+    <meta name="twitter:description" content="Únete a nuestros canales de Telegram, Twitter, YouTube, Facebook e Instagram. Conéctate con la comunidad cripto.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg:         #090b0f;
+            --bg2:        #0e1117;
+            --surface:    #13161e;
+            --surface2:   #1a1e28;
+            --gold:       #e8a020;
+            --gold-light: #f5bc50;
+            --gold-dim:   rgba(232,160,32,0.12);
+            --green:      #00c896;
+            --green-dim:  rgba(0,200,150,0.1);
+            --red:        #e05252;
+            --blue:       #7c8cff;
+            --blue-dim:   rgba(124,140,255,0.1);
+            --white:      #f0f2f5;
+            --text:       #8b95a8;
+            --text2:      #c4cad6;
+            --border:     rgba(255,255,255,0.07);
+            --border-g:   rgba(232,160,32,0.2);
+            --ff-display: 'Playfair Display', Georgia, serif;
+            --ff-body:    'IBM Plex Sans', sans-serif;
+            --ff-mono:    'IBM Plex Mono', monospace;
         }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
-            text-align: center; /* Centrar el contenido general */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Altura mínima de la ventana de visualización */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text2); font-family:var(--ff-body); font-size:1rem; line-height:1.6; overflow-x:hidden; }
+        a { color:inherit; text-decoration:none; }
+
+        /* Nav */
+        nav { position:sticky; top:0; z-index:900; background:rgba(9,11,15,0.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        .nav-inner { max-width:1280px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .nav-logo { display:flex; align-items:center; gap:.7rem; }
+        .nav-logo-mark { width:32px; height:32px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--bg); font-weight:800; }
+        .nav-logo-text { font-family:var(--ff-display); font-weight:700; font-size:1.15rem; color:var(--white); }
+        .nav-logo-text span { color:var(--gold); }
+        nav ul { display:flex; gap:.1rem; list-style:none; align-items:center; }
+        nav ul li a { display:flex; align-items:center; gap:.4rem; padding:.45rem .85rem; border-radius:7px; font-size:.83rem; font-weight:500; color:var(--text); transition:color .2s, background .2s; }
+        nav ul li a i { font-size:.75rem; opacity:.65; }
+        nav ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        nav ul li a.active { color:var(--gold); background:rgba(232,160,32,0.07); }
+        .nav-cta a { background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important; color:var(--bg) !important; font-weight:600 !important; }
+
+        /* Hamburger */
+        .nav-hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:1px solid var(--border); border-radius:8px; cursor:pointer; padding:0; flex-shrink:0; }
+        .nav-hamburger:hover { border-color:rgba(255,255,255,0.22); }
+        .nav-hamburger span { display:block; width:18px; height:1.5px; background:var(--white); border-radius:2px; transition:transform .3s ease, opacity .3s ease; transform-origin:center; }
+        .nav-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+        /* Drawer */
+        .nav-drawer { display:none; position:fixed; top:64px; left:0; right:0; background:rgba(9,11,15,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:1rem 1.5rem 1.5rem; z-index:899; transform:translateY(-8px); opacity:0; transition:transform .25s ease, opacity .25s ease; pointer-events:none; }
+        .nav-drawer.open { opacity:1; transform:translateY(0); pointer-events:all; }
+        .nav-drawer ul { list-style:none; display:flex; flex-direction:column; gap:.25rem; }
+        .nav-drawer ul li a { display:flex; align-items:center; gap:.7rem; padding:.75rem 1rem; border-radius:8px; font-size:.92rem; font-weight:500; color:var(--text2); }
+        .nav-drawer ul li a i { font-size:.8rem; width:16px; text-align:center; color:var(--gold); opacity:.85; }
+        .nav-drawer ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        .nav-drawer .nav-cta-mobile a { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--bg) !important; font-weight:600; justify-content:center; margin-top:.5rem; }
+        .nav-drawer-divider { height:1px; background:var(--border); margin:.75rem 0; }
+        @media(max-width:768px) {
+            nav ul { display:none; }
+            .nav-hamburger { display:flex; }
+            .nav-drawer { display:block; }
+            .nav-inner { padding:0 1.25rem; }
         }
-        nav {
-            background-color: #f2f2f2;
-            color: #000;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        /* Page header */
+        .page-header {
+            max-width:1280px; margin:0 auto;
+            padding:4rem 2rem 2rem;
+            border-bottom:1px solid var(--border);
         }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .page-eyebrow {
+            display:inline-flex; align-items:center; gap:.6rem;
+            font-family:var(--ff-mono); font-size:.7rem;
+            letter-spacing:.2em; text-transform:uppercase;
+            color:var(--gold); margin-bottom:1rem;
         }
-        nav ul li {
-            margin: 1px 1px;
+        .page-eyebrow::before { content:''; width:26px; height:1px; background:var(--gold); }
+        .page-header h1 {
+            font-family:var(--ff-display);
+            font-size:clamp(2rem,4vw,3rem);
+            font-weight:800; color:var(--white);
+            line-height:1.2;
         }
-        nav ul li a {
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-            font-size: 0.9em;
-            padding: 10px;
-            transition: all 0.3s ease;
+        .page-header h1 em { font-style:italic; color:var(--gold); }
+        .page-header p { font-size:.95rem; color:var(--text); max-width:580px; margin-top:.85rem; }
+
+        /* Community grid */
+        .community-grid {
+            max-width:1280px;
+            margin:0 auto;
+            padding:3rem 2rem 5rem;
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+            gap:1.8rem;
         }
-        nav ul li a:hover {
-            background-color: #e0e0e0;
+        .social-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:24px;
+            padding:1.8rem;
+            transition:transform 0.2s ease, border-color 0.3s;
+            display:flex;
+            flex-direction:column;
+            text-align:center;
         }
-        .header {
-            position: relative;
-            overflow: hidden;
+        .social-card:hover {
+            transform:translateY(-5px);
+            border-color:var(--border-g);
         }
-        .header img {
-            width: 200px; /* Tamaño más pequeño de la imagen */
-            height: auto;
-            display: block;
-            border-radius: 50%; /* Hace la imagen más redonda */
-            margin: 20px auto; /* Ajuste el margen de la imagen */
+        .social-icon {
+            width:64px;
+            height:64px;
+            background:var(--gold-dim);
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:0 auto 1.2rem auto;
         }
-        .title {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto 10px; /* Ajuste el margen superior e inferior del título */
-            text-align: center;
+        .social-icon i {
+            font-size:2.2rem;
+            color:var(--gold);
         }
-        .title h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #000;
+        .social-card h2 {
+            font-family:var(--ff-display);
+            font-size:1.5rem;
+            font-weight:700;
+            color:var(--white);
+            margin-bottom:0.5rem;
         }
-        .content {
-            flex: 1; /* Hace que ocupe el espacio restante */
-            max-width: 1400px; /* Aumentamos el ancho máximo de los contenidos */
-            margin: 10px auto; /* Ajuste el margen superior e inferior del contenido */
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between; /* Distribuye las columnas */
-            flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+        .social-card p {
+            color:var(--text);
+            font-size:0.85rem;
+            margin-bottom:1.5rem;
         }
-        .column {
-            flex: 0 1 calc(50% - 40px); /* Ajusta el tamaño de cada columna con margen */
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centra horizontalmente el contenido */
+        .social-links {
+            display:flex;
+            flex-direction:column;
+            gap:0.8rem;
         }
-        .section {
-            width: 100%; /* Ocupa todo el ancho disponible */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Alineación de texto al centro */
-            margin-bottom: 20px; /* Espacio entre secciones */
+        .social-link {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:0.6rem;
+            background:rgba(255,255,255,0.05);
+            border:1px solid var(--border);
+            border-radius:40px;
+            padding:0.7rem 1rem;
+            font-size:0.85rem;
+            font-weight:500;
+            transition:all 0.2s;
+            width:100%;
         }
-        .section:nth-child(even) {
-            background-color: #f2f2f2;
+        .social-link i {
+            font-size:1rem;
         }
-        .section:nth-child(odd) {
-            background-color: #fff;
+        .social-link.telegram:hover { background:#0088cc; border-color:#0088cc; color:white; }
+        .social-link.twitter:hover { background:#1DA1F2; border-color:#1DA1F2; color:white; }
+        .social-link.youtube:hover { background:#FF0000; border-color:#FF0000; color:white; }
+        .social-link.facebook:hover { background:#1877F2; border-color:#1877F2; color:white; }
+        .social-link.instagram:hover { background:linear-gradient(45deg, #f09433, #d62976, #962fbf); border-color:transparent; color:white; }
+
+        /* Footer */
+        .footer-outer { background:var(--bg2); border-top:1px solid var(--border); margin-top:2rem; }
+        .footer-grid { max-width:1280px; margin:0 auto; padding:4rem 2rem 2rem; display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:3rem; }
+        .fb-logo { display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem; }
+        .fb-logo-m { width:30px; height:30px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:.82rem; color:var(--bg); font-weight:800; }
+        .fb-logo-t { font-family:var(--ff-display); font-weight:700; font-size:.98rem; color:var(--white); }
+        .footer-brand > p { font-size:.82rem; color:var(--text); line-height:1.7; margin-bottom:1.4rem; }
+        .f-disclaimer { font-size:.7rem; color:rgba(139,149,168,0.45); line-height:1.6; padding:.9rem 1rem; border:1px solid var(--border); border-radius:8px; background:rgba(255,255,255,0.02); }
+        .footer-col h4 { font-family:var(--ff-mono); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text); margin-bottom:1.1rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:.5rem; }
+        .footer-col ul li a { font-size:.83rem; color:var(--text); transition:color .2s; }
+        .footer-col ul li a:hover { color:var(--gold); }
+        .footer-bottom { max-width:1280px; margin:0 auto; padding:1.4rem 2rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+        .footer-bottom p { font-size:.75rem; color:rgba(139,149,168,0.38); }
+        .fb-links { display:flex; gap:1.5rem; }
+        .fb-links a { font-size:.75rem; color:rgba(139,149,168,0.38); transition:color .2s; }
+        .fb-links a:hover { color:var(--text); }
+
+        /* reveal */
+        .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        @media(max-width:1024px) {
+            .footer-grid { grid-template-columns:1fr 1fr; }
+            .footer-brand { grid-column:1/-1; }
         }
-        .section h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        .section p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #555;
-        }
-        .section .social-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centra verticalmente el contenido */
-            gap: 10px; /* Espacio entre botones */
-            margin-top: 10px; /* Espacio superior entre elementos */
-        }
-        .social-button {
-            text-decoration: none;
-            font-size: 1em;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            display: inline-block;
-            padding: 12px 24px;
-            border: 2px solid transparent;
-            border-radius: 50px;
-            margin-bottom: 10px; /* Espacio inferior entre botones */
-        }
-        .social-button:hover {
-            color: #fff;
-        }
-        .social-button.telegram {
-            background-color: #007BFF;
-            color: #fff;
-            border-color: #007BFF;
-        }
-        .social-button.facebook {
-            background-color: #007BFF;
-            color: #fff;
-            border-color: #007BFF;
-        }
-        .social-button.twitter {
-            background-color: #000;
-            color: #fff;
-            border-color: #000;
-        }
-        .social-button.youtube {
-            background-color: #FF0000;
-            color: #fff;
-            border-color: #FF0000;
-        }
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: #fff;
-            width: 100%;
-            clear: both; /* Limpia el float */
-        }
-        @media (max-width: 768px) {
-            .title h1 {
-                font-size: 1.5em; /* Reducir el tamaño del título */
-            }
-            .section h2 {
-                font-size: 1.5em; /* Reducir el tamaño de los subtítulos */
-            }
-            .section p {
-                font-size: 1em; /* Reducir el tamaño del texto */
-            }
-            .social-button {
-                font-size: 0.8em; /* Reducir el tamaño de los botones sociales */
-                padding: 8px 16px; /* Reducir el padding de los botones sociales */
-            }
+        @media(max-width:768px) {
+            .page-header { padding:3rem 1.25rem 1.5rem; }
+            .community-grid { padding:2rem 1.25rem 4rem; gap:1.2rem; }
+            .social-card { padding:1.2rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="Herramientas.html">Herramientas</a></li>
-            <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
-            <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
-            <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="Landingpage.html">Soporte en Línea</a></li>
-        </ul>
-    </nav>
 
-
-    <div class="content">
-        <div class="column">
-            <div class="section">
-                <h2>Telegram</h2>
-                <div class="social-buttons">
-                    <a href="https://t.me/+PFIS9sSrP3UwOTk8" target="_blank" class="social-button telegram">Onix Manager</a>
-                    <a href="https://t.me/Crypto_Click_News" target="_blank" class="social-button telegram">CryptoClick</a>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2> Youtube</h2>
-                <a href="https://youtube.com/@onixmanager?si=Ka3V4l9D5CwgRMMO" target="_blank" class="social-button youtube">Onix Manager</a>
-            </div>
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <div class="nav-logo-mark">O</div>
+            <span class="nav-logo-text">Onix <span>Manager</span></span>
         </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html" class="active"><i class="fas fa-users"></i> Comunidad</a></li>
+            <li class="nav-cta"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
+        </ul>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <div class="nav-drawer-divider"></div>
+            <li class="nav-cta-mobile"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
+        </ul>
+    </div>
+</nav>
 
-        <div class="column">
-            <div class="section">
-                <h2>Twitter</h2>
-                <div class="social-buttons">
-                    <a href="https://x.com/OMannager?t=v7RtjNBq1T59WBTAz75tRQ&s=09" target="_blank" class="social-button twitter">Onix Manager</a>
-                                            <a href="https://x.com/harley_pax?t=x22guSm5TImHN75IJhsQ4w&s=09" target="_blank" class="social-button twitter">CryptoClick</a>
-                                        </div>
-                                    </div>
+<!-- HEADER -->
+<div class="page-header reveal">
+    <div class="page-eyebrow">Conéctate con nosotros</div>
+    <h1>Comunidad <em>Onix Manager</em></h1>
+    <p>Únete a nuestros canales oficiales para recibir noticias, análisis, soporte y formar parte de una comunidad activa en el mundo cripto.</p>
+</div>
 
-                                    <div class="section">
-                                        <h2>Facebook</h2>
-                                        <a href="https://www.facebook.com/zoehdpworkinghard" target="_blank" class="social-button facebook">Onix Manager</a>
-                                    </div>
-                                </div>
-                            </div>
+<!-- COMMUNITY GRID -->
+<div class="community-grid">
 
-                            <footer>
-                                <p>&copy; 2024 Noticias Cripto. Todos los derechos reservados.</p>
-                            </footer>
-                        </body>
-                        </html>
+    <!-- Telegram -->
+    <div class="social-card reveal">
+        <div class="social-icon"><i class="fab fa-telegram-plane"></i></div>
+        <h2>Telegram</h2>
+        <p>Grupos y canales oficiales donde compartimos contenido exclusivo, alertas y debate en tiempo real.</p>
+        <div class="social-links">
+            <a href="https://t.me/+PFIS9sSrP3UwOTk8" target="_blank" rel="noopener noreferrer" class="social-link telegram">
+                <i class="fab fa-telegram-plane"></i> Onix Manager
+            </a>
+            <a href="https://t.me/Crypto_Click_News" target="_blank" rel="noopener noreferrer" class="social-link telegram">
+                <i class="fab fa-telegram-plane"></i> CryptoClick
+            </a>
+        </div>
+    </div>
+
+    <!-- Twitter -->
+    <div class="social-card reveal">
+        <div class="social-icon"><i class="fab fa-twitter"></i></div>
+        <h2>Twitter / X</h2>
+        <p>Síguenos para estar al día con los últimos movimientos del mercado y análisis de expertos.</p>
+        <div class="social-links">
+            <a href="https://x.com/OMannager?t=v7RtjNBq1T59WBTAz75tRQ&s=09" target="_blank" rel="noopener noreferrer" class="social-link twitter">
+                <i class="fab fa-twitter"></i> Onix Manager
+            </a>
+            <a href="https://x.com/harley_pax?t=x22guSm5TImHN75IJhsQ4w&s=09" target="_blank" rel="noopener noreferrer" class="social-link twitter">
+                <i class="fab fa-twitter"></i> CryptoClick
+            </a>
+        </div>
+    </div>
+
+    <!-- YouTube -->
+    <div class="social-card reveal">
+        <div class="social-icon"><i class="fab fa-youtube"></i></div>
+        <h2>YouTube</h2>
+        <p>Contenido en video con tutoriales, análisis técnico y entrevistas con profesionales del sector.</p>
+        <div class="social-links">
+            <a href="https://youtube.com/@onixmanager?si=Ka3V4l9D5CwgRMMO" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                <i class="fab fa-youtube"></i> Onix Manager
+            </a>
+        </div>
+    </div>
+
+    <!-- Instagram (nueva) -->
+    <div class="social-card reveal">
+        <div class="social-icon"><i class="fab fa-instagram"></i></div>
+        <h2>Instagram</h2>
+        <p>Contenido visual, stories educativas y actualizaciones rápidas sobre el mundo cripto.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/onixmanager?igsh=MWh4OGo2YjR2OHJnYQ==" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                <i class="fab fa-instagram"></i> @onixmanager
+            </a>
+        </div>
+    </div>
+
+    <!-- Facebook -->
+    <div class="social-card reveal">
+        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+        <h2>Facebook</h2>
+        <p>Comunidad en Facebook donde compartimos recursos, eventos y soporte directo.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/zoehdpworkinghard" target="_blank" rel="noopener noreferrer" class="social-link facebook">
+                <i class="fab fa-facebook-f"></i> Onix Manager
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer-outer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="fb-logo">
+                <div class="fb-logo-m">O</div>
+                <span class="fb-logo-t">Onix Manager</span>
+            </div>
+            <p>Plataforma de educación financiera y cripto para inversores de todos los niveles. Aprendizaje práctico, herramientas reales.</p>
+            <div class="f-disclaimer">⚠️ El trading e inversión en criptomonedas conlleva riesgos significativos. El contenido es educativo y no constituye asesoramiento financiero. Invierte solo lo que puedas permitirte perder.</div>
+        </div>
+        <div class="footer-col">
+            <h4>Plataforma</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Productos</h4>
+            <ul>
+                <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
+                <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Soporte</h4>
+            <ul>
+                <li><a href="Landingpage.html">Centro de ayuda</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="Landingpage.html">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Onix Manager — Todos los derechos reservados.</p>
+        <div class="fb-links">
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Cookies</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Menú hamburguesa y efecto reveal
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    },{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer    = document.getElementById('nav-drawer');
+    hamburger.addEventListener('click', () => {
+        const isOpen = drawer.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+    document.addEventListener('click', (e) => {
+        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
+</body>
+    </html>
