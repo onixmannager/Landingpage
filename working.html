@@ -4,47 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estamos trabajando en ello</title>
+
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #ffffff;
-            font-family: Arial, sans-serif;
-            color: #333333;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            width: 100%;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
+            background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #ffffff;
-            background-color: #007bff;
+        }
+
+        .card {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 
+                0 0 30px rgba(255, 204, 0, 0.15),
+                0 10px 40px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #ffcc00;
+            letter-spacing: 0.5px;
+        }
+
+        .button {
+            position: relative;
+            display: inline-block;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000;
+            background: #ffcc00;
+            border-radius: 10px;
             text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
         }
+
+        /* Hover efecto */
         .button:hover {
-            background-color: #0056b3;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.5);
+            background: #ffd633;
         }
+
+        /* Efecto brillo animado */
+        .button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.6),
+                transparent
+            );
+            transform: skewX(-20deg);
+        }
+
+        .button:hover::before {
+            animation: shine 0.8s forwards;
+        }
+
+        @keyframes shine {
+            100% {
+                left: 130%;
+            }
+        }
+
+        /* Efecto click */
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        /* Texto secundario opcional */
+        .sub {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 15px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <div class="card">
         <h1>Estamos trabajando en ello</h1>
-        <a href="javascript:history.back()" class="button">Ir atrás</a>
+
+        <a href="javascript:history.back()" class="button">
+            Volver atrás
+        </a>
+
+        <div class="sub">Pronto estará disponible</div>
     </div>
+
 </body>
 </html>
