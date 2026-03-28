@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onix Manager — Soluciones Digitales</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta property="og:title" content="Onix Manager - Soluciones Digitales">
+    <meta property="og:description" content="Educación financiera, tecnología blockchain y desarrollo de proyectos digitales.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg:         #090b0f;
+            --bg2:        #0e1117;
+            --surface:    #13161e;
+            --surface2:   #1a1e28;
+            --gold:       #e8a020;
+            --gold-light: #f5bc50;
+            --gold-dim:   rgba(232,160,32,0.12);
+            --white:      #f0f2f5;
+            --text:       #8b95a8;
+            --text2:      #c4cad6;
+            --border:     rgba(255,255,255,0.07);
+            --border-g:   rgba(232,160,32,0.2);
+            --ff-display: 'Playfair Display', Georgia, serif;
+            --ff-body:    'IBM Plex Sans', sans-serif;
+            --ff-mono:    'IBM Plex Mono', monospace;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text2);
+            font-family: var(--ff-body);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        /* Header simple */
+        .header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-family: var(--ff-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .logo span { color: var(--gold); }
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem 0 2rem;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--ff-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            background: var(--gold-dim);
+            color: var(--gold);
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 {
+            font-family: var(--ff-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        .hero-content h1 span { color: var(--gold); }
+        .hero-content p {
+            font-size: 1rem;
+            color: var(--text);
+            margin: 1.2rem 0;
+            max-width: 500px;
+        }
+        .hero-image {
+            flex: 0.6;
+            text-align: center;
+        }
+        .profile-pic {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 20px rgba(232,160,32,0.2);
+        }
+        /* Secciones */
+        .section {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+        .section:first-of-type { border-top: none; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .section-header .eyebrow {
+            font-family: var(--ff-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .section-header h2 {
+            font-family: var(--ff-display);
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-top: 0.5rem;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-g);
+        }
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gold-dim);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .card-icon i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+        .card h3 {
+            font-family: var(--ff-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            color: var(--text);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .card-link {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .card-link i {
+            font-size: 0.7rem;
+            transition: transform 0.2s;
+        }
+        .card-link:hover i {
+            transform: translateX(4px);
+        }
+        /* Redes sociales */
+        .social-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .social-btn i { font-size: 1rem; }
+        .social-btn.telegram:hover { background: #0088cc; border-color: #0088cc; color: white; }
+        .social-btn.twitter:hover { background: #1DA1F2; border-color: #1DA1F2; color: white; }
+        .social-btn.youtube:hover { background: #FF0000; border-color: #FF0000; color: white; }
+        .social-btn.instagram:hover { background: linear-gradient(45deg, #f09433, #d62976, #962fbf); border-color: transparent; color: white; }
+        .social-btn.facebook:hover { background: #1877F2; border-color: #1877F2; color: white; }
+
+        /* Formulario */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--white);
+            font-family: var(--ff-body);
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232,160,32,0.3);
+        }
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text);
+        }
+        /* Animación reveal */
+        .reveal { opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
+            .hero-content p { margin-left: auto; margin-right: auto; }
+            .cards-grid { gap: 1rem; }
+            .contact-form { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Onix <span>Manager</span></div>
+        </div>
+
+        <!-- Hero: presentación + foto -->
+        <div class="hero reveal">
+            <div class="hero-content">
+                <div class="hero-badge">Bienvenido</div>
+                <h1>Hola, soy <span>Onix Manager</span></h1>
+                <p>Emprendedor digital, experto en tecnología blockchain y creador de soluciones educativas para el mundo cripto. Mi misión es acercar las finanzas descentralizadas a todos con herramientas prácticas y contenido de valor.</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contacto" class="social-btn" style="background: var(--gold-dim); border-color: var(--gold); color: var(--gold);">Contáctame</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Reemplaza esta imagen con tu foto real. Coloca tu archivo en la misma carpeta o usa una URL -->
+                <img src="https://via.placeholder.com/220x220?text=Tu+Foto" alt="Onix Manager" class="profile-pic" id="profile-img">
+                <p style="font-size: 0.7rem; margin-top: 0.5rem; color: var(--text);">* Reemplaza esta imagen con la tuya</p>
+            </div>
+        </div>
+
+        <!-- Quién soy y a qué me dedico -->
+        <div class="section reveal">
+            <div class="section-header">
+                <div class="eyebrow">Sobre mí</div>
+                <h2>Más de 5 años impulsando la educación financiera y tecnológica</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3>Educador Cripto</h3>
+                    <p>He formado a miles de personas en el mundo de las criptomonedas, blockchain y trading, con cursos prácticos y accesibles.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Asesor Financiero</h3>
+                    <p>Ayudo a inversores a entender el ecosistema DeFi, gestionar riesgos y tomar decisiones informadas.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h3>Creador de Proyectos Digitales</h3>
+                    <p>Desarrollo plataformas educativas, herramientas de análisis y comunidades para el sector cripto.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Negocios online / Proyectos -->
+        <div class="section reveal">
+            <div class="section-header">
+                <div class="eyebrow">Mis proyectos</div>
+                <h2>Plataformas y servicios que he creado</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Tecnologías Onix</h3>
+                    <p>Soluciones tecnológicas y desarrollo web para el ecosistema blockchain.</p>
+                    <a href="#" class="card-link">Próximamente <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Onix Manager</h3>
+                    <p>Plataforma de educación financiera y cripto con cursos, herramientas y comunidad.</p>
+                    <a href="index.html" class="card-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3>Zona VIP Trends</h3>
+                    <p>Análisis de mercado y señales de trading para miembros exclusivos.</p>
+                    <a href="#" class="card-link">Próximamente <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-film"></i></div>
+                    <h3>Cinonix</h3>
+                    <p>Contenido audiovisual y entretenimiento con foco en tecnología y finanzas.</p>
+                    <a href="#" class="card-link">Próximamente <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="section reveal">
+            <div class="section-header">
+                <div class="eyebrow">Conéctate</div>
+                <h2>Sígueme en mis redes</h2>
+            </div>
+            <div class="social-grid">
+                <a href="https://t.me/+PFIS9sSrP3UwOTk8" target="_blank" class="social-btn telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                <a href="https://x.com/OMannager" target="_blank" class="social-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://youtube.com/@onixmanager" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://www.instagram.com/onixmanager" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/zoehdpworkinghard" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+            </div>
+        </div>
+
+        <!-- Formulario de contacto (mailto) -->
+        <div class="section reveal" id="contacto">
+            <div class="section-header">
+                <div class="eyebrow">Escríbeme</div>
+                <h2>¿Tienes un proyecto o duda?</h2>
+            </div>
+            <div class="contact-form">
+                <form action="mailto:info@tecnologiasonix.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Tu email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="mensaje" placeholder="¿En qué puedo ayudarte?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
+                </form>
+                <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem; color: var(--text);">Al hacer clic se abrirá tu cliente de correo. Envíame un mensaje directo.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Onix Manager — Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+    <script>
+        // Animación al hacer scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
