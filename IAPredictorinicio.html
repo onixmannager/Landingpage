@@ -1,228 +1,416 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997"
-     crossorigin="anonymous"></script>
-    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Predictor</title>
-
-    <!-- Favicon -->
+    <title>IA Predictor — Onix Manager</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Meta etiquetas para Open Graph -->
-    <meta property="og:title" content="Onix Manager - Plataforma de Educacion Cripto.">
-    <meta property="og:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta property="og:title" content="Onix Manager - IA Predictor Crypto">
+    <meta property="og:description" content="Predicciones de precios de criptomonedas basadas en inteligencia artificial. Modelos MLP y Random Forest para pronósticos precisos.">
     <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/">
+    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/IAPredictorinicio.html">
     <meta property="og:type" content="website">
-
-    <!-- Meta etiquetas para Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Onix Manager - Asesoría Digital y Financiera">
-    <meta name="twitter:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta name="twitter:title" content="Onix Manager - IA Predictor Crypto">
+    <meta name="twitter:description" content="Predicciones de precios de criptomonedas basadas en inteligencia artificial.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg:         #090b0f;
+            --bg2:        #0e1117;
+            --surface:    #13161e;
+            --surface2:   #1a1e28;
+            --gold:       #e8a020;
+            --gold-light: #f5bc50;
+            --gold-dim:   rgba(232,160,32,0.12);
+            --green:      #00c896;
+            --white:      #f0f2f5;
+            --text:       #8b95a8;
+            --text2:      #c4cad6;
+            --border:     rgba(255,255,255,0.07);
+            --border-g:   rgba(232,160,32,0.2);
+            --ff-display: 'Playfair Display', Georgia, serif;
+            --ff-body:    'IBM Plex Sans', sans-serif;
+            --ff-mono:    'IBM Plex Mono', monospace;
         }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text2); font-family:var(--ff-body); font-size:1rem; line-height:1.6; overflow-x:hidden; }
+        a { color:inherit; text-decoration:none; }
+
+        /* NAV (idéntico a las demás páginas) */
+        nav { position:sticky; top:0; z-index:900; background:rgba(9,11,15,0.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        .nav-inner { max-width:1280px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .nav-logo { display:flex; align-items:center; gap:.7rem; }
+        .nav-logo-mark { width:32px; height:32px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--bg); font-weight:800; }
+        .nav-logo-text { font-family:var(--ff-display); font-weight:700; font-size:1.15rem; color:var(--white); }
+        .nav-logo-text span { color:var(--gold); }
+        nav ul { display:flex; gap:.1rem; list-style:none; align-items:center; }
+        nav ul li a { display:flex; align-items:center; gap:.4rem; padding:.45rem .85rem; border-radius:7px; font-size:.83rem; font-weight:500; color:var(--text); transition:color .2s, background .2s; }
+        nav ul li a i { font-size:.75rem; opacity:.65; }
+        nav ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        nav ul li a.active { color:var(--gold); background:rgba(232,160,32,0.07); }
+        .nav-cta a { background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important; color:var(--bg) !important; font-weight:600 !important; }
+
+        /* Hamburger */
+        .nav-hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:1px solid var(--border); border-radius:8px; cursor:pointer; padding:0; flex-shrink:0; }
+        .nav-hamburger:hover { border-color:rgba(255,255,255,0.22); }
+        .nav-hamburger span { display:block; width:18px; height:1.5px; background:var(--white); border-radius:2px; transition:transform .3s ease, opacity .3s ease; transform-origin:center; }
+        .nav-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+        /* Drawer */
+        .nav-drawer { display:none; position:fixed; top:64px; left:0; right:0; background:rgba(9,11,15,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:1rem 1.5rem 1.5rem; z-index:899; transform:translateY(-8px); opacity:0; transition:transform .25s ease, opacity .25s ease; pointer-events:none; }
+        .nav-drawer.open { opacity:1; transform:translateY(0); pointer-events:all; }
+        .nav-drawer ul { list-style:none; display:flex; flex-direction:column; gap:.25rem; }
+        .nav-drawer ul li a { display:flex; align-items:center; gap:.7rem; padding:.75rem 1rem; border-radius:8px; font-size:.92rem; font-weight:500; color:var(--text2); }
+        .nav-drawer ul li a i { font-size:.8rem; width:16px; text-align:center; color:var(--gold); opacity:.85; }
+        .nav-drawer ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        .nav-drawer .nav-cta-mobile a { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--bg) !important; font-weight:600; justify-content:center; margin-top:.5rem; }
+        .nav-drawer-divider { height:1px; background:var(--border); margin:.75rem 0; }
+        @media(max-width:768px) {
+            nav ul { display:none; }
+            .nav-hamburger { display:flex; }
+            .nav-drawer { display:block; }
+            .nav-inner { padding:0 1.25rem; }
         }
-        nav {
-            background-color: #f2f2f2;
-            color: #000;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+
+        /* Hero section con ilustración IA */
+        .hero {
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            padding: 2rem 2rem 0;
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
         }
-        nav ul li {
-            margin: 1px 1px;
+        .hero-text {
+            flex: 1;
         }
-        nav ul li a {
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-            font-size: 0.9em;
-            padding: 10px;
-            transition: all 0.3s ease;
+        .hero-text h1 {
+            font-family: var(--ff-display);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
         }
-        nav ul li a:hover {
-            background-color: #e0e0e0;
+        .hero-text h1 em {
+            color: var(--gold);
+            font-style: italic;
         }
-        .header {
-            width: 100%;
-            position: relative;
-            overflow: hidden;
+        .hero-text p {
+            font-size: 1rem;
+            color: var(--text);
+            margin: 1rem 0 1.5rem;
+            max-width: 500px;
         }
-        .header img {
-            width: 100%;
+        .hero-image {
+            flex: 0.8;
+            text-align: center;
+        }
+        .hero-image svg {
+            max-width: 100%;
             height: auto;
-            display: block;
+            filter: drop-shadow(0 0 10px rgba(232,160,32,0.2));
         }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .button-container a {
-            text-decoration: none;
-            background-color: #007BFF;
-            color: #fff;
-            padding: 15px 30px;
+        .btn-ia {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--bg);
+            padding: 0.9rem 2rem;
             border-radius: 50px;
-            font-size: 1em;
-            font-weight: bold;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
-            display: inline-block;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
         }
-        .button-container a:hover {
-            background-color: #0056b3;
-            box-shadow: 0 6px 8px rgba(0, 123, 255, 0.2);
+        .btn-ia:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 160, 32, 0.4);
         }
-        .content {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        /* Grid de información */
+        .info-grid {
+            max-width: 1280px;
+            margin: 2rem auto;
+            padding: 1rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.8rem;
         }
-        .section {
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 1.5rem;
+            transition: border-color 0.3s, transform 0.2s;
         }
-        .section:nth-child(even) {
-            text-align: right;
-            background-color: #f2f2f2;
+        .info-card:hover {
+            border-color: var(--border-g);
+            transform: translateY(-4px);
         }
-        .section:nth-child(odd) {
-            text-align: left;
-            background-color: #fff;
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gold-dim);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
-        .section h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #333;
+        .card-icon i {
+            font-size: 1.5rem;
+            color: var(--gold);
         }
-        .section p {
-            font-size: 1.2em;
+        .info-card h3 {
+            font-family: var(--ff-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        .info-card p {
+            color: var(--text2);
+            font-size: 0.9rem;
             line-height: 1.6;
-            margin-bottom: 15px;
-            color: #555;
         }
-        footer {
+        .info-card strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Botón inferior */
+        .bottom-cta {
             text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: #fff;
+            margin: 0 2rem 3rem;
         }
-        @media (max-width: 768px) {
-            .section h2 {
-                font-size: 1.5em;
-            }
-            .section p {
-                font-size: 1em;
-            }
-            .button-container a {
-                padding: 10px 20px;
-                font-size: 0.9em;
-            }
+
+        /* Footer (idéntico) */
+        .footer-outer { background:var(--bg2); border-top:1px solid var(--border); margin-top:2rem; }
+        .footer-grid { max-width:1280px; margin:0 auto; padding:4rem 2rem 2rem; display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:3rem; }
+        .fb-logo { display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem; }
+        .fb-logo-m { width:30px; height:30px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:.82rem; color:var(--bg); font-weight:800; }
+        .fb-logo-t { font-family:var(--ff-display); font-weight:700; font-size:.98rem; color:var(--white); }
+        .footer-brand > p { font-size:.82rem; color:var(--text); line-height:1.7; margin-bottom:1.4rem; }
+        .f-disclaimer { font-size:.7rem; color:rgba(139,149,168,0.45); line-height:1.6; padding:.9rem 1rem; border:1px solid var(--border); border-radius:8px; background:rgba(255,255,255,0.02); }
+        .footer-col h4 { font-family:var(--ff-mono); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text); margin-bottom:1.1rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:.5rem; }
+        .footer-col ul li a { font-size:.83rem; color:var(--text); transition:color .2s; }
+        .footer-col ul li a:hover { color:var(--gold); }
+        .footer-bottom { max-width:1280px; margin:0 auto; padding:1.4rem 2rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+        .footer-bottom p { font-size:.75rem; color:rgba(139,149,168,0.38); }
+        .fb-links { display:flex; gap:1.5rem; }
+        .fb-links a { font-size:.75rem; color:rgba(139,149,168,0.38); transition:color .2s; }
+        .fb-links a:hover { color:var(--text); }
+
+        /* reveal */
+        .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        @media(max-width:1024px) {
+            .footer-grid { grid-template-columns:1fr 1fr; }
+            .footer-brand { grid-column:1/-1; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-text p { margin-left: auto; margin-right: auto; }
+        }
+        @media(max-width:768px) {
+            .hero { padding: 1.5rem 1.25rem 0; }
+            .info-grid { padding: 1rem 1.25rem 3rem; gap: 1rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
+
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <div class="nav-logo-mark">O</div>
+            <span class="nav-logo-text">Onix <span>Manager</span></span>
+        </div>
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="Herramientas.html">Herramientas</a></li>
-            <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
-            <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
-            <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html" class="active"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <li class="nav-cta"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
         </ul>
-    </nav>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <div class="nav-drawer-divider"></div>
+            <li class="nav-cta-mobile"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <div class="header">
-        <img src="OIG3.jpeg" alt="Imagen de cabecera">
+<!-- Hero con ilustración IA -->
+<div class="hero reveal">
+    <div class="hero-text">
+        <h1>IA Predictor <em>Crypto</em></h1>
+        <p>Predicciones precisas de precios de criptomonedas basadas en inteligencia artificial. Modelos MLPRegressor y RandomForest entrenados con datos históricos.</p>
+        <a href="IAPredictor.html" class="btn-ia"><i class="fas fa-robot"></i> Accede a la IA</a>
+    </div>
+    <div class="hero-image">
+        <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="140" stroke="url(#grad)" stroke-width="2" stroke-dasharray="8 8" fill="none"/>
+            <circle cx="150" cy="150" r="110" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="6 6" fill="none" opacity="0.6"/>
+            <path d="M150 40 L150 60 M150 240 L150 260 M40 150 L60 150 M240 150 L260 150" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="150" cy="150" r="25" fill="var(--gold-dim)" stroke="var(--gold)" stroke-width="2"/>
+            <path d="M150 125 L150 135 M150 165 L150 175 M125 150 L135 150 M165 150 L175 150" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M90 90 L105 105 M195 195 L210 210 M195 105 L210 90 M105 195 L90 210" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+            <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="var(--gold-light)" stop-opacity="0.4"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+</div>
 
-        <div id="tittle" class="tittle">
-            <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IA Predictor Crypto</h1>
+<!-- Grid de información técnica -->
+<div class="info-grid">
+    <div class="info-card reveal">
+        <div class="card-icon"><i class="fas fa-database"></i></div>
+        <h3>Obtención de Datos</h3>
+        <p><strong>API de CoinMarketCap:</strong> Recopilamos el precio actual de Bitcoin.<br>
+        <strong>Datos históricos:</strong> Archivo local con precios y volúmenes para análisis exhaustivo.</p>
+    </div>
+    <div class="info-card reveal">
+        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Preprocesamiento</h3>
+        <p><strong>Normalización:</strong> Escalamos los precios para mejorar la capacidad de los modelos.<br>
+        <strong>Características semanales:</strong> Generamos features temporales para optimizar el entrenamiento.</p>
+    </div>
+    <div class="info-card reveal">
+        <div class="card-icon"><i class="fas fa-brain"></i></div>
+        <h3>Modelos de IA</h3>
+        <p><strong>MLPRegressor:</strong> Red neuronal multicapa para predicciones precisas.<br>
+        <strong>RandomForestRegressor:</strong> Bosque aleatorio que complementa y robustece el pronóstico.<br>
+        <strong>Pipeline:</strong> Escalado y aplicación eficiente de los modelos.</p>
+    </div>
+    <div class="info-card reveal">
+        <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+        <h3>Entrenamiento</h3>
+        <p><strong>TimeSeriesSplit:</strong> Validación respetando la secuencia temporal para asegurar precisión.</p>
+    </div>
+    <div class="info-card reveal">
+        <div class="card-icon"><i class="fas fa-calendar-week"></i></div>
+        <h3>Predicciones</h3>
+        <p><strong>Predicción secuencial:</strong> Pronóstico de precios para los próximos 7 días.<br>
+        <strong>Consenso de modelos:</strong> Combinamos MLP y RandomForest para obtener un resultado más sólido.</p>
+    </div>
+    <div class="info-card reveal">
+        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Estrategias de Trading</h3>
+        <p><strong>Precios óptimos:</strong> Determinamos puntos de compra/venta basados en las predicciones.<br>
+        <strong>Estrategia intradía:</strong> Aprovechamos pequeñas fluctuaciones para maximizar rendimiento.</p>
+    </div>
+</div>
+
+<div class="bottom-cta reveal">
+    <a href="IAPredictor.html" class="btn-ia"><i class="fas fa-chart-line"></i> Probar IA Predictor</a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-outer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="fb-logo">
+                <div class="fb-logo-m">O</div>
+                <span class="fb-logo-t">Onix Manager</span>
+            </div>
+            <p>Plataforma de educación financiera y cripto para inversores de todos los niveles. Aprendizaje práctico, herramientas reales.</p>
+            <div class="f-disclaimer">⚠️ El trading e inversión en criptomonedas conlleva riesgos significativos. El contenido es educativo y no constituye asesoramiento financiero. Invierte solo lo que puedas permitirte perder.</div>
         </div>
-
-        <div class="button-container">
-            <a href="IAPredictor.html">Accede a la IA</a>
+        <div class="footer-col">
+            <h4>Plataforma</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Productos</h4>
+            <ul>
+                <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
+                <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Soporte</h4>
+            <ul>
+                <li><a href="Landingpage.html">Centro de ayuda</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="Landingpage.html">Contacto</a></li>
+            </ul>
         </div>
     </div>
-
-    <div class="content">
-              
-        <div id="descripcion-general" class="section">
-            <h2>Descripción General</h2>
-            <p>Nuestro <strong>"IA Predictor"</strong> es una avanzada herramienta de predicción de precios de criptomonedas basada en inteligencia artificial. Utilizando datos históricos y algoritmos de aprendizaje automático, proporciona predicciones precisas sobre el comportamiento futuro del mercado de criptomonedas. A continuación, describimos los componentes clave y el flujo de trabajo de nuestro predictor.</p>
-        </div>
-
-        <div id="componentes-clave" class="section">
-            <h2>Componentes Clave</h2>
-            <p><strong>Obtención de Datos:</strong><br>
-            <strong>API de CoinMarketCap (CMC):</strong> Recopilamos el precio actual de Bitcoin utilizando la API de CoinMarketCap.<br>
-            <strong>Archivo de Datos Históricos:</strong> Cargamos datos históricos de precios y volúmenes desde un archivo local para un análisis exhaustivo.</p>
-        </div>
-
-        <div id="preprocesamiento-datos" class="section">
-            <h2>Preprocesamiento de Datos</h2>
-            <p><strong>Normalización:</strong> Los precios históricos se normalizan para mejorar la capacidad de los modelos de aprendizaje automático de identificar patrones en los datos.<br>
-            <strong>Creación de Características:</strong> Generamos características semanales a partir de los datos históricos para optimizar el entrenamiento de los modelos.</p>
-        </div>
-
-        <div id="modelos-aprendizaje" class="section">
-            <h2>Modelos de Aprendizaje Automático</h2>
-            <p><strong>MLPRegressor (Perceptrón Multicapa):</strong> Utilizamos este modelo de red neuronal para realizar predicciones precisas.<br>
-            <strong>RandomForestRegressor:</strong> Este modelo de bosque aleatorio complementa las predicciones del MLPRegressor para mejorar la robustez del pronóstico.<br>
-            <strong>Pipeline:</strong> Implementamos un pipeline para escalar los datos y aplicar los modelos de manera eficiente.</p>
-        </div>
-
-        <div id="entrenamiento-modelos" class="section">
-            <h2>Entrenamiento de Modelos</h2>
-            <p><strong>TimeSeriesSplit:</strong> Dividimos los datos en series temporales para asegurar un entrenamiento y validación precisos de los modelos, respetando la secuencia temporal de los datos.</p>
-        </div>
-
-        <div id="predicciones" class="section">
-            <h2>Predicciones</h2>
-            <p><strong>Predicción Secuencial:</strong> Utilizamos los modelos entrenados para predecir los precios de Bitcoin para los próximos 7 días.<br>
-            <strong>Consenso de Predicciones:</strong> Combinamos las predicciones de ambos modelos para obtener un pronóstico más sólido y confiable.</p>
-        </div>
-
-        <div id="estrategias-compra-venta" class="section">
-            <h2>Estrategias de Compra/Venta</h2>
-            <p><strong>Cálculo de Precios:</strong> Determinamos los precios de compra y venta óptimos basados en las predicciones generadas por los modelos.<br>
-            <strong>Estrategia Intradía:</strong> Desarrollamos estrategias basadas en pequeñas fluctuaciones intradía para maximizar las oportunidades de compra y venta, optimizando así el rendimiento de las inversiones.</p>
-        </div>
-
-        <div class="button-container">
-            <a href="IAPredictor.html">Accede a la IA</a>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Onix Manager — Todos los derechos reservados.</p>
+        <div class="fb-links">
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Cookies</a>
         </div>
     </div>
+</div>
 
-    <footer>
-        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
-    </footer>
+<script>
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    },{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer    = document.getElementById('nav-drawer');
+    hamburger.addEventListener('click', () => {
+        const isOpen = drawer.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+    document.addEventListener('click', (e) => {
+        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+            drawer.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 </body>
 </html>
