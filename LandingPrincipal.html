@@ -129,6 +129,31 @@
         .bento-card:nth-child(4) { --ac: #f59e0b; }
         .bento-card:nth-child(5) { --ac: #34d399; }
 
+
+
+
+
+
+        /* Para que la sexta tarjeta ocupe todo el ancho de la fila */
+.bento-card:nth-child(6) {
+    grid-column: span 6;
+}
+
+/* (Opcional) Ajuste en móvil para mantener consistencia */
+@media (max-width: 900px) {
+    .bento-card:nth-child(6) {
+        grid-column: span 2;   /* si quieres que también ocupe dos columnas en tablet */
+    }
+}
+
+
+
+
+
+
+
+        
+
         .bento-card {
             background: var(--surface);
             border: 1px solid var(--border);
