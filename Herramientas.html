@@ -1,196 +1,454 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962639788645997" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herramientas</title>
-
-    <!-- Favicon -->
+    <title>Herramientas — Onix Manager</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Meta etiquetas para Open Graph -->
-    <meta property="og:title" content="Onix Manager - Plataforma de Educacion Cripto.">
-    <meta property="og:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta property="og:title" content="Onix Manager - Herramientas Cripto y Financieras">
+    <meta property="og:description" content="Recursos, guías y plataformas esenciales para tu formación en criptomonedas y trading.">
     <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/">
+    <meta property="og:url" content="https://onixmannager.github.io/Landingpage/Herramientas.html">
     <meta property="og:type" content="website">
-
-    <!-- Meta etiquetas para Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Onix Manager - Asesoría Digital y Financiera">
-    <meta name="twitter:description" content="Plataforma De Educación Cripto En Linea.">
+    <meta name="twitter:title" content="Onix Manager - Herramientas Cripto y Financieras">
+    <meta name="twitter:description" content="Recursos, guías y plataformas esenciales para tu formación en criptomonedas y trading.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0; /* Color de fondo */
-            color: #333; /* Color del texto */
+        :root {
+            --bg:         #090b0f;
+            --bg2:        #0e1117;
+            --surface:    #13161e;
+            --surface2:   #1a1e28;
+            --gold:       #e8a020;
+            --gold-light: #f5bc50;
+            --gold-dim:   rgba(232,160,32,0.12);
+            --green:      #00c896;
+            --green-dim:  rgba(0,200,150,0.1);
+            --red:        #e05252;
+            --blue:       #7c8cff;
+            --blue-dim:   rgba(124,140,255,0.1);
+            --white:      #f0f2f5;
+            --text:       #8b95a8;
+            --text2:      #c4cad6;
+            --border:     rgba(255,255,255,0.07);
+            --border-g:   rgba(232,160,32,0.2);
+            --ff-display: 'Playfair Display', Georgia, serif;
+            --ff-body:    'IBM Plex Sans', sans-serif;
+            --ff-mono:    'IBM Plex Mono', monospace;
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text2); font-family:var(--ff-body); font-size:1rem; line-height:1.6; overflow-x:hidden; }
+        a { color:inherit; text-decoration:none; }
+
+        /* Ticker */
+        .ticker-wrap { background:var(--bg2); border-bottom:1px solid var(--border); overflow:hidden; height:34px; display:flex; align-items:center; }
+        .ticker-inner { display:flex; gap:3rem; white-space:nowrap; animation:tickerScroll 28s linear infinite; }
+        @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .ticker-item { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--ff-mono); font-size:.72rem; }
+        .t-sym { color:var(--white); font-weight:500; }
+        .t-pri { color:var(--text); }
+        .t-up  { color:var(--green); }
+        .t-dn  { color:var(--red); }
+        .t-sep { color:var(--border); }
+
+        /* Nav */
+        nav { position:sticky; top:0; z-index:900; background:rgba(9,11,15,0.93); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        .nav-inner { max-width:1280px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .nav-logo { display:flex; align-items:center; gap:.7rem; }
+        .nav-logo-mark { width:32px; height:32px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--bg); font-weight:800; }
+        .nav-logo-text { font-family:var(--ff-display); font-weight:700; font-size:1.15rem; color:var(--white); }
+        .nav-logo-text span { color:var(--gold); }
+        nav ul { display:flex; gap:.1rem; list-style:none; align-items:center; }
+        nav ul li a { display:flex; align-items:center; gap:.4rem; padding:.45rem .85rem; border-radius:7px; font-size:.83rem; font-weight:500; color:var(--text); transition:color .2s, background .2s; }
+        nav ul li a i { font-size:.75rem; opacity:.65; }
+        nav ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        nav ul li a.active { color:var(--gold); background:rgba(232,160,32,0.07); }
+        .nav-cta a { background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important; color:var(--bg) !important; font-weight:600 !important; }
+
+        /* Hamburger */
+        .nav-hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:1px solid var(--border); border-radius:8px; cursor:pointer; padding:0; flex-shrink:0; }
+        .nav-hamburger:hover { border-color:rgba(255,255,255,0.22); }
+        .nav-hamburger span { display:block; width:18px; height:1.5px; background:var(--white); border-radius:2px; transition:transform .3s ease, opacity .3s ease; transform-origin:center; }
+        .nav-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+        /* Drawer */
+        .nav-drawer { display:none; position:fixed; top:64px; left:0; right:0; background:rgba(9,11,15,0.97); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:1rem 1.5rem 1.5rem; z-index:899; transform:translateY(-8px); opacity:0; transition:transform .25s ease, opacity .25s ease; pointer-events:none; }
+        .nav-drawer.open { opacity:1; transform:translateY(0); pointer-events:all; }
+        .nav-drawer ul { list-style:none; display:flex; flex-direction:column; gap:.25rem; }
+        .nav-drawer ul li a { display:flex; align-items:center; gap:.7rem; padding:.75rem 1rem; border-radius:8px; font-size:.92rem; font-weight:500; color:var(--text2); }
+        .nav-drawer ul li a i { font-size:.8rem; width:16px; text-align:center; color:var(--gold); opacity:.85; }
+        .nav-drawer ul li a:hover { color:var(--white); background:rgba(255,255,255,0.05); }
+        .nav-drawer .nav-cta-mobile a { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--bg) !important; font-weight:600; justify-content:center; margin-top:.5rem; }
+        .nav-drawer-divider { height:1px; background:var(--border); margin:.75rem 0; }
+        @media(max-width:768px) {
+            nav ul { display:none; }
+            .nav-hamburger { display:flex; }
+            .nav-drawer { display:block; }
+            .nav-inner { padding:0 1.25rem; }
         }
 
-        nav {
-            background-color: #f2f2f2;
-            color: #000;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        /* Page header */
+        .page-header {
+            max-width:1280px; margin:0 auto;
+            padding:4rem 2rem 2rem;
+            border-bottom:1px solid var(--border);
+        }
+        .page-eyebrow {
+            display:inline-flex; align-items:center; gap:.6rem;
+            font-family:var(--ff-mono); font-size:.7rem;
+            letter-spacing:.2em; text-transform:uppercase;
+            color:var(--gold); margin-bottom:1rem;
+        }
+        .page-eyebrow::before { content:''; width:26px; height:1px; background:var(--gold); }
+        .page-header h1 {
+            font-family:var(--ff-display);
+            font-size:clamp(2rem,4vw,3rem);
+            font-weight:800; color:var(--white);
+            line-height:1.2;
+        }
+        .page-header h1 em { font-style:italic; color:var(--gold); }
+        .page-header p { font-size:.95rem; color:var(--text); max-width:580px; margin-top:.85rem; }
+
+        /* Grid de herramientas */
+        .tools-grid {
+            max-width:1280px;
+            margin:0 auto;
+            padding:3rem 2rem 5rem;
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+            gap:1.8rem;
+        }
+        .tool-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:20px;
+            padding:1.5rem;
+            transition:transform 0.2s ease, border-color 0.3s;
+            display:flex;
+            flex-direction:column;
+        }
+        .tool-card:hover {
+            transform:translateY(-4px);
+            border-color:var(--border-g);
+        }
+        .tool-icon {
+            width:48px;
+            height:48px;
+            background:var(--gold-dim);
+            border-radius:14px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:1.2rem;
+        }
+        .tool-icon i {
+            font-size:1.6rem;
+            color:var(--gold);
+        }
+        .tool-card h3 {
+            font-family:var(--ff-display);
+            font-size:1.3rem;
+            font-weight:700;
+            color:var(--white);
+            margin-bottom:0.75rem;
+        }
+        .tool-card p {
+            color:var(--text);
+            font-size:0.85rem;
+            line-height:1.5;
+            margin-bottom:1.5rem;
+            flex:1;
+        }
+        .tool-link {
+            display:inline-flex;
+            align-items:center;
+            gap:.6rem;
+            background:rgba(255,255,255,0.05);
+            border:1px solid var(--border);
+            border-radius:40px;
+            padding:.6rem 1.2rem;
+            font-size:.75rem;
+            font-weight:600;
+            color:var(--gold);
+            transition:all .2s;
+            align-self:flex-start;
+        }
+        .tool-link i {
+            font-size:.7rem;
+            transition:transform .2s;
+        }
+        .tool-link:hover {
+            background:var(--gold-dim);
+            border-color:var(--gold);
+            color:var(--gold-light);
+        }
+        .tool-link:hover i {
+            transform:translateX(4px);
         }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        /* Footer */
+        .footer-outer { background:var(--bg2); border-top:1px solid var(--border); margin-top:2rem; }
+        .footer-grid { max-width:1280px; margin:0 auto; padding:4rem 2rem 2rem; display:grid; grid-template-columns:2.2fr 1fr 1fr 1fr; gap:3rem; }
+        .fb-logo { display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem; }
+        .fb-logo-m { width:30px; height:30px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:.82rem; color:var(--bg); font-weight:800; }
+        .fb-logo-t { font-family:var(--ff-display); font-weight:700; font-size:.98rem; color:var(--white); }
+        .footer-brand > p { font-size:.82rem; color:var(--text); line-height:1.7; margin-bottom:1.4rem; }
+        .f-disclaimer { font-size:.7rem; color:rgba(139,149,168,0.45); line-height:1.6; padding:.9rem 1rem; border:1px solid var(--border); border-radius:8px; background:rgba(255,255,255,0.02); }
+        .footer-col h4 { font-family:var(--ff-mono); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text); margin-bottom:1.1rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:.5rem; }
+        .footer-col ul li a { font-size:.83rem; color:var(--text); transition:color .2s; }
+        .footer-col ul li a:hover { color:var(--gold); }
+        .footer-bottom { max-width:1280px; margin:0 auto; padding:1.4rem 2rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+        .footer-bottom p { font-size:.75rem; color:rgba(139,149,168,0.38); }
+        .fb-links { display:flex; gap:1.5rem; }
+        .fb-links a { font-size:.75rem; color:rgba(139,149,168,0.38); transition:color .2s; }
+        .fb-links a:hover { color:var(--text); }
 
-        nav ul li {
-            margin: 1px 1px;
-        }
+        /* reveal */
+        .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-            font-size: 0.9em;
-            padding: 10px;
-            transition: all 0.3s ease;
+        @media(max-width:1024px) {
+            .footer-grid { grid-template-columns:1fr 1fr; }
+            .footer-brand { grid-column:1/-1; }
         }
-
-        nav ul li a:hover {
-            background-color: #e0e0e0;
-        }
-
-        .content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section {
-            flex-basis: calc(25% - 20px);
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            min-height: 100px;
-            margin-right: 20px;
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #333;
-        }
-
-        .section p {
-            margin-bottom: 15px;
-        }
-
-        .section a {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .section a:hover {
-            color: #0056b3;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: #fff;
-        }
-
-        /* Media query para dispositivos móviles */
-        @media (max-width: 768px) {
-            .content {
-                flex-direction: column;
-                align-items: center;
-            }
-            .section {
-                flex-basis: 100%;
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
+        @media(max-width:768px) {
+            .page-header { padding:3rem 1.25rem 1.5rem; }
+            .tools-grid { padding:2rem 1.25rem 4rem; gap:1.2rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner" id="ticker"></div></div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <div class="nav-logo-mark">O</div>
+            <span class="nav-logo-text">Onix <span>Manager</span></span>
+        </div>
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="Herramientas.html">Herramientas</a></li>
-            <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
-            <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
-            <li><a href="comunidad.html">Comunidad</a></li>
-            <li><a href="Landingpage.html">Soporte en Línea</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html" class="active"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <li class="nav-cta"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
         </ul>
-    </nav>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="CryptoClickVideoInfo.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <div class="nav-drawer-divider"></div>
+            <li class="nav-cta-mobile"><a href="Landingpage.html"><i class="fas fa-headset"></i> Soporte</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <div class="content">
-        
-        <div class="section">
-            <h2>Guia Criptomonedas</h2>
-            <p>15 Guias completas sobre criptomonedas desde niveles básicos hasta expertos en formato PDF.</p>
-            <a
-href="https://mega.nz/folder/xScAlKSD#V4Uph7-Yy89aDQK2KFK07A">Descargar</a>
-        </div>
-        <div class="section">
-            <h2>Guia Trading</h2>
-            <p>17 Guias completas sobre trading desde niveles básicos hasta expertos en formato PDF.</p>
-            <a
-href="https://mega.nz/folder/NaEwnZYD#Gvw5GeugqxtupkZe7u5NFQ">Descargar</a>
-        </div>
+<!-- HEADER -->
+<div class="page-header reveal">
+    <div class="page-eyebrow">Recursos esenciales</div>
+    <h1>Herramientas <em>para tu éxito</em></h1>
+    <p>Guías, plataformas y recursos imprescindibles para potenciar tu aprendizaje en criptomonedas y trading.</p>
+</div>
 
-        <div class="section">
-            <h2>Robert Kiyosaki</h2>
-            <p>19 libros en formato PDF de Robert Kiyosaki que ofrece consejos sobre educación financiera, mentalidad empresarial y estrategias para generar ingresos pasivos.</p>
-            <a
-        href="https://mega.nz/folder/paMnjRab#DsX6SIkGgZyRXCx3WzKURA">Descargar</a>
-        </div>
-               
-        <div class="section">
-            <h2>Herramientas para Análizar Mercados</h2>
-            <p>Herramientas o sitios web que nos ayudan a recopilar datos de mercado en vivo.</p>
-            <a href="AnalisisMercado.html">Ver Herramientas</a>
-        </div>
-        <div class="section">
-            <h2>Intercambios Centralizados</h2>
-            <p>Los intercambios de criptomonedas centralizados más populares y seguros del mercado.</p>
-            <a href="IntercambiosCentralizados.html">Ver Intercambios</a>
-        </div>
-        <div class="section">
-            <h2>Plataformas DeFi</h2>
-            <p>Todo sobre las plataformas de finanzas descentralizadas (DeFi) y cómo utilizarlas.</p>
-            <a href="Defi.html">Leer Más</a>
-        </div>
-        <div class="section">
-            <h2>Seguridad en Blockchain</h2>
-            <p>Consejos y mejores prácticas para asegurar tus activos en la blockchain.</p>
-            <a href="seguridad.html">Leer Más</a>
-        </div>
-        
+<!-- GRID DE HERRAMIENTAS -->
+<div class="tools-grid">
+    
+    <!-- Guía Criptomonedas -->
+    <div class="tool-card reveal">
+        <div class="tool-icon"><i class="fab fa-bitcoin"></i></div>
+        <h3>Guía Criptomonedas</h3>
+        <p>15 Guías completas sobre criptomonedas desde niveles básicos hasta expertos en formato PDF.</p>
+        <a href="https://mega.nz/folder/xScAlKSD#V4Uph7-Yy89aDQK2KFK07A" class="tool-link" target="_blank" rel="noopener noreferrer">
+            Descargar <i class="fas fa-arrow-right"></i>
+        </a>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Onix Manager. Todos los derechos reservados.</p>
-    </footer>
+    <!-- Guía Trading -->
+    <div class="tool-card reveal">
+        <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Guía Trading</h3>
+        <p>17 Guías completas sobre trading desde niveles básicos hasta expertos en formato PDF.</p>
+        <a href="https://mega.nz/folder/NaEwnZYD#Gvw5GeugqxtupkZe7u5NFQ" class="tool-link" target="_blank" rel="noopener noreferrer">
+            Descargar <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Robert Kiyosaki -->
+    <div class="tool-card reveal">
+        <div class="tool-icon"><i class="fas fa-book"></i></div>
+        <h3>Robert Kiyosaki</h3>
+        <p>19 libros en formato PDF de Robert Kiyosaki que ofrece consejos sobre educación financiera, mentalidad empresarial y estrategias para generar ingresos pasivos.</p>
+        <a href="https://mega.nz/folder/paMnjRab#DsX6SIkGgZyRXCx3WzKURA" class="tool-link" target="_blank" rel="noopener noreferrer">
+            Descargar <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Herramientas para Analizar Mercados -->
+    <div class="tool-card reveal">
+        <div class="tool-icon"><i class="fas fa-chart-simple"></i></div>
+        <h3>Herramientas para Analizar Mercados</h3>
+        <p>Herramientas o sitios web que nos ayudan a recopilar datos de mercado en vivo.</p>
+        <a href="AnalisisMercado.html" class="tool-link">
+            Ver Herramientas <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Intercambios Centralizados -->
+    <div class="tool-card reveal">
+        <div class="tool-icon"><i class="fas fa-building-columns"></i></div>
+        <h3>Intercambios Centralizados</h3>
+        <p>Los intercambios de criptomonedas centralizados más populares y seguros del mercado.</p>
+        <a href="IntercambiosCentralizados.html" class="tool-link">
+            Ver Intercambios <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Plataformas DeFi -->
+    <div class="tool-card reveal">
+        <div class="tool-icon"><i class="fas fa-link"></i></div>
+        <h3>Plataformas DeFi</h3>
+        <p>Todo sobre las plataformas de finanzas descentralizadas (DeFi) y cómo utilizarlas.</p>
+        <a href="Defi.html" class="tool-link">
+            Leer Más <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Seguridad en Blockchain -->
+    <div class="tool-card reveal">
+        <div class="tool-icon"><i class="fas fa-shield-haltered"></i></div>
+        <h3>Seguridad en Blockchain</h3>
+        <p>Consejos y mejores prácticas para asegurar tus activos en la blockchain.</p>
+        <a href="seguridad.html" class="tool-link">
+            Leer Más <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer-outer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="fb-logo">
+                <div class="fb-logo-m">O</div>
+                <span class="fb-logo-t">Onix Manager</span>
+            </div>
+            <p>Plataforma de educación financiera y cripto para inversores de todos los niveles. Aprendizaje práctico, herramientas reales.</p>
+            <div class="f-disclaimer">⚠️ El trading e inversión en criptomonedas conlleva riesgos significativos. El contenido es educativo y no constituye asesoramiento financiero. Invierte solo lo que puedas permitirte perder.</div>
+        </div>
+        <div class="footer-col">
+            <h4>Plataforma</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Productos</h4>
+            <ul>
+                <li><a href="IAPredictorinicio.html">IA Predictor</a></li>
+                <li><a href="CryptoClickVideoInfo.html">Crypto Click</a></li>
+                <li><a href="Herramientas.html">Herramientas</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Soporte</h4>
+            <ul>
+                <li><a href="Landingpage.html">Centro de ayuda</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="Landingpage.html">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Onix Manager — Todos los derechos reservados.</p>
+        <div class="fb-links">
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Cookies</a>
+        </div>
+    </div>
+</div>
+
+<script>
+const TICKERS = [
+    {sym:'BTC/USDT',price:'$83,420',ch:'+2.84%',up:true},
+    {sym:'ETH/USDT',price:'$1,980', ch:'+1.42%',up:true},
+    {sym:'SOL/USDT',price:'$134.20',ch:'-0.88%',up:false},
+    {sym:'BNB/USDT',price:'$612.00',ch:'+0.55%',up:true},
+    {sym:'XRP/USDT',price:'$2.14',  ch:'+3.12%',up:true},
+    {sym:'ADA/USDT',price:'$0.74',  ch:'-1.20%',up:false},
+    {sym:'AVAX/USDT',price:'$22.80',ch:'+1.78%',up:true},
+    {sym:'DOT/USDT',price:'$5.40',  ch:'+0.34%',up:true},
+    {sym:'LINK/USDT',price:'$13.90',ch:'+0.91%',up:true},
+    {sym:'MATIC/USDT',price:'$0.52',ch:'-2.10%',up:false},
+];
+(function buildTicker(){
+    const el = document.getElementById('ticker');
+    const all = [...TICKERS,...TICKERS];
+    el.innerHTML = all.map(d=>`
+        <div class="ticker-item">
+            <span class="t-sym">${d.sym}</span>
+            <span class="t-pri">${d.price}</span>
+            <span class="${d.up?'t-up':'t-dn'}">${d.ch}</span>
+            <span class="t-sep">·</span>
+        </div>`).join('');
+})();
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const hamburger = document.getElementById('nav-hamburger');
+const drawer    = document.getElementById('nav-drawer');
+hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    });
+});
+document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+});
+</script>
 </body>
 </html>
