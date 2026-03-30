@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias Cripto — Onix Crypto Manager</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    :root {
+        --bg:         #090b0f;
+        --bg2:        #0e1117;
+        --surface:    #13161e;
+        --surface2:   #1a1e28;
+        --gold:       #e8a020;
+        --gold-light: #f5bc50;
+        --gold-dim:   rgba(232,160,32,0.12);
+        --green:      #00c896;
+        --green-dim:  rgba(0,200,150,0.1);
+        --red:        #e05252;
+        --red-dim:    rgba(224,82,82,0.1);
+        --blue:       #4f8ef7;
+        --blue-dim:   rgba(79,142,247,0.1);
+        --purple:     #8b6ef5;
+        --white:      #f0f2f5;
+        --text:       #8b95a8;
+        --text2:      #c4cad6;
+        --border:     rgba(255,255,255,0.07);
+        --border-g:   rgba(232,160,32,0.2);
+        --ff-display: 'Playfair Display', Georgia, serif;
+        --ff-body:    'IBM Plex Sans', sans-serif;
+        --ff-mono:    'IBM Plex Mono', monospace;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        background: var(--bg);
+        color: var(--text2);
+        font-family: var(--ff-body);
+        font-size: 1rem;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===================== TICKER ===================== */
+    .ticker-wrap {
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        overflow: hidden;
+        height: 34px;
+        display: flex;
+        align-items: center;
+    }
+    .ticker-inner {
+        display: flex;
+        gap: 3rem;
+        white-space: nowrap;
+        animation: tickerScroll 28s linear infinite;
+    }
+    @keyframes tickerScroll {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        font-family: var(--ff-mono);
+        font-size: .72rem;
+    }
+    .t-sym  { color: var(--white); font-weight: 500; }
+    .t-pri  { color: var(--text); }
+    .t-up   { color: var(--green); }
+    .t-dn   { color: var(--red); }
+    .t-sep  { color: var(--border); }
+
+    /* ===================== NAV ===================== */
+    nav {
+        position: sticky; top: 0; z-index: 900;
+        background: rgba(9,11,15,0.93);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+        max-width: 1280px; margin: 0 auto;
+        padding: 0 2rem;
+        display: flex; align-items: center;
+        justify-content: space-between;
+        height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: .7rem; }
+    .nav-logo-mark {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        border-radius: 7px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: .9rem; color: var(--bg); font-weight: 800;
+    }
+    .nav-logo-text { font-family: var(--ff-display); font-weight: 700; font-size: 1.15rem; color: var(--white); }
+    .nav-logo-text span { color: var(--gold); }
+    nav ul { display: flex; gap: .1rem; list-style: none; align-items: center; }
+    nav ul li a {
+        display: flex; align-items: center; gap: .4rem;
+        padding: .45rem .85rem; border-radius: 7px;
+        font-size: .83rem; font-weight: 500; color: var(--text);
+        transition: color .2s, background .2s;
+    }
+    nav ul li a i { font-size: .75rem; opacity: .65; }
+    nav ul li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    nav ul li a.active { color: var(--gold); }
+    .nav-cta a {
+        background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
+        color: var(--bg) !important; font-weight: 600 !important;
+    }
+    .nav-hamburger {
+        display: none; flex-direction: column; justify-content: center;
+        align-items: center; gap: 5px; width: 40px; height: 40px;
+        background: transparent; border: 1px solid var(--border);
+        border-radius: 8px; cursor: pointer; padding: 0; flex-shrink: 0;
+        transition: border-color .2s;
+    }
+    .nav-hamburger:hover { border-color: rgba(255,255,255,0.22); }
+    .nav-hamburger span {
+        display: block; width: 18px; height: 1.5px;
+        background: var(--white); border-radius: 2px;
+        transition: transform .3s ease, opacity .3s ease; transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-drawer {
+        display: none; position: fixed; top: 64px; left: 0; right: 0;
+        background: rgba(9,11,15,0.97); backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border); padding: 1rem 1.5rem 1.5rem;
+        z-index: 899; transform: translateY(-8px); opacity: 0;
+        transition: transform .25s ease, opacity .25s ease; pointer-events: none;
+    }
+    .nav-drawer.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: .25rem; }
+    .nav-drawer ul li a {
+        display: flex; align-items: center; gap: .7rem; padding: .75rem 1rem;
+        border-radius: 8px; font-size: .92rem; font-weight: 500; color: var(--text2);
+        transition: color .2s, background .2s;
+    }
+    .nav-drawer ul li a i { font-size: .8rem; width: 16px; text-align: center; color: var(--gold); opacity: .85; }
+    .nav-drawer ul li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav-drawer .nav-cta-mobile a {
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        color: var(--bg) !important; font-weight: 600; justify-content: center; margin-top: .5rem;
+    }
+    .nav-drawer .nav-cta-mobile a i { color: var(--bg); opacity: 1; }
+    .nav-drawer-divider { height: 1px; background: var(--border); margin: .75rem 0; }
+    @media (max-width: 768px) {
+        nav ul { display: none; }
+        .nav-hamburger { display: flex; }
+        .nav-drawer { display: block; }
+        .nav-inner { padding: 0 1.25rem; }
+    }
+
+    /* ===================== NEWS HERO ===================== */
+    .news-hero {
+        position: relative;
+        padding: 4rem 2rem 3rem;
+        max-width: 1280px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .news-hero::before {
+        content:''; position:absolute; inset:0;
+        background: repeating-linear-gradient(-55deg, transparent, transparent 60px,
+            rgba(232,160,32,0.015) 60px, rgba(232,160,32,0.015) 61px);
+        pointer-events:none;
+    }
+    .news-hero-glow {
+        position:absolute; left:-10%; top:50%; transform:translateY(-50%);
+        width:500px; height:500px; border-radius:50%;
+        background: radial-gradient(circle, rgba(232,160,32,0.06) 0%, transparent 70%);
+        pointer-events:none;
+    }
+    .news-hero-inner { position:relative; z-index:1; }
+    .hero-eyebrow {
+        display:inline-flex; align-items:center; gap:.6rem;
+        font-family:var(--ff-mono); font-size:.7rem;
+        letter-spacing:.2em; text-transform:uppercase;
+        color:var(--gold); margin-bottom:1rem;
+    }
+    .hero-eyebrow::before { content:''; width:26px; height:1px; background:var(--gold); }
+    .news-hero h1 {
+        font-family: var(--ff-display);
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        font-weight: 800; color: var(--white);
+        line-height: 1.1; letter-spacing: -.025em;
+        margin-bottom: .75rem;
+    }
+    .news-hero h1 em { font-style:italic; color:var(--gold); }
+    .news-hero-sub { font-size:.95rem; color:var(--text); max-width:560px; margin-bottom:2rem; }
+
+    /* Live indicator */
+    .live-badge {
+        display:inline-flex; align-items:center; gap:.5rem;
+        font-family:var(--ff-mono); font-size:.68rem; letter-spacing:.1em;
+        background: rgba(0,200,150,0.1); color: var(--green);
+        border: 1px solid rgba(0,200,150,0.25);
+        padding:.3rem .75rem; border-radius:100px;
+    }
+    .live-dot {
+        width:6px; height:6px; border-radius:50%;
+        background:var(--green);
+        animation: pulseDot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+        0%,100% { opacity:1; transform:scale(1); }
+        50% { opacity:.4; transform:scale(.7); }
+    }
+
+    /* Last updated */
+    .last-updated {
+        font-family:var(--ff-mono); font-size:.65rem; color:var(--text);
+        margin-left:1rem;
+    }
+
+    /* ===================== MAIN LAYOUT ===================== */
+    .news-layout {
+        max-width:1280px; margin:0 auto;
+        padding: 0 2rem 5rem;
+        display:grid;
+        grid-template-columns: 1fr 320px;
+        gap: 2rem;
+        align-items:start;
+    }
+
+    /* ===================== FILTER BAR ===================== */
+    .filter-bar {
+        display:flex; align-items:center; gap:.6rem; flex-wrap:wrap;
+        margin-bottom:2rem;
+    }
+    .filter-label {
+        font-family:var(--ff-mono); font-size:.65rem; letter-spacing:.15em;
+        text-transform:uppercase; color:var(--text); margin-right:.3rem;
+    }
+    .filter-btn {
+        display:inline-flex; align-items:center; gap:.35rem;
+        font-family:var(--ff-mono); font-size:.7rem; font-weight:500;
+        padding:.3rem .75rem; border-radius:100px;
+        border:1px solid var(--border); color:var(--text);
+        background:transparent; cursor:pointer;
+        transition: all .2s;
+    }
+    .filter-btn:hover { border-color:rgba(255,255,255,0.2); color:var(--white); }
+    .filter-btn.active {
+        background:var(--gold-dim); border-color:var(--border-g);
+        color:var(--gold);
+    }
+    .filter-btn i { font-size:.6rem; }
+
+    /* ===================== SEARCH BAR ===================== */
+    .search-wrap {
+        position:relative; margin-bottom:2rem;
+    }
+    .search-wrap input {
+        width:100%; background:var(--surface);
+        border:1px solid var(--border); border-radius:10px;
+        padding:.75rem 1rem .75rem 2.8rem;
+        font-family:var(--ff-body); font-size:.88rem; color:var(--text2);
+        outline:none; transition:border-color .2s;
+    }
+    .search-wrap input::placeholder { color:var(--text); }
+    .search-wrap input:focus { border-color:var(--border-g); }
+    .search-wrap i {
+        position:absolute; left:1rem; top:50%; transform:translateY(-50%);
+        color:var(--text); font-size:.8rem;
+    }
+    .search-clear {
+        position:absolute; right:1rem; top:50%; transform:translateY(-50%);
+        background:none; border:none; color:var(--text); cursor:pointer;
+        font-size:.75rem; display:none;
+    }
+    .search-clear.visible { display:block; }
+
+    /* ===================== LOADING STATE ===================== */
+    .loading-state {
+        display:flex; flex-direction:column; align-items:center;
+        justify-content:center; padding:4rem 2rem; gap:1.5rem;
+    }
+    .loading-spinner {
+        width:40px; height:40px; border-radius:50%;
+        border:2px solid var(--border);
+        border-top-color:var(--gold);
+        animation:spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .loading-text { font-family:var(--ff-mono); font-size:.75rem; color:var(--text); letter-spacing:.1em; }
+
+    /* ===================== NEWS GRID ===================== */
+    .news-main { min-width:0; }
+
+    /* Featured / Hero card */
+    .news-featured {
+        background:var(--surface); border:1px solid var(--border);
+        border-radius:16px; overflow:hidden; margin-bottom:1.5rem;
+        display:grid; grid-template-columns:1fr 1fr;
+        transition:transform .3s, border-color .3s, box-shadow .3s;
+        cursor:pointer;
+    }
+    .news-featured:hover {
+        transform:translateY(-4px); border-color:var(--border-g);
+        box-shadow:0 16px 48px rgba(232,160,32,0.08);
+    }
+    .news-featured-img {
+        background:linear-gradient(135deg,#100e00,#1c1700);
+        display:flex; align-items:center; justify-content:center;
+        position:relative; overflow:hidden; min-height:220px;
+    }
+    .news-featured-img .bg-icon {
+        font-size:8rem; opacity:.07; position:absolute;
+        right:-1rem; bottom:-1rem;
+    }
+    .nf-source-logo {
+        position:absolute; top:1rem; left:1rem;
+        font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.1em;
+        text-transform:uppercase; background:rgba(0,0,0,0.6);
+        border:1px solid var(--border); color:var(--text2);
+        padding:.18rem .55rem; border-radius:4px;
+    }
+    .nf-thumb-icon { font-size:3.5rem; position:relative; z-index:1; color:var(--gold); }
+    .news-featured-body { padding:2rem; display:flex; flex-direction:column; }
+    .nf-cats { display:flex; gap:.5rem; margin-bottom:1rem; flex-wrap:wrap; }
+    .news-tag {
+        font-family:var(--ff-mono); font-size:.6rem; letter-spacing:.1em;
+        text-transform:uppercase; padding:.18rem .55rem; border-radius:4px;
+        font-weight:500;
+    }
+    .tag-btc   { background:rgba(247,147,26,0.12); color:#f7931a; }
+    .tag-eth   { background:rgba(98,126,234,0.12); color:#627eea; }
+    .tag-defi  { background:var(--green-dim); color:var(--green); }
+    .tag-reg   { background:var(--red-dim); color:var(--red); }
+    .tag-ai    { background:rgba(139,110,245,0.12); color:var(--purple); }
+    .tag-macro { background:var(--blue-dim); color:var(--blue); }
+    .tag-nft   { background:rgba(255,100,200,0.1); color:#ff64c8; }
+    .tag-alt   { background:var(--gold-dim); color:var(--gold); }
+    .news-featured-body h2 {
+        font-family:var(--ff-display); font-size:1.4rem; font-weight:700;
+        color:var(--white); line-height:1.3; margin-bottom:.75rem;
+        flex:1;
+    }
+    .nf-meta { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+    .nf-source { font-size:.72rem; color:var(--gold); font-weight:500; font-family:var(--ff-mono); }
+    .nf-time { font-size:.72rem; color:var(--text); font-family:var(--ff-mono); }
+    .nf-sentiment {
+        display:inline-flex; align-items:center; gap:.3rem;
+        font-size:.65rem; padding:.15rem .5rem; border-radius:4px;
+        font-family:var(--ff-mono);
+    }
+    .sent-bull { background:var(--green-dim); color:var(--green); }
+    .sent-bear { background:var(--red-dim); color:var(--red); }
+    .sent-neu  { background:rgba(139,149,168,0.1); color:var(--text2); }
+
+    /* ===================== NEWS GRID CARDS ===================== */
+    .news-grid {
+        display:grid; grid-template-columns:1fr 1fr;
+        gap:1rem; margin-bottom:1.5rem;
+    }
+    .news-card {
+        background:var(--surface); border:1px solid var(--border);
+        border-radius:12px; overflow:hidden;
+        display:flex; flex-direction:column;
+        transition:transform .25s, border-color .25s, box-shadow .25s;
+        cursor:pointer;
+        animation: fadeInUp .5s ease both;
+    }
+    @keyframes fadeInUp {
+        from { opacity:0; transform:translateY(16px); }
+        to   { opacity:1; transform:translateY(0); }
+    }
+    .news-card:hover {
+        transform:translateY(-3px); border-color:var(--border-g);
+        box-shadow:0 10px 32px rgba(232,160,32,0.06);
+    }
+    .nc-thumb {
+        height:100px; display:flex; align-items:center; justify-content:center;
+        position:relative; overflow:hidden;
+    }
+    .nc-thumb .bg-icon { font-size:5rem; opacity:.08; position:absolute; right:-1rem; bottom:-1rem; }
+    .nc-thumb-icon { font-size:2rem; position:relative; z-index:1; }
+    .nc-source-badge {
+        position:absolute; top:.6rem; left:.6rem;
+        font-family:var(--ff-mono); font-size:.58rem; letter-spacing:.08em;
+        text-transform:uppercase; background:rgba(0,0,0,0.7);
+        border:1px solid var(--border); color:var(--text);
+        padding:.12rem .45rem; border-radius:3px;
+    }
+    .nc-body { padding:1rem; flex:1; display:flex; flex-direction:column; }
+    .nc-tags { display:flex; gap:.35rem; margin-bottom:.5rem; flex-wrap:wrap; }
+    .nc-title {
+        font-family:var(--ff-display); font-size:.95rem; font-weight:700;
+        color:var(--white); line-height:1.3; flex:1; margin-bottom:.7rem;
+    }
+    .nc-footer { display:flex; align-items:center; justify-content:space-between; }
+    .nc-source { font-size:.67rem; color:var(--gold); font-family:var(--ff-mono); }
+    .nc-time { font-size:.65rem; color:var(--text); font-family:var(--ff-mono); }
+
+    /* ===================== NEWS LIST (compact) ===================== */
+    .news-list { display:flex; flex-direction:column; gap:.7rem; }
+    .news-list-item {
+        background:var(--surface); border:1px solid var(--border);
+        border-radius:10px; padding:1rem 1.2rem;
+        display:flex; align-items:center; gap:1rem;
+        cursor:pointer; transition:border-color .2s, background .2s;
+        animation: fadeInUp .5s ease both;
+    }
+    .news-list-item:hover { border-color:var(--border-g); background:var(--surface2); }
+    .nli-idx {
+        font-family:var(--ff-mono); font-size:.65rem; color:var(--text);
+        width:20px; text-align:center; flex-shrink:0;
+    }
+    .nli-content { flex:1; min-width:0; }
+    .nli-title {
+        font-size:.88rem; font-weight:500; color:var(--white);
+        line-height:1.35; margin-bottom:.3rem;
+        white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .nli-meta { display:flex; align-items:center; gap:.75rem; }
+    .nli-source { font-size:.67rem; color:var(--gold); font-family:var(--ff-mono); }
+    .nli-time { font-size:.65rem; color:var(--text); font-family:var(--ff-mono); }
+    .nli-arrow { color:var(--text); font-size:.7rem; flex-shrink:0; transition:color .2s; }
+    .news-list-item:hover .nli-arrow { color:var(--gold); }
+
+    /* ===================== SIDEBAR ===================== */
+    .news-sidebar { position:sticky; top:80px; display:flex; flex-direction:column; gap:1.5rem; }
+
+    .sidebar-widget {
+        background:var(--surface); border:1px solid var(--border);
+        border-radius:14px; overflow:hidden;
+    }
+    .sw-header {
+        padding:1rem 1.25rem; border-bottom:1px solid var(--border);
+        display:flex; align-items:center; justify-content:space-between;
+    }
+    .sw-title {
+        font-family:var(--ff-mono); font-size:.67rem; letter-spacing:.15em;
+        text-transform:uppercase; color:var(--text);
+        display:flex; align-items:center; gap:.5rem;
+    }
+    .sw-title i { color:var(--gold); }
+    .sw-badge {
+        font-family:var(--ff-mono); font-size:.6rem;
+        background:var(--gold-dim); color:var(--gold);
+        border:1px solid var(--border-g);
+        padding:.1rem .4rem; border-radius:3px;
+    }
+    .sw-body { padding:1rem 1.25rem; }
+
+    /* Market pulse widget */
+    .market-rows { display:flex; flex-direction:column; gap:.65rem; }
+    .market-row { display:flex; align-items:center; gap:.7rem; }
+    .mr-coin {
+        width:28px; height:28px; border-radius:50%;
+        display:flex; align-items:center; justify-content:center;
+        font-size:.72rem; font-weight:700; flex-shrink:0;
+    }
+    .mr-info { flex:1; min-width:0; }
+    .mr-name { font-size:.78rem; font-weight:500; color:var(--white); }
+    .mr-price { font-family:var(--ff-mono); font-size:.7rem; color:var(--text); }
+    .mr-bar { flex:1; height:3px; background:rgba(255,255,255,0.05); border-radius:2px; overflow:hidden; }
+    .mr-bar-fill { height:100%; border-radius:2px; transition:width 1s ease; }
+    .mr-pct {
+        font-family:var(--ff-mono); font-size:.72rem; font-weight:500;
+        width:52px; text-align:right; flex-shrink:0;
+    }
+    .pct-up { color:var(--green); }
+    .pct-dn { color:var(--red); }
+
+    /* Fear & Greed */
+    .fng-wrap { display:flex; flex-direction:column; align-items:center; gap:.75rem; padding:.5rem 0; }
+    .fng-gauge { position:relative; width:140px; height:75px; }
+    .fng-gauge svg { width:100%; height:100%; }
+    .fng-label {
+        text-align:center;
+        font-family:var(--ff-mono); font-size:.65rem; color:var(--text); letter-spacing:.1em;
+    }
+    .fng-val { font-family:var(--ff-display); font-size:2rem; font-weight:800; color:var(--white); }
+    .fng-class { font-size:.75rem; color:var(--gold); font-weight:500; }
+    .fng-desc { font-size:.72rem; color:var(--text); text-align:center; }
+
+    /* Trending topics */
+    .trend-list { display:flex; flex-direction:column; gap:.5rem; }
+    .trend-item {
+        display:flex; align-items:center; gap:.7rem; padding:.6rem .8rem;
+        border-radius:8px; cursor:pointer; transition:background .2s;
+    }
+    .trend-item:hover { background:rgba(255,255,255,0.03); }
+    .trend-rank {
+        font-family:var(--ff-mono); font-size:.65rem; color:var(--text);
+        width:18px; text-align:center; flex-shrink:0;
+    }
+    .trend-coin-icon {
+        width:28px; height:28px; border-radius:6px;
+        display:flex; align-items:center; justify-content:center;
+        font-size:.75rem; flex-shrink:0;
+    }
+    .trend-name { font-size:.82rem; font-weight:500; color:var(--white); flex:1; }
+    .trend-vol { font-family:var(--ff-mono); font-size:.65rem; color:var(--text); }
+    .trend-arrow { font-size:.65rem; color:var(--green); }
+
+    /* Sources widget */
+    .sources-grid { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; }
+    .source-chip {
+        display:flex; align-items:center; gap:.4rem;
+        padding:.5rem .7rem; border-radius:8px;
+        border:1px solid var(--border); font-size:.72rem; color:var(--text2);
+        cursor:pointer; transition:all .2s;
+    }
+    .source-chip:hover { border-color:var(--border-g); color:var(--gold); }
+    .source-chip i { font-size:.65rem; }
+    .source-chip.active { border-color:var(--border-g); color:var(--gold); background:var(--gold-dim); }
+
+    /* ===================== SECTION DIVIDERS ===================== */
+    .section-tag {
+        display:inline-flex; align-items:center; gap:.5rem;
+        font-family:var(--ff-mono); font-size:.69rem;
+        letter-spacing:.2em; text-transform:uppercase;
+        color:var(--gold); margin-bottom:1rem;
+    }
+    .section-tag::before { content:'//'; opacity:.45; }
+
+    /* ===================== LOAD MORE ===================== */
+    .load-more-wrap { text-align:center; padding:1.5rem 0; }
+    .btn-load {
+        display:inline-flex; align-items:center; gap:.6rem;
+        font-family:var(--ff-body); font-size:.83rem; font-weight:600;
+        padding:.7rem 1.8rem; border-radius:8px;
+        border:1px solid var(--border); color:var(--text2);
+        background:var(--surface); cursor:pointer;
+        transition:all .2s;
+    }
+    .btn-load:hover { border-color:var(--border-g); color:var(--gold); transform:translateY(-1px); }
+    .btn-load.loading i { animation:spin .8s linear infinite; }
+
+    /* ===================== TOAST NOTIFICATION ===================== */
+    .toast-container {
+        position:fixed; bottom:1.5rem; right:1.5rem;
+        display:flex; flex-direction:column; gap:.5rem;
+        z-index:9999; pointer-events:none;
+    }
+    .toast {
+        background:var(--surface2); border:1px solid var(--border);
+        border-radius:10px; padding:.85rem 1.2rem;
+        display:flex; align-items:center; gap:.75rem;
+        font-size:.8rem; color:var(--text2);
+        transform:translateX(120%); opacity:0;
+        transition:transform .35s ease, opacity .35s ease;
+        pointer-events:all; min-width:260px; max-width:320px;
+        box-shadow:0 8px 24px rgba(0,0,0,0.4);
+    }
+    .toast.show { transform:translateX(0); opacity:1; }
+    .toast-icon { font-size:1rem; flex-shrink:0; }
+    .toast-text { flex:1; }
+    .toast-title { font-weight:600; color:var(--white); margin-bottom:.15rem; }
+    .toast-body { color:var(--text); font-size:.74rem; }
+
+    /* ===================== BREAKING NEWS BANNER ===================== */
+    .breaking-banner {
+        background:linear-gradient(90deg, rgba(224,82,82,0.12), rgba(224,82,82,0.06));
+        border:1px solid rgba(224,82,82,0.25); border-radius:10px;
+        padding:.85rem 1.25rem; margin-bottom:1.5rem;
+        display:flex; align-items:center; gap:1rem;
+        animation:fadeInUp .5s ease;
+    }
+    .breaking-label {
+        font-family:var(--ff-mono); font-size:.65rem; letter-spacing:.1em;
+        text-transform:uppercase; background:var(--red); color:#fff;
+        padding:.18rem .55rem; border-radius:3px; flex-shrink:0;
+        animation: pulse .8s ease-in-out infinite alternate;
+    }
+    @keyframes pulse { to { opacity:.6; } }
+    .breaking-text { font-size:.83rem; color:var(--text2); flex:1; }
+    .breaking-link { font-size:.75rem; color:var(--red); font-weight:500; flex-shrink:0; }
+    .breaking-link:hover { text-decoration:underline; }
+
+    /* ===================== EMPTY / ERROR STATE ===================== */
+    .empty-state {
+        display:flex; flex-direction:column; align-items:center;
+        padding:3rem; text-align:center; gap:.75rem;
+    }
+    .empty-icon { font-size:2.5rem; color:var(--text); opacity:.35; }
+    .empty-title { font-family:var(--ff-display); font-size:1.1rem; color:var(--white); }
+    .empty-sub { font-size:.83rem; color:var(--text); }
+
+    /* ===================== FOOTER ===================== */
+    .footer-outer { background:var(--bg2); border-top:1px solid var(--border); margin-top:2rem; }
+    .footer-bottom {
+        max-width:1280px; margin:0 auto; padding:1.4rem 2rem;
+        display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+    }
+    .footer-bottom p { font-size:.75rem; color:rgba(139,149,168,0.38); }
+    .fb-links { display:flex; gap:1.5rem; }
+    .fb-links a { font-size:.75rem; color:rgba(139,149,168,0.38); transition:color .2s; }
+    .fb-links a:hover { color:var(--text); }
+
+    /* ===================== REVEAL ===================== */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media(max-width:1024px) {
+        .news-layout { grid-template-columns:1fr; }
+        .news-sidebar { position:static; }
+        .news-featured { grid-template-columns:1fr; }
+        .news-featured-img { min-height:160px; }
+    }
+    @media(max-width:768px) {
+        .news-hero { padding:2.5rem 1.25rem 1.5rem; }
+        .news-layout { padding:0 1.25rem 3rem; }
+        .news-grid { grid-template-columns:1fr; }
+        .breaking-banner { flex-wrap:wrap; gap:.5rem; }
+        .sources-grid { grid-template-columns:1fr 1fr 1fr; }
+    }
+    @media(max-width:480px) {
+        .ticker-wrap { display:none; }
+        .news-hero h1 { font-size:1.9rem; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner" id="ticker"></div></div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <span class="nav-logo-text">Onix <span>Crypto Manager</span></span>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="noticias-crypto.html" class="active"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="https://onixmannager.github.io/CryptoClick/landing.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <li class="nav-cta"><a href="LandingPrincipal.html"><i class="fas fa-headset"></i> ¿Quien Soy?</a></li>
+        </ul>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-drawer" id="nav-drawer">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="cursos.html"><i class="fas fa-book-open"></i> Cursos</a></li>
+            <li><a href="Herramientas.html"><i class="fas fa-chart-bar"></i> Herramientas</a></li>
+            <li><a href="noticias-crypto.html"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="IAPredictorinicio.html"><i class="fas fa-brain"></i> IA Predictor</a></li>
+            <li><a href="https://onixmannager.github.io/CryptoClick/landing.html"><i class="fas fa-coins"></i> Crypto Click</a></li>
+            <li><a href="comunidad.html"><i class="fas fa-users"></i> Comunidad</a></li>
+            <div class="nav-drawer-divider"></div>
+            <li class="nav-cta-mobile"><a href="LandingPrincipal.html"><i class="fas fa-headset"></i> ¿Quien Soy?</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- NEWS HERO -->
+<div class="news-hero">
+    <div class="news-hero-glow"></div>
+    <div class="news-hero-inner">
+        <div class="hero-eyebrow">Feed en Tiempo Real</div>
+        <h1>Noticias <em>Cripto</em><br>que importan</h1>
+        <p class="news-hero-sub">Agregamos las últimas noticias de CoinDesk, CoinTelegraph, Decrypt, The Block y más — filtradas, clasificadas y actualizadas cada hora.</p>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+            <div class="live-badge"><div class="live-dot"></div>LIVE — Actualizando</div>
+            <span class="last-updated" id="last-updated-ts">Última actualización: cargando…</span>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="news-layout">
+
+    <!-- LEFT: MAIN CONTENT -->
+    <div class="news-main">
+
+        <!-- BREAKING BANNER -->
+        <div class="breaking-banner" id="breaking-banner" style="display:none">
+            <span class="breaking-label">BREAKING</span>
+            <span class="breaking-text" id="breaking-text"></span>
+            <a class="breaking-link" id="breaking-link" href="#" target="_blank">Leer más →</a>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="search-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" id="news-search" placeholder="Buscar noticias… BTC, DeFi, regulación…">
+            <button class="search-clear" id="search-clear"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+            <span class="filter-label">Filtrar:</span>
+            <button class="filter-btn active" data-tag="all"><i class="fas fa-globe"></i> Todo</button>
+            <button class="filter-btn" data-tag="btc"><i class="fab fa-bitcoin"></i> Bitcoin</button>
+            <button class="filter-btn" data-tag="eth">Ξ Ethereum</button>
+            <button class="filter-btn" data-tag="defi"><i class="fas fa-water"></i> DeFi</button>
+            <button class="filter-btn" data-tag="reg"><i class="fas fa-gavel"></i> Regulación</button>
+            <button class="filter-btn" data-tag="ai"><i class="fas fa-brain"></i> IA & Cripto</button>
+            <button class="filter-btn" data-tag="alt"><i class="fas fa-coins"></i> Altcoins</button>
+            <button class="filter-btn" data-tag="macro"><i class="fas fa-chart-line"></i> Macro</button>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div id="news-content">
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">CARGANDO NOTICIAS…</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT: SIDEBAR -->
+    <aside class="news-sidebar">
+
+        <!-- MARKET PULSE -->
+        <div class="sidebar-widget reveal">
+            <div class="sw-header">
+                <div class="sw-title"><i class="fas fa-pulse"></i> Mercado</div>
+                <span class="sw-badge" id="mkt-badge">LIVE</span>
+            </div>
+            <div class="sw-body">
+                <div class="market-rows" id="market-rows">
+                    <!-- filled by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- FEAR & GREED -->
+        <div class="sidebar-widget reveal">
+            <div class="sw-header">
+                <div class="sw-title"><i class="fas fa-heart-pulse"></i> Fear & Greed Index</div>
+            </div>
+            <div class="sw-body">
+                <div class="fng-wrap">
+                    <div class="fng-gauge">
+                        <svg viewBox="0 0 140 75" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="fngGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#e05252"/>
+                                    <stop offset="25%" stop-color="#e07820"/>
+                                    <stop offset="50%" stop-color="#e8a020"/>
+                                    <stop offset="75%" stop-color="#a0c040"/>
+                                    <stop offset="100%" stop-color="#00c896"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M10,70 A60,60 0 0,1 130,70" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="10" stroke-linecap="round"/>
+                            <path id="fng-arc" d="M10,70 A60,60 0 0,1 130,70" fill="none" stroke="url(#fngGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5"/>
+                            <line id="fng-needle" x1="70" y1="70" x2="70" y2="18" stroke="var(--white)" stroke-width="2" stroke-linecap="round" transform="rotate(-90, 70, 70)"/>
+                            <circle cx="70" cy="70" r="5" fill="var(--surface)" stroke="var(--white)" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <div class="fng-val" id="fng-val">—</div>
+                    <div class="fng-class" id="fng-class">Cargando…</div>
+                    <div class="fng-desc" id="fng-desc">Índice de miedo y codicia</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRENDING TOKENS -->
+        <div class="sidebar-widget reveal">
+            <div class="sw-header">
+                <div class="sw-title"><i class="fas fa-fire"></i> Tendencias</div>
+                <span class="sw-badge">HOT</span>
+            </div>
+            <div class="sw-body" style="padding:.75rem 1.25rem">
+                <div class="trend-list" id="trend-list"><!-- filled --></div>
+            </div>
+        </div>
+
+        <!-- SOURCES -->
+        <div class="sidebar-widget reveal">
+            <div class="sw-header">
+                <div class="sw-title"><i class="fas fa-rss"></i> Fuentes activas</div>
+            </div>
+            <div class="sw-body">
+                <div class="sources-grid" id="sources-grid"><!-- filled --></div>
+                <p style="font-size:.68rem;color:var(--text);margin-top:.85rem;line-height:1.5">
+                    Feed vía RSS público. No requiere backend ni API de pago.
+                </p>
+            </div>
+        </div>
+
+    </aside>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-outer">
+    <div class="footer-bottom">
+        <p>&copy; 2026 Onix Crypto Manager — Todos los derechos reservados.</p>
+        <div class="fb-links">
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Cookies</a>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+// =====================================================================
+//  ONIX CRYPTO MANAGER — NEWS FEED
+//  Feed gratuito via RSS2JSON (free tier, no API key needed for low usage)
+//  Falls back to curated mock data if RSS fails (cors / rate limit)
+// =====================================================================
+
+/* ---- CONFIG ---- */
+const RSS_PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+const REFRESH_MS = 5 * 60 * 1000; // refresh every 5 min
+
+const SOURCES = [
+    { id:'coindesk',  label:'CoinDesk',     icon:'fas fa-newspaper', url:'https://www.coindesk.com/arc/outboundfeeds/rss/', color:'#f7931a' },
+    { id:'cointelegraph', label:'CoinTelegraph', icon:'fas fa-bolt', url:'https://cointelegraph.com/rss', color:'#00c896' },
+    { id:'decrypt',   label:'Decrypt',      icon:'fas fa-lock-open', url:'https://decrypt.co/feed', color:'#4f8ef7' },
+    { id:'theblock',  label:'The Block',    icon:'fas fa-cube',      url:'https://www.theblock.co/rss.xml', color:'#8b6ef5' },
+    { id:'bitcoinist', label:'Bitcoinist',  icon:'fab fa-bitcoin',   url:'https://bitcoinist.com/feed/', color:'#f7931a' },
+    { id:'newsbtc',   label:'NewsBTC',      icon:'fas fa-chart-line', url:'https://www.newsbtc.com/feed/', color:'#e8a020' },
+];
+
+const TAG_KEYWORDS = {
+    btc:   ['bitcoin','btc','satoshi','mining','miner','halving','blockchain'],
+    eth:   ['ethereum','eth','vitalik','eip','merge','layer 2','l2','rollup'],
+    defi:  ['defi','dex','uniswap','aave','compound','yield','liquidity','protocol','amm','tvl'],
+    reg:   ['sec','regulation','regulat','law','government','congress','senate','ban','legal','compliance','cbdc'],
+    ai:    ['ai','artificial intelligence','machine learning','gpt','llm','chatgpt','claude'],
+    alt:   ['solana','sol','bnb','xrp','ripple','cardano','ada','avax','avalanche','dot','polkadot','matic','polygon','link','chainlink','altcoin'],
+    macro: ['federal reserve','fed','inflation','interest rate','gdp','recession','economy','macro','dollar','treasury','market'],
+    nft:   ['nft','opensea','nfts','collectible','digital art'],
+};
+
+/* ---- STATE ---- */
+let allNews      = [];
+let activeTag    = 'all';
+let searchQuery  = '';
+let page         = 1;
+const PAGE_SIZE  = 10;
+let loadedSources = new Set();
+
+/* ---- MARKET DATA (simulated live) ---- */
+const COINS = [
+    { sym:'BTC', name:'Bitcoin',  icon:'₿', colors:['#f7931a','#ffb347'], base:83420, range:2000 },
+    { sym:'ETH', name:'Ethereum', icon:'Ξ', colors:['#627eea','#8b9ef5'], base:1980,  range:120 },
+    { sym:'SOL', name:'Solana',   icon:'◎', colors:['#9945ff','#14f195'], base:134,   range:8 },
+    { sym:'BNB', name:'BNB',      icon:'B', colors:['#f3ba2f','#ffd563'], base:612,   range:20 },
+    { sym:'XRP', name:'XRP',      icon:'✕', colors:['#00aae4','#00d0ff'], base:2.14,  range:0.12 },
+];
+let coinPrices = COINS.map(c=>({ ...c, price: c.base, pct: (Math.random()*6-3).toFixed(2) }));
+
+/* ---- UTILITIES ---- */
+function timeAgo(date) {
+    const now = new Date();
+    const d   = new Date(date);
+    const sec = Math.floor((now - d) / 1000);
+    if (sec < 60)   return 'hace ' + sec + 's';
+    if (sec < 3600) return 'hace ' + Math.floor(sec/60) + 'm';
+    if (sec < 86400)return 'hace ' + Math.floor(sec/3600) + 'h';
+    return 'hace ' + Math.floor(sec/86400) + 'd';
+}
+
+function detectTags(text) {
+    const t = (text||'').toLowerCase();
+    const tags = [];
+    for (const [tag, kws] of Object.entries(TAG_KEYWORDS)) {
+        if (kws.some(k => t.includes(k))) tags.push(tag);
+    }
+    return tags.length ? tags : ['alt'];
+}
+
+function detectSentiment(text) {
+    const t = (text||'').toLowerCase();
+    const bull = ['surge','soar','rise','rally','bull','gain','pump','record','high','growth','positive','up','moon','breakout','approve','etf approved'];
+    const bear = ['drop','fall','crash','bear','loss','dump','ban','hack','fine','lawsuit','decline','sell','fear','concern','down','plunge','restrict'];
+    const bs = bull.filter(w=>t.includes(w)).length;
+    const br = bear.filter(w=>t.includes(w)).length;
+    if (bs > br) return 'bull';
+    if (br > bs) return 'bear';
+    return 'neu';
+}
+
+function cleanDesc(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html || '';
+    return (tmp.textContent || tmp.innerText || '').substring(0, 120) + '…';
+}
+
+function getTagHTML(tag) {
+    const map = {
+        btc:'tag-btc', eth:'tag-eth', defi:'tag-defi',
+        reg:'tag-reg', ai:'tag-ai', alt:'tag-alt',
+        macro:'tag-macro', nft:'tag-nft'
+    };
+    const labels = {
+        btc:'BTC', eth:'ETH', defi:'DeFi', reg:'REG',
+        ai:'AI', alt:'ALT', macro:'MACRO', nft:'NFT'
+    };
+    return `<span class="news-tag ${map[tag]||'tag-alt'}">${labels[tag]||tag.toUpperCase()}</span>`;
+}
+
+function getSentimentHTML(s) {
+    if (s==='bull') return `<span class="nf-sentiment sent-bull"><i class="fas fa-arrow-up"></i> Alcista</span>`;
+    if (s==='bear') return `<span class="nf-sentiment sent-bear"><i class="fas fa-arrow-down"></i> Bajista</span>`;
+    return `<span class="nf-sentiment sent-neu"><i class="fas fa-minus"></i> Neutral</span>`;
+}
+
+function getThumbColors(tags) {
+    const map = { btc:'#1a1200,#2a1e00', eth:'#0c0e1a,#111527', defi:'#0f1a0b,#1c2c12', reg:'#1a0c0c,#2a1212', ai:'#100818,#1c1030', alt:'#101820,#182030', macro:'#0a1018,#101820' };
+    const tag = tags[0] || 'alt';
+    return map[tag] || map.alt;
+}
+
+function getThumbIcon(tags) {
+    const map = { btc:'fab fa-bitcoin', eth:'fas fa-ethereum', defi:'fas fa-water', reg:'fas fa-gavel', ai:'fas fa-brain', nft:'fas fa-image', macro:'fas fa-chart-line', alt:'fas fa-coins' };
+    return map[tags[0]] || 'fas fa-newspaper';
+}
+
+function getThumbIconColor(tags) {
+    const map = { btc:'#f7931a', eth:'#627eea', defi:'#00c896', reg:'#e05252', ai:'#8b6ef5', nft:'#ff64c8', macro:'#4f8ef7', alt:'#e8a020' };
+    return map[tags[0]] || '#e8a020';
+}
+
+/* ---- TOAST ---- */
+function showToast(title, body, icon='fas fa-info-circle', iconColor='var(--gold)') {
+    const c = document.getElementById('toast-container');
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = `<i class="${icon} toast-icon" style="color:${iconColor}"></i>
+        <div class="toast-text"><div class="toast-title">${title}</div><div class="toast-body">${body}</div></div>`;
+    c.appendChild(t);
+    setTimeout(()=>t.classList.add('show'), 50);
+    setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(), 400); }, 4500);
+}
+
+/* ---- RSS FETCH ---- */
+async function fetchSource(source) {
+    const url = `${RSS_PROXY}${encodeURIComponent(source.url)}&count=20`;
+    try {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const d = await r.json();
+        if (d.status !== 'ok') throw new Error('RSS error');
+        return (d.items || []).map(item => ({
+            id:        item.guid || item.link,
+            title:     item.title || '',
+            desc:      cleanDesc(item.description || item.content || ''),
+            url:       item.link,
+            source:    source.label,
+            sourceId:  source.id,
+            date:      item.pubDate ? new Date(item.pubDate) : new Date(),
+            tags:      detectTags((item.title||'')+(item.description||'')),
+            sentiment: detectSentiment((item.title||'')+(item.description||'')),
+        }));
+    } catch (e) {
+        console.warn('RSS failed for', source.label, e.message);
+        return [];
+    }
+}
+
+async function loadAllFeeds() {
+    updateTimestamp();
+    const promises = SOURCES.map(s => fetchSource(s));
+    const results  = await Promise.allSettled(promises);
+
+    let fresh = [];
+    results.forEach((r, i) => {
+        if (r.status === 'fulfilled' && r.value.length > 0) {
+            fresh = fresh.concat(r.value);
+            loadedSources.add(SOURCES[i].id);
+        }
+    });
+
+    if (fresh.length === 0) {
+        // Fallback: inject curated mock data
+        fresh = getMockNews();
+        showToast('Usando datos de demostración', 'CORS bloqueó los RSS. Activa un proxy o usa la extensión CORS.', 'fas fa-exclamation-triangle', 'var(--gold)');
+    } else {
+        showToast('Feed actualizado', `${fresh.length} noticias cargadas de ${loadedSources.size} fuentes`, 'fas fa-check-circle', 'var(--green)');
+    }
+
+    // Deduplicate
+    const seen = new Set();
+    allNews = fresh.filter(n => {
+        if (seen.has(n.id)) return false;
+        seen.add(n.id); return true;
+    });
+
+    // Sort by date
+    allNews.sort((a,b) => b.date - a.date);
+
+    // Set breaking news
+    setBreaking(allNews[0]);
+
+    renderNews();
+    updateSources();
+}
+
+/* ---- MOCK DATA (fallback) ---- */
+function getMockNews() {
+    const now = new Date();
+    const minsAgo = n => new Date(now - n*60000);
+    return [
+        { id:'m1', title:'Bitcoin supera los $85,000 por primera vez en semanas impulsado por flujos ETF récord', desc:'Los ETFs de Bitcoin al contado registraron entradas por $890M en un solo día, el mayor volumen desde febrero, marcando un cambio de tendencia...', url:'https://coindesk.com', source:'CoinDesk', sourceId:'coindesk', date:minsAgo(5), tags:['btc','macro'], sentiment:'bull' },
+        { id:'m2', title:'Ethereum activa la actualización Pectra: contratos inteligentes más baratos y cuentas más flexibles', desc:'La actualización Pectra reduce las comisiones de gas en L2 y habilita abstracción de cuentas nativa, simplificando la experiencia de usuario...', url:'https://cointelegraph.com', source:'CoinTelegraph', sourceId:'cointelegraph', date:minsAgo(22), tags:['eth','defi'], sentiment:'bull' },
+        { id:'m3', title:'SEC aprueba opciones sobre ETF de Ethereum al contado en decisión histórica', desc:'La Comisión de Valores aprobó la cotización de contratos de opciones sobre ETF de Ether, ampliando las herramientas de cobertura...', url:'https://decrypt.co', source:'Decrypt', sourceId:'decrypt', date:minsAgo(38), tags:['eth','reg'], sentiment:'bull' },
+        { id:'m4', title:'Solana cae un 7% tras exploit en protocolo DeFi líder con $24M comprometidos', desc:'Un exploit en el protocolo de préstamos Kamino Finance causó pérdidas de $24M en SOL y stablecoins, generando pánico en el ecosistema...', url:'https://theblock.co', source:'The Block', sourceId:'theblock', date:minsAgo(55), tags:['alt','defi','reg'], sentiment:'bear' },
+        { id:'m5', title:'BlackRock aumenta exposición cripto: compra $1.2B en Bitcoin a través de su ETF IBIT', desc:'El mayor gestor de activos del mundo sigue acumulando Bitcoin, con IBIT superando los $25B en activos bajo gestión desde su lanzamiento...', url:'https://bitcoinist.com', source:'Bitcoinist', sourceId:'bitcoinist', date:minsAgo(72), tags:['btc','macro'], sentiment:'bull' },
+        { id:'m6', title:'MiCA entra en vigor en toda la UE: qué cambia para los exchanges y emisores de tokens', desc:'El reglamento europeo de criptoactivos ya aplica en los 27 estados miembros, obligando a registros, whitepaper y capital mínimo...', url:'https://newsbtc.com', source:'NewsBTC', sourceId:'newsbtc', date:minsAgo(95), tags:['reg','macro'], sentiment:'neu' },
+        { id:'m7', title:'DeFi alcanza nuevo ATH en TVL: $180B bloqueados mientras los tipos bajan en EE.UU.', desc:'La caída de tipos de la Fed impulsa capital hacia protocolos DeFi en busca de rendimiento, con Aave y Uniswap liderando el crecimiento...', url:'https://coindesk.com', source:'CoinDesk', sourceId:'coindesk', date:minsAgo(108), tags:['defi','macro'], sentiment:'bull' },
+        { id:'m8', title:'Anthropic y Coinbase se alían para integrar agentes IA en carteras cripto', desc:'La colaboración permitirá que agentes IA ejecuten transacciones onchain de forma autónoma bajo supervisión del usuario, nuevo paradigma...', url:'https://decrypt.co', source:'Decrypt', sourceId:'decrypt', date:minsAgo(130), tags:['ai','eth'], sentiment:'bull' },
+        { id:'m9', title:'XRP gana el juicio definitivo: Ripple no es valor, cierre del caso SEC tras 4 años', desc:'El tribunal federal confirmó el fallo previo: XRP no cumple los criterios Howey en ventas secundarias, poniendo fin al mayor litigio cripto...', url:'https://cointelegraph.com', source:'CoinTelegraph', sourceId:'cointelegraph', date:minsAgo(155), tags:['alt','reg'], sentiment:'bull' },
+        { id:'m10', title:'Tether imprime $3B en USDT en una semana: señal alcista histórica según analistas', desc:'La emisión masiva de USDT suele preceder a movimientos al alza ya que representa liquidez entrando al mercado cripto listo para comprar...', url:'https://theblock.co', source:'The Block', sourceId:'theblock', date:minsAgo(180), tags:['btc','macro'], sentiment:'bull' },
+        { id:'m11', title:'Avalanche lanza subnet dedicada a activos del mundo real tokenizados con JP Morgan', desc:'La colaboración entre Ava Labs y JP Morgan busca tokenizar fondos de mercado monetario en la cadena Avalanche C-Chain con regulación...', url:'https://newsbtc.com', source:'NewsBTC', sourceId:'newsbtc', date:minsAgo(200), tags:['alt','macro'], sentiment:'bull' },
+        { id:'m12', title:'BNB Chain supera 5 millones de transacciones diarias por segundo mes consecutivo', desc:'La cadena de Binance consolida su posición como la blockchain de mayor actividad de usuario con transacciones promedio de $0.01...', url:'https://bitcoinist.com', source:'Bitcoinist', sourceId:'bitcoinist', date:minsAgo(240), tags:['alt'], sentiment:'neu' },
+        { id:'m13', title:'El Salvador reduce su posición en Bitcoin bajo presión del FMI para obtener el préstamo', desc:'Nayib Bukele cedió ante las condiciones del FMI para acceder a $1.4B de crédito, limitando la aceptación obligatoria de BTC como moneda...', url:'https://coindesk.com', source:'CoinDesk', sourceId:'coindesk', date:minsAgo(270), tags:['btc','reg','macro'], sentiment:'bear' },
+        { id:'m14', title:'ChatGPT y Claude ahora pueden analizar carteras DeFi directamente vía MCP', desc:'Los plugins de blockchain permiten a los modelos de lenguaje consultar saldos onchain, historial y posiciones DeFi en tiempo real...', url:'https://decrypt.co', source:'Decrypt', sourceId:'decrypt', date:minsAgo(310), tags:['ai','defi'], sentiment:'bull' },
+        { id:'m15', title:'Cardano anuncia Hydra 2.0: canales de pago que escalan a millones de TPS off-chain', desc:'La actualización de la solución L2 de Cardano permitirá microtransacciones instantáneas y escalado masivo sin comprometer seguridad...', url:'https://cointelegraph.com', source:'CoinTelegraph', sourceId:'cointelegraph', date:minsAgo(350), tags:['alt','eth'], sentiment:'neu' },
+    ];
+}
+
+/* ---- RENDER ---- */
+function getFilteredNews() {
+    let items = [...allNews];
+    if (activeTag !== 'all') {
+        items = items.filter(n => n.tags.includes(activeTag));
+    }
+    if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        items = items.filter(n => n.title.toLowerCase().includes(q) || n.desc.toLowerCase().includes(q));
+    }
+    return items;
+}
+
+function renderNews() {
+    const filtered = getFilteredNews();
+    const content  = document.getElementById('news-content');
+
+    if (filtered.length === 0) {
+        content.innerHTML = `<div class="empty-state">
+            <div class="empty-icon"><i class="fas fa-newspaper"></i></div>
+            <div class="empty-title">Sin resultados</div>
+            <div class="empty-sub">Prueba otro filtro o término de búsqueda.</div>
+        </div>`;
+        return;
+    }
+
+    const visible = filtered.slice(0, page * PAGE_SIZE);
+    const featured = visible[0];
+    const cards    = visible.slice(1, 5);
+    const list     = visible.slice(5);
+    const hasMore  = filtered.length > visible.length;
+
+    let html = '';
+
+    // Featured card
+    if (featured) {
+        const colors = getThumbColors(featured.tags);
+        const icon   = getThumbIcon(featured.tags);
+        const icCol  = getThumbIconColor(featured.tags);
+        html += `<div class="news-featured reveal" onclick="openNews('${encodeURIComponent(featured.url)}')">
+            <div class="news-featured-img" style="background:linear-gradient(135deg,${colors})">
+                <i class="${icon} bg-icon" style="color:${icCol}"></i>
+                <span class="nf-source-logo">${featured.source}</span>
+                <i class="${icon} nf-thumb-icon" style="color:${icCol}"></i>
+            </div>
+            <div class="news-featured-body">
+                <div class="nf-cats">${featured.tags.slice(0,3).map(getTagHTML).join('')}${getSentimentHTML(featured.sentiment)}</div>
+                <h2>${featured.title}</h2>
+                <p style="font-size:.83rem;color:var(--text);line-height:1.65;flex:1;margin-bottom:1.2rem">${featured.desc}</p>
+                <div class="nf-meta">
+                    <span class="nf-source">${featured.source}</span>
+                    <span class="nf-time">${timeAgo(featured.date)}</span>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    // 2x2 grid
+    if (cards.length) {
+        const section = activeTag !== 'all' ? `<div class="section-tag">${activeTag.toUpperCase()} — Últimas</div>` : `<div class="section-tag">Más Recientes</div>`;
+        html += section;
+        html += '<div class="news-grid">';
+        cards.forEach((n, i) => {
+            const colors = getThumbColors(n.tags);
+            const icon   = getThumbIcon(n.tags);
+            const icCol  = getThumbIconColor(n.tags);
+            html += `<div class="news-card reveal" style="animation-delay:${i*80}ms" onclick="openNews('${encodeURIComponent(n.url)}')">
+                <div class="nc-thumb" style="background:linear-gradient(135deg,${colors})">
+                    <i class="${icon} bg-icon" style="color:${icCol}"></i>
+                    <span class="nc-source-badge">${n.source}</span>
+                    <i class="${icon} nc-thumb-icon" style="color:${icCol}"></i>
+                </div>
+                <div class="nc-body">
+                    <div class="nc-tags">${n.tags.slice(0,2).map(getTagHTML).join('')}</div>
+                    <div class="nc-title">${n.title}</div>
+                    <div class="nc-footer">
+                        <span class="nc-source">${n.source}</span>
+                        <span class="nc-time">${timeAgo(n.date)}</span>
+                    </div>
+                </div>
+            </div>`;
+        });
+        html += '</div>';
+    }
+
+    // List
+    if (list.length) {
+        html += `<div class="section-tag" style="margin-top:1.5rem">Feed Completo</div>`;
+        html += '<div class="news-list">';
+        list.forEach((n, i) => {
+            html += `<div class="news-list-item" style="animation-delay:${i*40}ms" onclick="openNews('${encodeURIComponent(n.url)}')">
+                <span class="nli-idx">${i+6}</span>
+                <div class="nli-content">
+                    <div class="nli-title">${n.title}</div>
+                    <div class="nli-meta">
+                        <span class="nli-source">${n.source}</span>
+                        <span class="nli-time">${timeAgo(n.date)}</span>
+                        ${getSentimentHTML(n.sentiment)}
+                    </div>
+                </div>
+                <i class="fas fa-arrow-right nli-arrow"></i>
+            </div>`;
+        });
+        html += '</div>';
+    }
+
+    // Load more
+    if (hasMore) {
+        html += `<div class="load-more-wrap">
+            <button class="btn-load" id="btn-load-more" onclick="loadMore()">
+                <i class="fas fa-chevron-down"></i> Cargar más noticias
+            </button>
+        </div>`;
+    }
+
+    content.innerHTML = html;
+
+    // Trigger reveal
+    setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (!el.classList.contains('visible')) {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+                }, { threshold:.08 });
+                observer.observe(el);
+            }
+        });
+    }, 50);
+}
+
+function openNews(encodedUrl) {
+    window.open(decodeURIComponent(encodedUrl), '_blank');
+}
+
+function loadMore() {
+    page++;
+    const btn = document.getElementById('btn-load-more');
+    if (btn) { btn.classList.add('loading'); btn.innerHTML = '<i class="fas fa-spinner"></i> Cargando…'; }
+    setTimeout(() => { renderNews(); }, 500);
+}
+
+/* ---- BREAKING ---- */
+function setBreaking(item) {
+    if (!item) return;
+    const banner = document.getElementById('breaking-banner');
+    const text   = document.getElementById('breaking-text');
+    const link   = document.getElementById('breaking-link');
+    banner.style.display = 'flex';
+    text.textContent = item.title;
+    link.href = item.url;
+    link.setAttribute('target','_blank');
+}
+
+/* ---- TIMESTAMP ---- */
+function updateTimestamp() {
+    const el = document.getElementById('last-updated-ts');
+    if (el) el.textContent = 'Última actualización: ' + new Date().toLocaleTimeString('es-ES', {hour:'2-digit',minute:'2-digit'});
+}
+
+/* ---- SIDEBAR: MARKET ---- */
+function renderMarket() {
+    const rows = document.getElementById('market-rows');
+    if (!rows) return;
+    rows.innerHTML = coinPrices.map(c => {
+        const up   = parseFloat(c.pct) >= 0;
+        const pct  = parseFloat(Math.abs(c.pct));
+        const barW = Math.min(100, 30 + pct * 12);
+        const barC = up ? 'var(--green)' : 'var(--red)';
+        const fmt  = c.price >= 1000 ? c.price.toLocaleString('en-US',{maximumFractionDigits:0}) : c.price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+        return `<div class="market-row">
+            <div class="mr-coin" style="background:linear-gradient(135deg,${c.colors[0]},${c.colors[1]})">${c.icon}</div>
+            <div class="mr-info">
+                <div class="mr-name">${c.sym}</div>
+                <div class="mr-price">$${fmt}</div>
+            </div>
+            <div class="mr-bar"><div class="mr-bar-fill" style="width:${barW}%;background:${barC}"></div></div>
+            <div class="mr-pct ${up?'pct-up':'pct-dn'}">${up?'+':''}${c.pct}%</div>
+        </div>`;
+    }).join('');
+}
+
+function updateMarket() {
+    coinPrices = coinPrices.map(c => {
+        const delta = (Math.random() - 0.48) * c.range * 0.05;
+        const price = Math.max(c.base * 0.7, c.price + delta);
+        const pct   = ((price - c.base) / c.base * 100).toFixed(2);
+        return { ...c, price, pct };
+    });
+    renderMarket();
+}
+
+/* ---- SIDEBAR: FEAR & GREED ---- */
+function renderFNG() {
+    // Simulated value (would normally fetch from alternative.me/api)
+    const val = Math.floor(45 + Math.random() * 35); // 45-80 range
+    const classes = ['Miedo extremo','Miedo','Neutral','Codicia','Codicia extrema'];
+    const thresholds = [0,25,45,55,75,100];
+    let cls = classes[0];
+    for (let i=0;i<thresholds.length-1;i++) { if(val>=thresholds[i]&&val<thresholds[i+1]) { cls=classes[i]||classes[4]; } }
+
+    const valEl  = document.getElementById('fng-val');
+    const clsEl  = document.getElementById('fng-class');
+    const arcEl  = document.getElementById('fng-arc');
+    const needEl = document.getElementById('fng-needle');
+
+    if (valEl) valEl.textContent = val;
+    if (clsEl) clsEl.textContent = cls;
+
+    // Arc animation
+    const pct = val / 100;
+    const total = 188.5;
+    if (arcEl) arcEl.style.strokeDashoffset = total - (total * pct);
+
+    // Needle rotation: -90 (far left) to +90 (far right)
+    const angle = -90 + (val / 100) * 180;
+    if (needEl) needEl.setAttribute('transform', `rotate(${angle}, 70, 70)`);
+
+    // Color
+    const color = val < 25 ? 'var(--red)' : val < 45 ? '#e07820' : val < 55 ? 'var(--gold)' : val < 75 ? '#a0c040' : 'var(--green)';
+    if (valEl) valEl.style.color = color;
+}
+
+/* ---- SIDEBAR: TRENDING ---- */
+const TRENDING = [
+    { sym:'BTC', name:'Bitcoin',  vol:'+$2.1B', icon:'₿', c:['#f7931a','#ffb347'], up:true },
+    { sym:'ETH', name:'Ethereum', vol:'+$890M', icon:'Ξ', c:['#627eea','#8b9ef5'], up:true },
+    { sym:'SOL', name:'Solana',   vol:'+$340M', icon:'◎', c:['#9945ff','#14f195'], up:false },
+    { sym:'XRP', name:'XRP',      vol:'+$210M', icon:'✕', c:['#00aae4','#00d0ff'], up:true },
+    { sym:'AVAX',name:'Avalanche',vol:'+$95M',  icon:'A', c:['#e84142','#ff6e6e'], up:true },
+];
+function renderTrending() {
+    const el = document.getElementById('trend-list');
+    if (!el) return;
+    el.innerHTML = TRENDING.map((t,i) => `<div class="trend-item">
+        <span class="trend-rank">${i+1}</span>
+        <div class="trend-coin-icon" style="background:linear-gradient(135deg,${t.c[0]},${t.c[1]}20)">${t.icon}</div>
+        <div>
+            <div class="trend-name">${t.sym}</div>
+            <div class="trend-vol" style="font-size:.65rem;color:var(--text)">${t.name}</div>
+        </div>
+        <div>
+            <div class="trend-vol">${t.vol}</div>
+        </div>
+        <i class="fas fa-arrow-${t.up?'up':'down'} trend-arrow" style="color:${t.up?'var(--green)':'var(--red)'}"></i>
+    </div>`).join('');
+}
+
+/* ---- SIDEBAR: SOURCES ---- */
+function updateSources() {
+    const el = document.getElementById('sources-grid');
+    if (!el) return;
+    el.innerHTML = SOURCES.map(s => `
+        <div class="source-chip ${loadedSources.has(s.id)?'active':''}" title="${s.label}">
+            <i class="${s.icon}" style="color:${s.color}"></i> ${s.label}
+        </div>`).join('');
+}
+
+/* ---- FILTER BUTTONS ---- */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTag = btn.dataset.tag;
+        page = 1;
+        renderNews();
+    });
+});
+
+/* ---- SEARCH ---- */
+const searchInput = document.getElementById('news-search');
+const clearBtn    = document.getElementById('search-clear');
+searchInput.addEventListener('input', () => {
+    searchQuery = searchInput.value.trim();
+    clearBtn.classList.toggle('visible', searchQuery.length > 0);
+    page = 1;
+    renderNews();
+});
+clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    clearBtn.classList.remove('visible');
+    page = 1;
+    renderNews();
+});
+
+/* ---- TICKER ---- */
+const TICKERS = [
+    {sym:'BTC/USDT',price:'$83,420',ch:'+2.84%',up:true},
+    {sym:'ETH/USDT',price:'$1,980', ch:'+1.42%',up:true},
+    {sym:'SOL/USDT',price:'$134.20',ch:'-0.88%',up:false},
+    {sym:'BNB/USDT',price:'$612.00',ch:'+0.55%',up:true},
+    {sym:'XRP/USDT',price:'$2.14',  ch:'+3.12%',up:true},
+    {sym:'ADA/USDT',price:'$0.74',  ch:'-1.20%',up:false},
+    {sym:'AVAX/USDT',price:'$22.80',ch:'+1.78%',up:true},
+    {sym:'DOT/USDT',price:'$5.40',  ch:'+0.34%',up:true},
+    {sym:'LINK/USDT',price:'$13.90',ch:'+0.91%',up:true},
+    {sym:'MATIC/USDT',price:'$0.52',ch:'-2.10%',up:false},
+];
+(function buildTicker(){
+    const el = document.getElementById('ticker');
+    const all = [...TICKERS,...TICKERS];
+    el.innerHTML = all.map(d=>`<div class="ticker-item">
+        <span class="t-sym">${d.sym}</span>
+        <span class="t-pri">${d.price}</span>
+        <span class="${d.up?'t-up':'t-dn'}">${d.ch}</span>
+        <span class="t-sep">·</span>
+    </div>`).join('');
+})();
+
+/* ---- HAMBURGER MENU ---- */
+const hamburger = document.getElementById('nav-hamburger');
+const drawer    = document.getElementById('nav-drawer');
+hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    });
+});
+document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded','false');
+        document.body.style.overflow = '';
+    }
+});
+
+/* ---- SCROLL REVEAL ---- */
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold:.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ---- INIT ---- */
+renderMarket();
+renderFNG();
+renderTrending();
+updateSources();
+loadAllFeeds();
+
+// Auto-refresh
+setInterval(loadAllFeeds, REFRESH_MS);
+setInterval(updateMarket, 3000);
+setInterval(() => { renderFNG(); }, 60000);
+</script>
+</body>
+                                 </html>
