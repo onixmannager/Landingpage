@@ -573,10 +573,26 @@ h2.section-title em { font-style: italic; }
   margin-top: 14px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 12px;
   color: var(--blue);
   font-weight: 500;
+}
+.flip-hint-icon {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  border: 1px solid rgba(21,87,240,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: var(--blue);
+  animation: wiggle 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotateY(0deg); }
+  40% { transform: rotateY(30deg); }
+  60% { transform: rotateY(-15deg); }
 }
 .flip-hint i { font-size: 10px; transition: transform 0.2s; }
 .flip-card:hover .flip-hint i { transform: rotate(180deg); }
@@ -963,43 +979,141 @@ footer {
   color: rgba(250,250,247,0.25);
 }
 
-/* ── MOBILE MENU ─────────────────────────────── */
+/* ── SIDEBAR MENU ─────────────────────────────── */
 .menu-toggle {
   display: none;
   background: none;
   border: none;
   color: var(--ink);
-  font-size: 18px;
+  font-size: 20px;
   padding: 6px;
+  cursor: pointer;
 }
-.mobile-nav {
+
+/* Overlay */
+.nav-overlay {
   display: none;
   position: fixed;
   inset: 0;
+  z-index: 199;
+  background: rgba(13,13,13,0.45);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.nav-overlay.open { display: block; opacity: 1; }
+
+/* Sidebar panel */
+.mobile-nav {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
   z-index: 200;
+  width: 78%;
+  max-width: 340px;
   background: var(--paper);
-  padding: 80px 5% 40px;
+  padding: 0;
+  display: flex;
   flex-direction: column;
-  gap: 0;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: -8px 0 40px rgba(13,13,13,0.12);
 }
-.mobile-nav.open { display: flex; }
-.mobile-nav a {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 36px;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 16px 0;
+.mobile-nav.open { transform: translateX(0); }
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 64px;
   border-bottom: 1px solid var(--line);
-  transition: color 0.2s, padding-left 0.2s;
+  flex-shrink: 0;
 }
-.mobile-nav a:hover { color: var(--blue); padding-left: 8px; }
+.mobile-nav-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  text-decoration: none;
+}
+.mobile-nav-logo .tec { font-size: 10px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+.mobile-nav-logo .onix { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink); }
+
 .mobile-nav-close {
-  position: absolute;
-  top: 20px; right: 5%;
-  background: none; border: none;
-  font-size: 20px; color: var(--ink);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
 }
+.mobile-nav-close:hover { background: var(--paper-2); border-color: var(--ink-3); }
+
+.mobile-nav-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  overflow-y: auto;
+}
+.mobile-nav-links a {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink-2);
+  text-decoration: none;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.15s, color 0.15s, padding-left 0.15s;
+}
+.mobile-nav-links a:last-child { border-bottom: none; }
+.mobile-nav-links a::after {
+  content: '→';
+  font-size: 14px;
+  color: var(--ink-3);
+  transition: transform 0.2s, color 0.2s;
+}
+.mobile-nav-links a:hover {
+  background: var(--paper-2);
+  color: var(--blue);
+  padding-left: 30px;
+}
+.mobile-nav-links a:hover::after { transform: translateX(4px); color: var(--blue); }
+.mobile-nav-links a.nav-cta-link {
+  margin: 16px 24px 0;
+  padding: 13px 20px;
+  background: var(--blue);
+  color: #fff !important;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+  justify-content: center;
+}
+.mobile-nav-links a.nav-cta-link::after { display: none; }
+.mobile-nav-links a.nav-cta-link:hover { background: var(--blue-2); padding-left: 20px; }
+
+.mobile-nav-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.mobile-nav-social {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-nav-social:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
 /* ── REVEALS ─────────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -1046,8 +1160,8 @@ footer {
   </a>
   <ul class="nav-links">
     <li><a href="#sobre-nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#productos">Productos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#clientes">Clientes</a></li>
     <li><a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank">Tienda</a></li>
@@ -1056,15 +1170,32 @@ footer {
   <button class="menu-toggle" onclick="openMenu()" aria-label="Menú"><i class="fas fa-bars"></i></button>
 </nav>
 
+<!-- OVERLAY -->
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
+<!-- SIDEBAR -->
 <div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
-  <a href="#sobre-nosotros" onclick="closeMenu()">Nosotros</a>
-  <a href="#servicios" onclick="closeMenu()">Servicios</a>
-  <a href="#productos" onclick="closeMenu()">Productos</a>
-  <a href="#proceso" onclick="closeMenu()">Proceso</a>
-  <a href="#clientes" onclick="closeMenu()">Clientes</a>
-  <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" onclick="closeMenu()">Tienda</a>
-  <a href="#contacto" onclick="closeMenu()">Contactar</a>
+  <div class="mobile-nav-header">
+    <a href="#inicio" class="mobile-nav-logo" onclick="closeMenu()">
+      <span class="tec">Tecnologías&nbsp;</span>
+      <span class="onix">Onix</span>
+    </a>
+    <button class="mobile-nav-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="#sobre-nosotros" onclick="closeMenu()">Nosotros</a>
+    <a href="#productos" onclick="closeMenu()">Productos</a>
+    <a href="#servicios" onclick="closeMenu()">Servicios</a>
+    <a href="#proceso" onclick="closeMenu()">Proceso</a>
+    <a href="#clientes" onclick="closeMenu()">Clientes</a>
+    <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" onclick="closeMenu()">Tienda</a>
+    <a href="#contacto" class="nav-cta-link" onclick="closeMenu()">Contactar</a>
+  </div>
+  <div class="mobile-nav-footer">
+    <a href="#" class="mobile-nav-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/+34643229507" target="_blank" class="mobile-nav-social" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" class="mobile-nav-social" aria-label="Tienda"><i class="fas fa-store"></i></a>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -1152,6 +1283,184 @@ footer {
   </div>
 </section>
 
+<!-- PRODUCTOS -->
+<section id="productos" class="section" style="border-top: 1px solid var(--line);">
+  <div class="section-head-single reveal">
+    <div class="section-tag"><span>Soluciones llave en mano</span></div>
+    <h2 class="section-title">Nuestros <em>Productos</em></h2>
+    <p class="section-intro" style="margin-top: 12px;">Pasa el ratón sobre cada producto para descubrir más. Soluciones diseñadas para resolver problemas reales de tu negocio.</p>
+  </div>
+  <div class="products-grid reveal">
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://img.freepik.com/fotos-premium/joven-sonriente-pie-restaurante-sosteniendo-tableta_132358-62281.jpg" alt="Camarero Digital" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Camarero Digital</h3>
+            <p>Gestiona pedidos y reservas de forma automatizada. Optimiza el servicio en tu restaurante o negocio.</p>
+            <div class="flip-hint"><div class="flip-hint-icon"><i class="fas fa-rotate"></i></div> Girar para ver más</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Camarero Digital</h3>
+              <p>Hostelería & Restauración</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Toma de pedidos automatizada</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Gestión de mesas y reservas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Integración con cocina</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Control de stock en tiempo real</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/CDdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://static.vecteezy.com/system/resources/previews/014/226/997/non_2x/young-secretary-and-her-boss-photo.jpg" alt="Secretario Inteligente" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Secretario Inteligente</h3>
+            <p>Asistente con IA que optimiza la gestión administrativa y la comunicación de tu empresa.</p>
+            <div class="flip-hint"><div class="flip-hint-icon"><i class="fas fa-rotate"></i></div> Girar para ver más</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Secretario Inteligente</h3>
+              <p>Administración & IA</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Gestión automatizada de agendas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Automatización de respuestas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Análisis de datos y reportes</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Asistente virtual con IA</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/SIdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://smartstore.com/media/6788/file/3d-jpg/3d-247-walk-in-store-1024p-chatgpt-original2_960_960.jpg" alt="Comercio 24/7" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Comercio 24/7</h3>
+            <p>Tu negocio abierto siempre. Gestiona ventas e inventario de manera automática sin límites horarios.</p>
+            <div class="flip-hint"><div class="flip-hint-icon"><i class="fas fa-rotate"></i></div> Girar para ver más</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Comercio 24/7</h3>
+              <p>E-commerce & Retail</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Tienda online automatizada</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Control de inventario real-time</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Sistema de pagos integrado</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Análisis de comportamiento</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/247diapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://mundostartups.com/wp-content/uploads/2024/01/tipos-de-emprendedores.jpg" alt="Emprendedores" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Emprendedores</h3>
+            <p>Webs, apps y proyectos a medida para quienes inician o impulsan sus ideas de negocio.</p>
+            <div class="flip-hint"><div class="flip-hint-icon"><i class="fas fa-rotate"></i></div> Girar para ver más</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Emprendedores</h3>
+              <p>Startups & Pymes</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Sitios web profesionales</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Apps móviles personalizadas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Identidad digital y branding</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Estrategia digital integral</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/EMdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://raw.githubusercontent.com/Onixmanager/TecnologiasOnix/refs/heads/main/Tecnologiaslogomini.webp" alt="Reseñas para Google" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Reseñas para Google</h3>
+            <p>Producto físico estratégico que mejora tu reputación y presencia online en Google Maps y búsquedas.</p>
+            <div class="flip-hint"><div class="flip-hint-icon"><i class="fas fa-rotate"></i></div> Girar para ver más</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Reseñas para Google</h3>
+              <p>Marketing Digital</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Mejora la reputación online</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Más visibilidad en búsquedas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Gestión de reseñas integrada</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Soporte y asesoramiento incluido</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/SHdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" class="fbtn-outline">Tienda</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card flip-card-custom">
+      <div class="flip-inner" style="transform: none !important;">
+        <div class="flip-front" style="position: relative; transform: none;">
+          <div class="custom-plus"><i class="fas fa-plus"></i></div>
+          <h3>¿Solución personalizada?</h3>
+          <p>Desarrollamos productos a medida adaptados a las necesidades específicas de tu negocio.</p>
+          <a href="#contacto" class="btn-fill" style="margin-top: 8px; font-size: 13px; padding: 11px 24px;">Contactar ahora</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- SERVICIOS -->
 <section id="servicios" class="section" style="border-top: 1px solid var(--line);">
   <div class="section-head reveal">
@@ -1202,184 +1511,6 @@ footer {
       <p>Ofrecemos mantenimiento completo por 1 año sin coste alguno, garantizando el óptimo rendimiento, actualizaciones constantes y soporte técnico especializado.</p>
     </div>
     <a href="#contacto" class="btn-white">Solicitar información</a>
-  </div>
-</section>
-
-<!-- PRODUCTOS -->
-<section id="productos" class="section">
-  <div class="section-head-single reveal">
-    <div class="section-tag"><span>Soluciones llave en mano</span></div>
-    <h2 class="section-title">Nuestros <em>Productos</em></h2>
-    <p class="section-intro" style="margin-top: 12px;">Pasa el ratón sobre cada producto para descubrir más. Soluciones diseñadas para resolver problemas reales de tu negocio.</p>
-  </div>
-  <div class="products-grid reveal">
-
-    <div class="flip-card">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="flip-front-img"><img src="https://img.freepik.com/fotos-premium/joven-sonriente-pie-restaurante-sosteniendo-tableta_132358-62281.jpg" alt="Camarero Digital" loading="lazy"></div>
-          <div class="flip-front-body">
-            <h3>Camarero Digital</h3>
-            <p>Gestiona pedidos y reservas de forma automatizada. Optimiza el servicio en tu restaurante o negocio.</p>
-            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
-          </div>
-        </div>
-        <div class="flip-back">
-          <div>
-            <div class="flip-back-header">
-              <h3>Camarero Digital</h3>
-              <p>Hostelería & Restauración</p>
-            </div>
-            <div class="flip-features">
-              <div class="flip-feat"><i class="fas fa-check"></i>Toma de pedidos automatizada</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Gestión de mesas y reservas</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Integración con cocina</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Control de stock en tiempo real</div>
-            </div>
-          </div>
-          <div class="flip-back-actions">
-            <a href="https://tecnologiasonix.com/diapositivas/CDdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
-            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="flip-front-img"><img src="https://static.vecteezy.com/system/resources/previews/014/226/997/non_2x/young-secretary-and-her-boss-photo.jpg" alt="Secretario Inteligente" loading="lazy"></div>
-          <div class="flip-front-body">
-            <h3>Secretario Inteligente</h3>
-            <p>Asistente con IA que optimiza la gestión administrativa y la comunicación de tu empresa.</p>
-            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
-          </div>
-        </div>
-        <div class="flip-back">
-          <div>
-            <div class="flip-back-header">
-              <h3>Secretario Inteligente</h3>
-              <p>Administración & IA</p>
-            </div>
-            <div class="flip-features">
-              <div class="flip-feat"><i class="fas fa-check"></i>Gestión automatizada de agendas</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Automatización de respuestas</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Análisis de datos y reportes</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Asistente virtual con IA</div>
-            </div>
-          </div>
-          <div class="flip-back-actions">
-            <a href="https://tecnologiasonix.com/diapositivas/SIdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
-            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="flip-front-img"><img src="https://smartstore.com/media/6788/file/3d-jpg/3d-247-walk-in-store-1024p-chatgpt-original2_960_960.jpg" alt="Comercio 24/7" loading="lazy"></div>
-          <div class="flip-front-body">
-            <h3>Comercio 24/7</h3>
-            <p>Tu negocio abierto siempre. Gestiona ventas e inventario de manera automática sin límites horarios.</p>
-            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
-          </div>
-        </div>
-        <div class="flip-back">
-          <div>
-            <div class="flip-back-header">
-              <h3>Comercio 24/7</h3>
-              <p>E-commerce & Retail</p>
-            </div>
-            <div class="flip-features">
-              <div class="flip-feat"><i class="fas fa-check"></i>Tienda online automatizada</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Control de inventario real-time</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Sistema de pagos integrado</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Análisis de comportamiento</div>
-            </div>
-          </div>
-          <div class="flip-back-actions">
-            <a href="https://tecnologiasonix.com/diapositivas/247diapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
-            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="flip-front-img"><img src="https://mundostartups.com/wp-content/uploads/2024/01/tipos-de-emprendedores.jpg" alt="Emprendedores" loading="lazy"></div>
-          <div class="flip-front-body">
-            <h3>Emprendedores</h3>
-            <p>Webs, apps y proyectos a medida para quienes inician o impulsan sus ideas de negocio.</p>
-            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
-          </div>
-        </div>
-        <div class="flip-back">
-          <div>
-            <div class="flip-back-header">
-              <h3>Emprendedores</h3>
-              <p>Startups & Pymes</p>
-            </div>
-            <div class="flip-features">
-              <div class="flip-feat"><i class="fas fa-check"></i>Sitios web profesionales</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Apps móviles personalizadas</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Identidad digital y branding</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Estrategia digital integral</div>
-            </div>
-          </div>
-          <div class="flip-back-actions">
-            <a href="https://tecnologiasonix.com/diapositivas/EMdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
-            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="flip-front-img"><img src="https://raw.githubusercontent.com/Onixmanager/TecnologiasOnix/refs/heads/main/Tecnologiaslogomini.webp" alt="Reseñas para Google" loading="lazy"></div>
-          <div class="flip-front-body">
-            <h3>Reseñas para Google</h3>
-            <p>Producto físico estratégico que mejora tu reputación y presencia online en Google Maps y búsquedas.</p>
-            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
-          </div>
-        </div>
-        <div class="flip-back">
-          <div>
-            <div class="flip-back-header">
-              <h3>Reseñas para Google</h3>
-              <p>Marketing Digital</p>
-            </div>
-            <div class="flip-features">
-              <div class="flip-feat"><i class="fas fa-check"></i>Mejora la reputación online</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Más visibilidad en búsquedas</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Gestión de reseñas integrada</div>
-              <div class="flip-feat"><i class="fas fa-check"></i>Soporte y asesoramiento incluido</div>
-            </div>
-          </div>
-          <div class="flip-back-actions">
-            <a href="https://tecnologiasonix.com/diapositivas/SHdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
-            <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" class="fbtn-outline">Tienda</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card flip-card-custom">
-      <div class="flip-inner" style="transform: none !important;">
-        <div class="flip-front" style="position: relative; transform: none;">
-          <div class="custom-plus"><i class="fas fa-plus"></i></div>
-          <h3>¿Solución personalizada?</h3>
-          <p>Desarrollamos productos a medida adaptados a las necesidades específicas de tu negocio.</p>
-          <a href="#contacto" class="btn-fill" style="margin-top: 8px; font-size: 13px; padding: 11px 24px;">Contactar ahora</a>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1489,18 +1620,12 @@ footer {
             <span class="c-detail-val">+34 643 229 507</span>
           </div>
         </a>
-        <a href="https://tecnologiasonix.com" target="_blank" class="c-detail">
-          <div class="c-detail-icon"><i class="fas fa-globe"></i></div>
+
+        <a href="mailto:info@tecnologiasonix.com" class="c-detail">
+          <div class="c-detail-icon"><i class="fas fa-envelope"></i></div>
           <div>
-            <span class="c-detail-lbl">Web</span>
-            <span class="c-detail-val">tecnologiasonix.com</span>
-          </div>
-        </a>
-        <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" class="c-detail">
-          <div class="c-detail-icon"><i class="fas fa-store"></i></div>
-          <div>
-            <span class="c-detail-lbl">Tienda</span>
-            <span class="c-detail-val">tienda-tecnologiasonix.vercel.app</span>
+            <span class="c-detail-lbl">Email</span>
+            <span class="c-detail-val">info@tecnologiasonix.com</span>
           </div>
         </a>
       </div>
@@ -1564,8 +1689,8 @@ footer {
     </div>
     <div class="footer-links">
       <a href="#sobre-nosotros">Nosotros</a>
-      <a href="#servicios">Servicios</a>
       <a href="#productos">Productos</a>
+      <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
       <a href="#clientes">Clientes</a>
       <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank">Tienda</a>
@@ -1583,9 +1708,34 @@ footer {
   </div>
 </footer>
 
+<!-- BOTONES FLOTANTES -->
+<a href="https://wa.me/+34643229507" target="_blank" id="fab-whatsapp" title="WhatsApp" style="
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25d366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 28px rgba(37,211,102,0.55)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.45)'">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<a href="#contacto" id="fab-contact" title="Ir a Contacto" style="
+  position: fixed; bottom: 28px; left: 28px; z-index: 999;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #0d0d0d; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(13,13,13,0.3);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+" onmouseover="this.style.transform='scale(1.1)';this.style.background='#1557f0'"
+   onmouseout="this.style.transform='scale(1)';this.style.background='#0d0d0d'">
+  <i class="fas fa-envelope"></i>
+</a>
+
 <script>
-
-
 async function submitForm(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
@@ -1628,8 +1778,16 @@ async function submitForm(e) {
   btn.disabled = false;
   btn.style.opacity = '1';
 }
-function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); }
-function openMenu() { document.getElementById('mobileNav').classList.add('open'); }
+function closeMenu() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function openMenu() {
+  document.getElementById('mobileNav').classList.add('open');
+  document.getElementById('navOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
@@ -1644,4 +1802,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 </body>
-</html>
+  </html>
