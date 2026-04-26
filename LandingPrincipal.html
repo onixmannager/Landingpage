@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onix Manager — Soluciones Digitales</title>
     
-    <!-- Favicon: se mantiene el .ico y se añade versión PNG de alta calidad -->
+    <!-- Favicon: versión .ico y versión PNG de alta calidad -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
     
-    <!-- Open Graph (compartir en redes sociales) -->
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp...) -->
     <meta property="og:title" content="Onix Manager - Soluciones Digitales">
     <meta property="og:description" content="Educación financiera, tecnología blockchain y desarrollo de proyectos digitales.">
     <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
     <meta property="og:type" content="website">
     
-    <!-- Twitter Card (mejor compatibilidad) -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Onix Manager - Soluciones Digitales">
     <meta name="twitter:description" content="Educación financiera, tecnología blockchain y desarrollo de proyectos digitales.">
@@ -255,6 +255,42 @@
         /* ── Footer ── */
         .footer { border-top:1px solid var(--border); padding:2rem 0; text-align:center; font-size:.75rem; color:var(--text); }
 
+        /* ═══════ BOTÓN FLOTANTE DE WHATSAPP ═══════ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 62px;
+            height: 62px;
+            background: var(--surface);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(232,160,32,0.25);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        .whatsapp-float:hover {
+            background: var(--gold);
+            color: var(--bg);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(232,160,32,0.4);
+        }
+        /* Ajuste para móviles */
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+            }
+        }
+
         /* ── Reveal ── */
         .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
         .reveal.visible { opacity:1; transform:translateY(0); }
@@ -300,7 +336,6 @@
         </div>
         <div class="hero-image">
             <img src="/onixmanager.webp" width="220" height="220" loading="eager" decoding="async" class="profile-pic">
-        
         </div>
     </div>
 
@@ -405,14 +440,10 @@
             <h2>¿Tienes un proyecto o duda?</h2>
         </div>
         
-        <!-- Formulario adaptado a Web3Forms -->
         <div class="contact-form" id="form-container">
-            <!-- Contenido del formulario (se oculta al enviar con éxito) -->
             <div id="form-content">
                 <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Clave de acceso Web3Forms (oculta) -->
                     <input type="hidden" name="access_key" value="0b9183aa-6cdd-4fee-9bfa-f3b2350cbfba">
-                    <!-- Redirigir a la misma página tras el envío (opcional, aquí usaremos AJAX para no salir) -->
                     <input type="hidden" name="redirect" value="">
                     
                     <div class="form-group">
@@ -431,7 +462,6 @@
                 </div>
             </div>
             
-            <!-- Mensaje de éxito (inicialmente oculto) -->
             <div class="success-message" id="success-message">
                 <i class="fas fa-check-circle"></i>
                 <h3>¡Mensaje enviado con éxito!</h3>
@@ -446,6 +476,11 @@
     </div>
 
 </div>
+
+<!-- ═══════ BOTÓN FLOTANTE WHATSAPP ═══════ -->
+<a href="https://wa.me/34643229507" target="_blank" class="whatsapp-float" aria-label="Chatea por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
     // ── Animaciones de revelación (scroll) ──
@@ -465,7 +500,6 @@
         e.preventDefault();
         
         const formData = new FormData(form);
-        // Opcional: puedes agregar un campo "redirect" para evitar la página en blanco, pero con AJAX no es necesario.
         
         try {
             const response = await fetch('https://api.web3forms.com/submit', {
@@ -476,7 +510,6 @@
             const data = await response.json();
             
             if (data.success) {
-                // Ocultar el formulario y la nota, mostrar mensaje de éxito
                 formContent.style.display = 'none';
                 successMessage.style.display = 'block';
             } else {
