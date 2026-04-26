@@ -33,20 +33,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── CURSOR ─────────────────────────────────── */
-*, *::before, *::after { cursor: none !important; }
-#cursor {
-  width: 10px; height: 10px;
-  background: var(--blue);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
-  mix-blend-mode: multiply;
-}
-#cursor.expand { width: 48px; height: 48px; background: var(--blue); opacity: 0.15; }
+
 
 /* ── NAV ─────────────────────────────────────── */
 nav {
@@ -357,11 +344,11 @@ h2.section-title em { font-style: italic; }
 }
 
 .about-cell {
-  background: var(--paper-2);
+  background: #fff;
   padding: 40px 36px;
-  transition: background 0.25s;
+  transition: background 0.25s, box-shadow 0.25s;
 }
-.about-cell:hover { background: var(--paper); }
+.about-cell:hover { background: #fff; box-shadow: inset 0 0 0 2px var(--blue); }
 
 .about-num {
   font-family: var(--serif);
@@ -546,8 +533,9 @@ h2.section-title em { font-style: italic; }
 }
 
 .flip-front {
-  background: var(--paper);
-  border: 1px solid var(--line);
+  background: #fff;
+  border: 1.5px solid rgba(13,13,13,0.13);
+  box-shadow: 0 4px 20px rgba(13,13,13,0.07);
   display: flex;
   flex-direction: column;
 }
@@ -715,11 +703,11 @@ h2.section-title em { font-style: italic; }
 }
 
 .process-cell {
-  background: var(--paper);
+  background: #fff;
   padding: 40px 32px;
-  transition: background 0.25s;
+  transition: background 0.25s, box-shadow 0.25s;
 }
-.process-cell:hover { background: var(--blue-pale); }
+.process-cell:hover { background: var(--blue-pale); box-shadow: inset 0 0 0 2px var(--blue); }
 
 .process-n {
   font-family: var(--serif);
@@ -760,17 +748,18 @@ h2.section-title em { font-style: italic; }
 }
 
 .testi-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
+  background: #fff;
+  border: 1.5px solid rgba(13,13,13,0.1);
   border-radius: var(--r);
   padding: 32px 28px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   transition: box-shadow 0.25s, transform 0.25s;
+  box-shadow: 0 2px 12px rgba(13,13,13,0.05);
 }
 .testi-card:hover {
-  box-shadow: 0 16px 48px rgba(13,13,13,0.07);
+  box-shadow: 0 16px 48px rgba(13,13,13,0.1);
   transform: translateY(-4px);
 }
 .testi-stars { display: flex; gap: 3px; }
@@ -1048,8 +1037,6 @@ footer {
 </style>
 </head>
 <body>
-
-<div id="cursor"></div>
 
 <!-- NAV -->
 <nav>
@@ -1590,15 +1577,7 @@ footer {
 </footer>
 
 <script>
-const cur = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top = e.clientY + 'px';
-});
-document.querySelectorAll('a, button, .flip-card, .service-row').forEach(el => {
-  el.addEventListener('mouseenter', () => cur.classList.add('expand'));
-  el.addEventListener('mouseleave', () => cur.classList.remove('expand'));
-});
+
 
 function openMenu() { document.getElementById('mobileNav').classList.add('open'); }
 function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); }
@@ -1616,4 +1595,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 </body>
-</html>
+              </html>
