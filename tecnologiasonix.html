@@ -1506,41 +1506,48 @@ footer {
       </div>
     </div>
     <div class="contact-form reveal d2">
-      <div class="form-2col">
-        <div class="fg">
-          <label>Nombre</label>
-          <input type="text" placeholder="Tu nombre">
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <input type="hidden" name="access_key" value="968eb422-de93-4087-a983-1f93b53a2cce">
+        <input type="hidden" name="subject" value="Nuevo mensaje desde Tecnologías Onix">
+        <input type="hidden" name="from_name" value="Web Tecnologías Onix">
+        <input type="checkbox" name="botcheck" style="display:none;">
+        <div class="form-2col">
+          <div class="fg">
+            <label>Nombre</label>
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="fg">
+            <label>Empresa</label>
+            <input type="text" name="empresa" placeholder="Tu empresa">
+          </div>
         </div>
         <div class="fg">
-          <label>Empresa</label>
-          <input type="text" placeholder="Tu empresa">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="correo@empresa.com" required>
         </div>
-      </div>
-      <div class="fg">
-        <label>Email</label>
-        <input type="email" placeholder="correo@empresa.com">
-      </div>
-      <div class="fg">
-        <label>Producto o servicio</label>
-        <select>
-          <option value="">Selecciona una opción</option>
-          <option>Desarrollo de Software</option>
-          <option>Aplicaciones con IA</option>
-          <option>Sistemas de Gestión</option>
-          <option>Camarero Digital</option>
-          <option>Secretario Inteligente</option>
-          <option>Comercio 24/7</option>
-          <option>Reseñas para Google</option>
-          <option>Solución personalizada</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>Mensaje</label>
-        <textarea placeholder="Cuéntanos sobre tu proyecto…"></textarea>
-      </div>
-      <a href="https://wa.me/+34643229507" target="_blank" class="btn-fill" style="width: 100%; justify-content: center; background: var(--blue); border-radius: 10px;">
-        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
-      </a>
+        <div class="fg">
+          <label>Producto o servicio</label>
+          <select name="servicio">
+            <option value="">Selecciona una opción</option>
+            <option>Desarrollo de Software</option>
+            <option>Aplicaciones con IA</option>
+            <option>Sistemas de Gestión</option>
+            <option>Camarero Digital</option>
+            <option>Secretario Inteligente</option>
+            <option>Comercio 24/7</option>
+            <option>Reseñas para Google</option>
+            <option>Solución personalizada</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Mensaje</label>
+          <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto…" required></textarea>
+        </div>
+        <button type="submit" id="submitBtn" class="btn-fill" style="width:100%;justify-content:center;background:var(--blue);border-radius:10px;border:none;font-family:var(--sans);font-size:14px;">
+          <i class="fas fa-paper-plane"></i> <span id="btnText">Enviar mensaje</span>
+        </button>
+        <div id="formMsg" style="display:none;margin-top:16px;padding:14px 18px;border-radius:10px;font-size:14px;text-align:center;"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -1579,8 +1586,50 @@ footer {
 <script>
 
 
-function openMenu() { document.getElementById('mobileNav').classList.add('open'); }
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const msg = document.getElementById('formMsg');
+
+  btnText.textContent = 'Enviando…';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+    if (json.success) {
+      msg.style.display = 'block';
+      msg.style.background = 'rgba(74,222,128,0.12)';
+      msg.style.border = '1px solid rgba(74,222,128,0.3)';
+      msg.style.color = '#4ade80';
+      msg.textContent = '✓ Mensaje enviado correctamente. Te contactamos pronto.';
+      e.target.reset();
+    } else {
+      throw new Error();
+    }
+  } catch {
+    msg.style.display = 'block';
+    msg.style.background = 'rgba(248,113,113,0.12)';
+    msg.style.border = '1px solid rgba(248,113,113,0.3)';
+    msg.style.color = '#f87171';
+    msg.textContent = '✗ Algo salió mal. Inténtalo de nuevo o escríbenos por WhatsApp.';
+  }
+
+  btnText.textContent = 'Enviar mensaje';
+  btn.disabled = false;
+  btn.style.opacity = '1';
+}
 function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); }
+function openMenu() { document.getElementById('mobileNav').classList.add('open'); }
 
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
@@ -1595,4 +1644,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 </body>
-              </html>
+</html>
