@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecnologías Onix — Soluciones Digitales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --ink: #0d0d0d;
+  --ink-2: #3a3a3a;
+  --ink-3: #888;
+  --paper: #fafaf7;
+  --paper-2: #f2f0ea;
+  --blue: #1557f0;
+  --blue-2: #0d3fbe;
+  --blue-pale: #eef2ff;
+  --line: rgba(13,13,13,0.1);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Geist', system-ui, sans-serif;
+  --r: 14px;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── CURSOR ─────────────────────────────────── */
+*, *::before, *::after { cursor: none !important; }
+#cursor {
+  width: 10px; height: 10px;
+  background: var(--blue);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: multiply;
+}
+#cursor.expand { width: 48px; height: 48px; background: var(--blue); opacity: 0.15; }
+
+/* ── NAV ─────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 64px;
+  background: rgba(250,250,247,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  text-decoration: none;
+}
+.logo-tec {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.logo-onix {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-2);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+
+.nav-btn {
+  padding: 9px 22px;
+  border: 1.5px solid var(--ink);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink) !important;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s !important;
+  letter-spacing: 0.04em;
+}
+.nav-btn:hover {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-color: var(--ink) !important;
+}
+
+/* ── HERO ────────────────────────────────────── */
+#inicio {
+  min-height: 100vh;
+  padding: 120px 5% 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-decorline {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  z-index: 0;
+}
+.hero-decornumber {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(180px, 22vw, 300px);
+  color: rgba(13,13,13,0.04);
+  line-height: 1;
+  transform: translateY(-50%);
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+
+.hero-left { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.hero-eyebrow-line {
+  width: 32px; height: 1px;
+  background: var(--blue);
+}
+.hero-eyebrow-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+h1.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(52px, 6.5vw, 90px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 36px;
+}
+h1.hero-title em {
+  font-style: italic;
+  color: var(--blue);
+}
+
+.hero-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 48px;
+}
+
+.hero-actions { display: flex; gap: 16px; align-items: center; }
+
+.btn-fill {
+  padding: 14px 36px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 100px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-fill:hover { background: var(--blue); transform: translateY(-2px); }
+
+.btn-ghost {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-2);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: color 0.2s, gap 0.2s;
+}
+.btn-ghost:hover { color: var(--blue); gap: 14px; }
+
+.hero-right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero-stat-row {
+  display: flex;
+  gap: 1px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--line);
+}
+.hero-stat {
+  flex: 1;
+  padding: 28px 24px;
+  background: var(--paper);
+  text-align: center;
+}
+.hero-stat .n {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 44px;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.hero-stat .l {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-3);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+.hero-feature-card {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--r);
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.hero-feature-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--paper);
+  flex-shrink: 0;
+}
+.hero-feature-card h3 {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.hero-feature-card p {
+  font-size: 13px;
+  color: rgba(250,250,247,0.55);
+  line-height: 1.6;
+}
+
+/* ── SECTION BASE ────────────────────────────── */
+.section { padding: 100px 5%; }
+
+.section-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.section-tag::before {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--blue);
+}
+.section-tag span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+h2.section-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+h2.section-title em { font-style: italic; }
+
+.section-intro {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+.section-head-single { margin-bottom: 64px; }
+
+/* ── ABOUT ───────────────────────────────────── */
+#sobre-nosotros {
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.about-cell {
+  background: var(--paper-2);
+  padding: 40px 36px;
+  transition: background 0.25s;
+}
+.about-cell:hover { background: var(--paper); }
+
+.about-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 72px;
+  color: rgba(13,13,13,0.06);
+  line-height: 1;
+  margin-bottom: -10px;
+  letter-spacing: -0.04em;
+}
+.about-cell h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.about-cell p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.about-icon-line {
+  width: 28px; height: 2px;
+  background: var(--blue);
+  margin-bottom: 16px;
+}
+
+/* ── SERVICES ────────────────────────────────── */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 40px;
+  align-items: center;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+.service-row::after {
+  content: '';
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  top: 0; bottom: 0;
+  background: var(--paper-2);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.service-row:hover::after { opacity: 1; }
+
+.service-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--ink-3);
+  line-height: 1;
+}
+.service-body { }
+.service-body h3 {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+.service-row:hover .service-body h3 { color: var(--blue); }
+.service-body p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.6;
+  max-width: 520px;
+}
+.service-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.stag {
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+.service-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3);
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.service-row:hover .service-arrow {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+  transform: rotate(45deg);
+}
+
+.maintenance-strip {
+  margin-top: 40px;
+  background: var(--blue);
+  border-radius: var(--r);
+  padding: 36px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.maintenance-strip h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.maintenance-strip p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  max-width: 480px;
+}
+.btn-white {
+  padding: 12px 28px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 100px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-white:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+/* ── PRODUCTS – FLIP CARDS ───────────────────── */
+#productos { background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* flip card */
+.flip-card {
+  height: 420px;
+  perspective: 1200px;
+}
+.flip-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.flip-card:hover .flip-inner { transform: rotateY(180deg); }
+
+.flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.flip-front {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.flip-front-img {
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.flip-front-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.flip-card:hover .flip-front-img img { transform: scale(1.04); }
+.flip-front-body {
+  padding: 24px 24px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.flip-front-body h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.flip-front-body p {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.6;
+  flex: 1;
+}
+.flip-hint {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--blue);
+  font-weight: 500;
+}
+.flip-hint i { font-size: 10px; transition: transform 0.2s; }
+.flip-card:hover .flip-hint i { transform: rotate(180deg); }
+
+.flip-back {
+  background: var(--ink);
+  color: var(--paper);
+  transform: rotateY(180deg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.flip-back-header {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+.flip-back-header h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--paper);
+  margin-bottom: 4px;
+}
+.flip-back-header p {
+  font-size: 12px;
+  color: rgba(250,250,247,0.45);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.flip-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.flip-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(250,250,247,0.8);
+  line-height: 1.5;
+}
+.flip-feat i { color: #4ade80; font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+.flip-back-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.fbtn-primary {
+  flex: 1;
+  padding: 11px;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s;
+}
+.fbtn-primary:hover { background: var(--blue-2); }
+.fbtn-outline {
+  flex: 1;
+  padding: 11px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(250,250,247,0.7);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.fbtn-outline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+/* custom card */
+.flip-card-custom .flip-front {
+  background: transparent;
+  border: 1.5px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px 32px;
+  gap: 16px;
+}
+.custom-plus {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  color: var(--ink-3);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.flip-card-custom:hover .custom-plus { background: var(--blue); border-color: var(--blue); color: #fff; }
+.flip-card-custom .flip-front h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.flip-card-custom .flip-front p {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+
+/* ── PROCESS ─────────────────────────────────── */
+.process-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.process-cell {
+  background: var(--paper);
+  padding: 40px 32px;
+  transition: background 0.25s;
+}
+.process-cell:hover { background: var(--blue-pale); }
+
+.process-n {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 52px;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+.process-cell h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.process-cell p {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.process-label {
+  display: block;
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+/* ── TESTIMONIALS ────────────────────────────── */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.testi-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.testi-card:hover {
+  box-shadow: 0 16px 48px rgba(13,13,13,0.07);
+  transform: translateY(-4px);
+}
+.testi-stars { display: flex; gap: 3px; }
+.testi-stars i { color: #f59e0b; font-size: 13px; }
+.testi-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.65;
+  flex: 1;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.testi-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--paper-2);
+  flex-shrink: 0;
+}
+.testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.testi-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.testi-role {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+
+.cta-strip {
+  margin-top: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+.cta-strip h3 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(28px, 3.5vw, 44px);
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ── CONTACT ─────────────────────────────────── */
+#contacto { background: var(--ink); color: var(--paper); }
+#contacto .section-tag span { color: #6b9aff; }
+#contacto .section-tag::before { background: #6b9aff; }
+#contacto h2.section-title { color: var(--paper); }
+#contacto .section-intro { color: rgba(250,250,247,0.55); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-details { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; }
+
+.c-detail {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  background: rgba(255,255,255,0.02);
+}
+.c-detail:hover { border-color: rgba(107,154,255,0.4); background: rgba(107,154,255,0.06); }
+.c-detail-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  color: #6b9aff;
+  flex-shrink: 0;
+}
+.c-detail-lbl {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(250,250,247,0.35);
+  display: block;
+  margin-bottom: 2px;
+}
+.c-detail-val {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(250,250,247,0.8);
+}
+
+.contact-form {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: calc(var(--r) + 4px);
+  padding: 44px;
+}
+
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fg { margin-bottom: 18px; }
+.fg label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250,250,247,0.35);
+  margin-bottom: 8px;
+}
+.fg input, .fg textarea, .fg select {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.18); }
+.fg input:focus, .fg textarea:focus, .fg select:focus { border-color: rgba(107,154,255,0.4); }
+.fg textarea { resize: vertical; min-height: 110px; }
+.fg select option { background: #1a1a1a; }
+
+/* ── FOOTER ──────────────────────────────────── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 48px 5% 32px;
+}
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.footer-logo-wrap { }
+.footer-logo { text-decoration: none; display: flex; align-items: baseline; gap: 2px; }
+.footer-logo-tec { font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,250,247,0.3); }
+.footer-logo-onix { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--paper); }
+.footer-tagline { font-size: 12px; font-weight: 300; color: rgba(250,250,247,0.3); margin-top: 4px; }
+
+.footer-links { display: flex; gap: 32px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(250,250,247,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--paper); }
+
+.footer-socials { display: flex; gap: 10px; }
+.social-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(250,250,247,0.45);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.social-btn:hover { background: rgba(255,255,255,0.06); color: var(--paper); border-color: rgba(255,255,255,0.2); }
+
+.footer-bottom-row {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-copy {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(250,250,247,0.25);
+}
+
+/* ── MOBILE MENU ─────────────────────────────── */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-size: 18px;
+  padding: 6px;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--paper);
+  padding: 80px 5% 40px;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s, padding-left 0.2s;
+}
+.mobile-nav a:hover { color: var(--blue); padding-left: 8px; }
+.mobile-nav-close {
+  position: absolute;
+  top: 20px; right: 5%;
+  background: none; border: none;
+  font-size: 20px; color: var(--ink);
+}
+
+/* ── REVEALS ─────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 1024px) {
+  #inicio { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .section-head { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+  .process-wrap { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .products-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .process-wrap { grid-template-columns: 1fr; }
+  .cta-strip { flex-direction: column; text-align: center; }
+  .service-row { grid-template-columns: 60px 1fr auto; gap: 20px; }
+  .contact-form { padding: 28px; }
+  .maintenance-strip { flex-direction: column; text-align: center; }
+  .footer-row { flex-direction: column; align-items: flex-start; }
+  .form-2col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="logo">
+    <span class="logo-tec">Tecnologías&nbsp;</span>
+    <span class="logo-onix">Onix</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre-nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#clientes">Clientes</a></li>
+    <li><a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank">Tienda</a></li>
+    <li><a href="#contacto" class="nav-btn">Contactar</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="openMenu()" aria-label="Menú"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+  <a href="#sobre-nosotros" onclick="closeMenu()">Nosotros</a>
+  <a href="#servicios" onclick="closeMenu()">Servicios</a>
+  <a href="#productos" onclick="closeMenu()">Productos</a>
+  <a href="#proceso" onclick="closeMenu()">Proceso</a>
+  <a href="#clientes" onclick="closeMenu()">Clientes</a>
+  <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" onclick="closeMenu()">Tienda</a>
+  <a href="#contacto" onclick="closeMenu()">Contactar</a>
+</div>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-decorline"></div>
+  <div class="hero-decornumber">01</div>
+
+  <div class="hero-left reveal">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Transformación digital · B2B</span>
+    </div>
+    <h1 class="hero-title">
+      Tecnología<br><em>inteligente</em><br>para tu negocio
+    </h1>
+    <p class="hero-body">
+      Soluciones digitales que transforman ideas en resultados tangibles para empresas y negocios. Desarrollo a medida, IA integrada y soporte continuo.
+    </p>
+    <div class="hero-actions">
+      <a href="#productos" class="btn-fill"><i class="fas fa-cube"></i> Ver Productos</a>
+      <a href="#servicios" class="btn-ghost">Explorar servicios <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <div class="hero-right reveal d2">
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="n">50<span style="font-size:0.5em">+</span></div>
+        <div class="l">Proyectos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">1</div>
+        <div class="l">Año garantía</div>
+      </div>
+      <div class="hero-stat">
+        <div class="n">24/7</div>
+        <div class="l">Soporte</div>
+      </div>
+    </div>
+    <div class="hero-feature-card">
+      <div class="hero-feature-icon"><i class="fas fa-brain"></i></div>
+      <div>
+        <h3>Inteligencia Artificial integrada</h3>
+        <p>Nuestros productos incorporan IA real — no solo una etiqueta. Automatización, análisis predictivo y asistentes virtuales que trabajan por ti.</p>
+      </div>
+    </div>
+    <div class="hero-feature-card" style="background: var(--blue-pale); color: var(--ink);">
+      <div class="hero-feature-icon" style="background: rgba(21,87,240,0.1); color: var(--blue);"><i class="fas fa-shield-halved"></i></div>
+      <div>
+        <h3 style="color: var(--ink);">Mantenimiento 1 año sin coste</h3>
+        <p style="color: var(--ink-2);">Cada producto incluye un año completo de actualizaciones, soporte técnico y optimización continua.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section id="sobre-nosotros" class="section">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag"><span>Quiénes somos</span></div>
+      <h2 class="section-title">Sobre <em>Nosotros</em></h2>
+    </div>
+    <p class="section-intro">En Tecnologías Onix creamos soluciones tecnológicas que potencian el crecimiento de tu negocio. Nuestra misión es transformar la manera en que las empresas operan.</p>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-cell">
+      <div class="about-num">01</div>
+      <div class="about-icon-line"></div>
+      <h3>Experiencia Tecnológica</h3>
+      <p>Profesionales especializados en las últimas tecnologías y metodologías de desarrollo ágil para cada necesidad empresarial.</p>
+    </div>
+    <div class="about-cell">
+      <div class="about-num">02</div>
+      <div class="about-icon-line"></div>
+      <h3>Innovación Constante</h3>
+      <p>Nos mantenemos a la vanguardia para ofrecer soluciones innovadoras, eficientes y escalables que evolucionan con tu negocio.</p>
+    </div>
+    <div class="about-cell">
+      <div class="about-num">03</div>
+      <div class="about-icon-line"></div>
+      <h3>Enfoque al Cliente</h3>
+      <p>Nuestras soluciones se adaptan a las necesidades específicas de cada cliente, garantizando resultados medibles y sostenibles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="section" style="border-top: 1px solid var(--line);">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag"><span>Lo que hacemos</span></div>
+      <h2 class="section-title">Nuestros <em>Servicios</em></h2>
+    </div>
+    <p class="section-intro">Una gama completa de servicios tecnológicos diseñados para impulsar la eficiencia y rentabilidad de tu empresa.</p>
+  </div>
+  <div class="services-list reveal">
+    <div class="service-row">
+      <div class="service-num">01</div>
+      <div class="service-body">
+        <h3>Desarrollo de Software</h3>
+        <p>Creamos soluciones de software personalizadas que se adaptan a las necesidades de tu negocio, optimizando procesos y aumentando la eficiencia operativa.</p>
+        <div class="service-tags-list">
+          <span class="stag">Apps web</span><span class="stag">Automatización</span><span class="stag">Integración de sistemas</span>
+        </div>
+      </div>
+      <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">02</div>
+      <div class="service-body">
+        <h3>Aplicaciones con IA</h3>
+        <p>Desarrollamos aplicaciones con inteligencia artificial integrada que conectan tu negocio con tus clientes en cualquier momento y lugar.</p>
+        <div class="service-tags-list">
+          <span class="stag">Asistentes virtuales</span><span class="stag">Apps móviles</span><span class="stag">Análisis predictivo</span>
+        </div>
+      </div>
+      <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">03</div>
+      <div class="service-body">
+        <h3>Sistemas de Gestión</h3>
+        <p>Implementamos sistemas completos de gestión empresarial que automatizan tareas, centralizan la información y facilitan la toma de decisiones.</p>
+        <div class="service-tags-list">
+          <span class="stag">Inventario</span><span class="stag">CRM</span><span class="stag">Gestión de RRHH</span>
+        </div>
+      </div>
+      <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+    </div>
+  </div>
+  <div class="maintenance-strip reveal">
+    <div>
+      <h3>Mantenimiento Integral — 1 Año</h3>
+      <p>Ofrecemos mantenimiento completo por 1 año sin coste alguno, garantizando el óptimo rendimiento, actualizaciones constantes y soporte técnico especializado.</p>
+    </div>
+    <a href="#contacto" class="btn-white">Solicitar información</a>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="section">
+  <div class="section-head-single reveal">
+    <div class="section-tag"><span>Soluciones llave en mano</span></div>
+    <h2 class="section-title">Nuestros <em>Productos</em></h2>
+    <p class="section-intro" style="margin-top: 12px;">Pasa el ratón sobre cada producto para descubrir más. Soluciones diseñadas para resolver problemas reales de tu negocio.</p>
+  </div>
+  <div class="products-grid reveal">
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://img.freepik.com/fotos-premium/joven-sonriente-pie-restaurante-sosteniendo-tableta_132358-62281.jpg" alt="Camarero Digital" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Camarero Digital</h3>
+            <p>Gestiona pedidos y reservas de forma automatizada. Optimiza el servicio en tu restaurante o negocio.</p>
+            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Camarero Digital</h3>
+              <p>Hostelería & Restauración</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Toma de pedidos automatizada</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Gestión de mesas y reservas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Integración con cocina</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Control de stock en tiempo real</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/CDdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://static.vecteezy.com/system/resources/previews/014/226/997/non_2x/young-secretary-and-her-boss-photo.jpg" alt="Secretario Inteligente" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Secretario Inteligente</h3>
+            <p>Asistente con IA que optimiza la gestión administrativa y la comunicación de tu empresa.</p>
+            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Secretario Inteligente</h3>
+              <p>Administración & IA</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Gestión automatizada de agendas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Automatización de respuestas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Análisis de datos y reportes</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Asistente virtual con IA</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/SIdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://smartstore.com/media/6788/file/3d-jpg/3d-247-walk-in-store-1024p-chatgpt-original2_960_960.jpg" alt="Comercio 24/7" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Comercio 24/7</h3>
+            <p>Tu negocio abierto siempre. Gestiona ventas e inventario de manera automática sin límites horarios.</p>
+            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Comercio 24/7</h3>
+              <p>E-commerce & Retail</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Tienda online automatizada</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Control de inventario real-time</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Sistema de pagos integrado</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Análisis de comportamiento</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/247diapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://mundostartups.com/wp-content/uploads/2024/01/tipos-de-emprendedores.jpg" alt="Emprendedores" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Emprendedores</h3>
+            <p>Webs, apps y proyectos a medida para quienes inician o impulsan sus ideas de negocio.</p>
+            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Emprendedores</h3>
+              <p>Startups & Pymes</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Sitios web profesionales</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Apps móviles personalizadas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Identidad digital y branding</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Estrategia digital integral</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/EMdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://wa.me/+34643229507" target="_blank" class="fbtn-outline">Contratar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-front-img"><img src="https://raw.githubusercontent.com/Onixmanager/TecnologiasOnix/refs/heads/main/Tecnologiaslogomini.webp" alt="Reseñas para Google" loading="lazy"></div>
+          <div class="flip-front-body">
+            <h3>Reseñas para Google</h3>
+            <p>Producto físico estratégico que mejora tu reputación y presencia online en Google Maps y búsquedas.</p>
+            <div class="flip-hint"><i class="fas fa-rotate"></i> Ver detalles</div>
+          </div>
+        </div>
+        <div class="flip-back">
+          <div>
+            <div class="flip-back-header">
+              <h3>Reseñas para Google</h3>
+              <p>Marketing Digital</p>
+            </div>
+            <div class="flip-features">
+              <div class="flip-feat"><i class="fas fa-check"></i>Mejora la reputación online</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Más visibilidad en búsquedas</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Gestión de reseñas integrada</div>
+              <div class="flip-feat"><i class="fas fa-check"></i>Soporte y asesoramiento incluido</div>
+            </div>
+          </div>
+          <div class="flip-back-actions">
+            <a href="https://tecnologiasonix.com/diapositivas/SHdiapositiva1.html" target="_blank" class="fbtn-primary">Saber más</a>
+            <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" class="fbtn-outline">Tienda</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card flip-card-custom">
+      <div class="flip-inner" style="transform: none !important;">
+        <div class="flip-front" style="position: relative; transform: none;">
+          <div class="custom-plus"><i class="fas fa-plus"></i></div>
+          <h3>¿Solución personalizada?</h3>
+          <p>Desarrollamos productos a medida adaptados a las necesidades específicas de tu negocio.</p>
+          <a href="#contacto" class="btn-fill" style="margin-top: 8px; font-size: 13px; padding: 11px 24px;">Contactar ahora</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" class="section" style="border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="section-head-single reveal" style="text-align: center; max-width: 580px; margin: 0 auto 64px;">
+    <div class="section-tag" style="justify-content: center;"><span>Metodología</span></div>
+    <h2 class="section-title">Nuestro <em>Proceso</em></h2>
+    <p class="section-intro" style="margin: 12px auto 0;">Cuatro pasos para llevar tu proyecto al éxito, desde el análisis inicial hasta la puesta en marcha.</p>
+  </div>
+  <div class="process-wrap reveal">
+    <div class="process-cell">
+      <div class="process-n">1</div>
+      <h3>Análisis</h3>
+      <p>Estudiamos tu negocio para entender necesidades y objetivos, sentando las bases para una solución eficaz.</p>
+      <span class="process-label">Identificación de necesidades</span>
+    </div>
+    <div class="process-cell">
+      <div class="process-n">2</div>
+      <h3>Diseño</h3>
+      <p>Definimos la arquitectura y la experiencia de usuario ideal, creando un blueprint personalizado para tu proyecto.</p>
+      <span class="process-label">Planificación estratégica</span>
+    </div>
+    <div class="process-cell">
+      <div class="process-n">3</div>
+      <h3>Desarrollo</h3>
+      <p>Implementamos cada solución con tecnologías avanzadas y metodologías ágiles, garantizando calidad e innovación.</p>
+      <span class="process-label">Creación tecnológica</span>
+    </div>
+    <div class="process-cell">
+      <div class="process-n">4</div>
+      <h3>Implementación</h3>
+      <p>Desplegamos en tu entorno, te acompañamos en la transición y ofrecemos soporte continuo durante un año.</p>
+      <span class="process-label">Puesta en marcha</span>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes" class="section">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-tag"><span>Testimonios</span></div>
+      <h2 class="section-title">Nuestros <em>Clientes</em></h2>
+    </div>
+    <p class="section-intro">Descubre lo que dicen quienes ya trabajan con Tecnologías Onix.</p>
+  </div>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="testi-quote">"El Camarero Digital revolucionó la forma en que gestionamos pedidos. Ágil, eficiente y con un soporte que siempre está disponible."</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://raw.githubusercontent.com/Onixmanager/TecnologiasOnix/refs/heads/main/Leonardo_Kino_XL_Crea_una_imagen_realista_del_perfil_de_linked_3%20(2).jpg" alt="María González"></div>
+        <div>
+          <div class="testi-name">María González</div>
+          <div class="testi-role">Empresaria gastronómica</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="testi-quote">"El Secretario Inteligente nos permitió automatizar tareas administrativas que antes consumían horas. La productividad del equipo se disparó."</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://raw.githubusercontent.com/Onixmanager/TecnologiasOnix/refs/heads/main/Leonardo_Kino_XL_Crea_una_imagen_realista_del_perfil_de_linked_1%20(1).jpg" alt="Carlos Rodríguez"></div>
+        <div>
+          <div class="testi-name">Carlos Rodríguez</div>
+          <div class="testi-role">Director de operaciones</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+      </div>
+      <p class="testi-quote">"Con Comercio 24/7 operamos sin límites horarios. La integración con el inventario fue impecable y ahora gestiono todo desde cualquier lugar."</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://raw.githubusercontent.com/Onixmanager/TecnologiasOnix/refs/heads/main/Leonardo_Kino_XL_Crea_una_imagen_realista_del_perfil_de_linked_1.jpg" alt="Antonia Sánchez"></div>
+        <div>
+          <div class="testi-name">Antonia Sánchez</div>
+          <div class="testi-role">Propietaria de boutique</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-strip reveal">
+    <h3>¿Listo para transformar<br><em>tu negocio?</em></h3>
+    <a href="#contacto" class="btn-fill" style="font-size: 15px; padding: 16px 40px;"><i class="fas fa-arrow-right"></i> Hablemos ahora</a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-tag"><span>Contacto</span></div>
+      <h2 class="section-title">¿Hablamos de tu <em>proyecto?</em></h2>
+      <p class="section-intro" style="margin-top: 16px; margin-bottom: 36px;">Estamos listos para ayudarte. Cuéntanos tu idea y te mostramos cómo podemos hacerla realidad.</p>
+      <div class="contact-details">
+        <a href="https://wa.me/+34643229507" target="_blank" class="c-detail">
+          <div class="c-detail-icon"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <span class="c-detail-lbl">WhatsApp</span>
+            <span class="c-detail-val">+34 643 229 507</span>
+          </div>
+        </a>
+        <a href="https://tecnologiasonix.com" target="_blank" class="c-detail">
+          <div class="c-detail-icon"><i class="fas fa-globe"></i></div>
+          <div>
+            <span class="c-detail-lbl">Web</span>
+            <span class="c-detail-val">tecnologiasonix.com</span>
+          </div>
+        </a>
+        <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank" class="c-detail">
+          <div class="c-detail-icon"><i class="fas fa-store"></i></div>
+          <div>
+            <span class="c-detail-lbl">Tienda</span>
+            <span class="c-detail-val">tienda-tecnologiasonix.vercel.app</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form reveal d2">
+      <div class="form-2col">
+        <div class="fg">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="fg">
+          <label>Empresa</label>
+          <input type="text" placeholder="Tu empresa">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Email</label>
+        <input type="email" placeholder="correo@empresa.com">
+      </div>
+      <div class="fg">
+        <label>Producto o servicio</label>
+        <select>
+          <option value="">Selecciona una opción</option>
+          <option>Desarrollo de Software</option>
+          <option>Aplicaciones con IA</option>
+          <option>Sistemas de Gestión</option>
+          <option>Camarero Digital</option>
+          <option>Secretario Inteligente</option>
+          <option>Comercio 24/7</option>
+          <option>Reseñas para Google</option>
+          <option>Solución personalizada</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Mensaje</label>
+        <textarea placeholder="Cuéntanos sobre tu proyecto…"></textarea>
+      </div>
+      <a href="https://wa.me/+34643229507" target="_blank" class="btn-fill" style="width: 100%; justify-content: center; background: var(--blue); border-radius: 10px;">
+        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-row">
+    <div class="footer-logo-wrap">
+      <a href="#inicio" class="footer-logo">
+        <span class="footer-logo-tec">Tecnologías&nbsp;</span>
+        <span class="footer-logo-onix">Onix</span>
+      </a>
+      <p class="footer-tagline">Soluciones digitales para empresas y negocios</p>
+    </div>
+    <div class="footer-links">
+      <a href="#sobre-nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#productos">Productos</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#clientes">Clientes</a>
+      <a href="https://tienda-tecnologiasonix.vercel.app/" target="_blank">Tienda</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="footer-socials">
+      <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/+34643229507" class="social-btn" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://tienda-tecnologiasonix.vercel.app/" class="social-btn" aria-label="Tienda" target="_blank"><i class="fas fa-store"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom-row">
+    <p class="footer-copy">© 2025 Tecnologías Onix — Todos los derechos reservados.</p>
+    <p class="footer-copy">Soluciones digitales · B2B · España</p>
+  </div>
+</footer>
+
+<script>
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .flip-card, .service-row').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('expand'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('expand'));
+});
+
+function openMenu() { document.getElementById('mobileNav').classList.add('open'); }
+function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); }
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
