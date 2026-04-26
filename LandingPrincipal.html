@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onix Manager — Soluciones Digitales</title>
+    
+    <!-- Favicon: se mantiene el .ico y se añade versión PNG de alta calidad -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
+    
+    <!-- Open Graph (compartir en redes sociales) -->
     <meta property="og:title" content="Onix Manager - Soluciones Digitales">
     <meta property="og:description" content="Educación financiera, tecnología blockchain y desarrollo de proyectos digitales.">
     <meta property="og:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
     <meta property="og:type" content="website">
+    
+    <!-- Twitter Card (mejor compatibilidad) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Onix Manager - Soluciones Digitales">
+    <meta name="twitter:description" content="Educación financiera, tecnología blockchain y desarrollo de proyectos digitales.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/onixmannager/Landingpage/main/logoonixmanager%20(2).png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -131,8 +143,6 @@
         .bento-card:nth-child(5) { --ac: #a78bfa; }
         .bento-card:nth-child(6) { --ac: #e0f7ff; }
 
-
-
         .bento-card {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -219,6 +229,28 @@
         .btn-submit { background:linear-gradient(135deg,var(--gold),var(--gold-light)); color:var(--bg); border:none; padding:.8rem 2rem; border-radius:40px; font-weight:700; cursor:pointer; width:100%; font-size:1rem; transition:transform .2s,box-shadow .2s; }
         .btn-submit:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(232,160,32,0.3); }
         .contact-note { text-align:center; font-size:.85rem; margin-top:1rem; color:var(--text); background:var(--gold-dim); padding:.8rem; border-radius:16px; border-left:3px solid var(--gold); }
+
+        /* ── Mensaje de éxito (misma estética) ── */
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            background: var(--surface);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            color: var(--text2);
+            display: none;
+        }
+        .success-message i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .success-message h3 {
+            font-family: var(--ff-display);
+            font-size: 1.4rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
 
         /* ── Footer ── */
         .footer { border-top:1px solid var(--border); padding:2rem 0; text-align:center; font-size:.75rem; color:var(--text); }
@@ -340,10 +372,6 @@
                 <a href="https://cinonix.vercel.app/cinonix.html" class="bento-link">Explorar <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            
-
-            
-
             <div class="bento-card reveal rd5">
                 <div class="bento-tag">Marketing · Agencia</div>
                 <div class="bento-icon"><i class="fas fa-bullhorn"></i></div>
@@ -351,7 +379,6 @@
                 <p>Agencia de publicidad automatizada y gestión de redes sociales. Potenciamos marcas en el ecosistema digital con estrategias personalizadas.</p>
                 <span class="bento-soon">Próximamente</span>
             </div>
-        
 
         </div>
     </div>
@@ -377,24 +404,41 @@
             <div class="eyebrow">Escríbeme</div>
             <h2>¿Tienes un proyecto o duda?</h2>
         </div>
-        <div class="contact-form">
-            <form action="mailto:info@tecnologiasonix.com" method="post" enctype="text/plain">
-                <div class="form-group">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+        
+        <!-- Formulario adaptado a Web3Forms -->
+        <div class="contact-form" id="form-container">
+            <!-- Contenido del formulario (se oculta al enviar con éxito) -->
+            <div id="form-content">
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Clave de acceso Web3Forms (oculta) -->
+                    <input type="hidden" name="access_key" value="0b9183aa-6cdd-4fee-9bfa-f3b2350cbfba">
+                    <!-- Redirigir a la misma página tras el envío (opcional, aquí usaremos AJAX para no salir) -->
+                    <input type="hidden" name="redirect" value="">
+                    
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Tu email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Cuéntame en qué puedo ayudarte..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
+                </form>
+                <div class="contact-note" id="contact-note">
+                    <i class="fas fa-lightbulb"></i> ¿Necesitas crear o diseñar un proyecto o negocio digital? ¿Tienes alguna consulta sobre desarrollo web, blockchain o estrategias online? Estaré encantado de ayudarte. Escríbeme y conversemos.
                 </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Tu email" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="mensaje" placeholder="Cuéntame en qué puedo ayudarte..."></textarea>
-                </div>
-                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
-            </form>
-            <div class="contact-note">
-                <i class="fas fa-lightbulb"></i> ¿Necesitas crear o diseñar un proyecto o negocio digital? ¿Tienes alguna consulta sobre desarrollo web, blockchain o estrategias online? Estaré encantado de ayudarte. Escríbeme y conversemos.
             </div>
-            <p style="font-size:.7rem;text-align:center;margin-top:.8rem;color:var(--text);">Al hacer clic se abrirá tu cliente de correo. Envíame un mensaje directo.</p>
+            
+            <!-- Mensaje de éxito (inicialmente oculto) -->
+            <div class="success-message" id="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>¡Mensaje enviado con éxito!</h3>
+                <p>Gracias por contactarme. Te responderé lo antes posible.</p>
+            </div>
         </div>
+        <p style="font-size:.7rem;text-align:center;margin-top:.8rem;color:var(--text);">Envíame un mensaje directo y te responderé a la brevedad.</p>
     </div>
 
     <div class="footer">
@@ -403,16 +447,45 @@
 
 </div>
 
-
-
 <script>
-
+    // ── Animaciones de revelación (scroll) ──
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Envío del formulario con Web3Forms (AJAX) ──
+    const form = document.getElementById('contact-form');
+    const formContent = document.getElementById('form-content');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        // Opcional: puedes agregar un campo "redirect" para evitar la página en blanco, pero con AJAX no es necesario.
+        
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Ocultar el formulario y la nota, mostrar mensaje de éxito
+                formContent.style.display = 'none';
+                successMessage.style.display = 'block';
+            } else {
+                alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
+            }
+        } catch (error) {
+            alert('Error de conexión. Revisa tu internet e inténtalo nuevamente.');
+        }
+    });
 </script>
 </body>
 </html>
