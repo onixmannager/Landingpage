@@ -1,10 +1,14 @@
 {
   "cleanUrls": true,
-  "redirects": [
+  "headers": [
     {
-      "source": "/",
-      "destination": "/LandingPrincipal",
-      "permanent": false
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "all"
+        }
+      ]
     }
   ]
 }
