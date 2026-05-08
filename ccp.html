@@ -20,7 +20,7 @@
 
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/onixmannager/Landingpage/refs/heads/main/logo.png">
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/onixmannager/Landingpage/refs/heads/main/logo.png">
-   
+
     <style>
         :root {
             --bg:         #090b0f;
@@ -246,7 +246,6 @@
 <nav>
     <div class="nav-inner">
         <div class="nav-logo">
-            
             <span class="nav-logo-text">Onix <span>Crypto Manager</span></span>
         </div>
         <ul>
@@ -292,29 +291,76 @@
 <div class="course-wrap">
     <a href="cursos.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver a todos los cursos</a>
 
-    <!-- Introducción -->
-    <div class="topic-card reveal" id="intro">
-        <div class="topic-head">
-            <h2><i class="fas fa-info-circle"></i> Introducción</h2>
+    <!-- ============ NUEVO: BARRA DE PROGRESO GLOBAL ============ -->
+    <div class="topic-card reveal" id="progress-card" style="margin-bottom:1.5rem; padding:1.2rem 2rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;">
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+            <span style="font-family:var(--ff-display); font-weight:700; color:var(--white); font-size:1.1rem;">
+                <i class="fas fa-trophy" style="color:var(--gold); margin-right:.4rem;"></i>Tu Progreso
+            </span>
+            <span id="progress-text" style="font-family:var(--ff-mono); font-size:.8rem; color:var(--text);">0 de 11 módulos completados</span>
         </div>
-        <div class="topic-content">
+        <div style="flex:1; min-width:200px; max-width:400px; background:var(--surface2); border-radius:20px; height:10px; overflow:hidden; border:1px solid var(--border);">
+            <div id="progress-fill" style="width:0%; height:100%; background:linear-gradient(90deg,var(--gold),var(--gold-light)); border-radius:20px; transition:width .5s ease;"></div>
+        </div>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+            <button onclick="expandAll()" style="background:var(--surface2); border:1px solid var(--border); color:var(--text2); padding:.35rem .8rem; border-radius:20px; cursor:pointer; font-size:.7rem; font-family:var(--ff-body); transition:all .2s;"
+                onmouseover="this.style.borderColor='var(--gold)'; this.style.color='var(--gold)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text2)';">
+                <i class="fas fa-expand-alt"></i> Expandir todo
+            </button>
+            <button onclick="collapseAll()" style="background:var(--surface2); border:1px solid var(--border); color:var(--text2); padding:.35rem .8rem; border-radius:20px; cursor:pointer; font-size:.7rem; font-family:var(--ff-body); transition:all .2s;"
+                onmouseover="this.style.borderColor='var(--gold)'; this.style.color='var(--gold)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text2)';">
+                <i class="fas fa-compress-alt"></i> Colapsar todo
+            </button>
+            <button onclick="resetProgress()" style="background:transparent; border:1px solid var(--border); color:var(--text); padding:.35rem .8rem; border-radius:20px; cursor:pointer; font-size:.7rem; font-family:var(--ff-body); transition:all .2s;"
+                onmouseover="this.style.borderColor='var(--red)'; this.style.color='var(--red)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text)';">
+                <i class="fas fa-undo-alt"></i> Reiniciar
+            </button>
+        </div>
+    </div>
+
+    <!-- ============ NUEVO: ÍNDICE VISUAL DE MÓDULOS (RUTA DE APRENDIZAJE) ============ -->
+    <div class="reveal" style="margin-bottom:2rem;">
+        <div style="display:flex; align-items:center; gap:.5rem; margin-bottom:1rem;">
+            <i class="fas fa-map-signs" style="color:var(--gold);"></i>
+            <span style="font-family:var(--ff-mono); font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text);">Ruta de Aprendizaje</span>
+        </div>
+        <div id="module-index" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr)); gap:.7rem;">
+            <!-- Se llena dinámicamente con JS -->
+        </div>
+    </div>
+
+    <!-- ============ MÓDULO: INTRODUCCIÓN ============ -->
+    <div class="topic-card reveal" id="intro" data-module="0">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-info-circle"></i> Introducción</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="topic-content" data-content>
             <p>- Bienvenido al Curso de Criptomonedas para Principiantes, donde exploraremos el fascinante mundo de las monedas digitales y blockchain. Desde entender qué son las criptomonedas hasta explorar su impacto en la economía global, este curso está diseñado para introducirte de manera accesible y clara donde encontramos 11 temas con una introduccion en video de cada tema tratado para un mejor entendimiento en la lectura, ya que todos los detalles del tema completo se encuentran en el texto y no en el video.<br>
             <strong>NOTAS: Es recomendable ver de cada tema el resumen en video primero para despues tener mejor comprensión sobre la lectura</strong><br><br>
             - Durante este curso, abordaremos desde los conceptos más básicos, como definir qué son las criptomonedas y compararlas con las monedas tradicionales, hasta temas más avanzados como la tecnología blockchain y sus aplicaciones en la vida cotidiana. Exploraremos también criptomonedas específicas como Bitcoin y Ethereum, así como el fenómeno de los tokens y las ICOs.<br><br>
             - Además, aprenderás sobre inversión y trading de criptomonedas, consideraciones legales y regulatorias, seguridad de activos digitales y las últimas tendencias y desarrollos en este dinámico espacio tecnológico.<br><br>
             - Prepárate para adentrarte en un universo digital que está transformando la manera en que concebimos el dinero, las transacciones y la seguridad en línea.<br><br> <strong>¡Comienza tu viaje en el mundo de las criptomonedas con nosotros!</strong></p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~3 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="0" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 1 -->
-    <div class="topic-card reveal" id="que-son-las-criptomonedas">
-        <div class="topic-head">
-            <h2><i class="fab fa-bitcoin"></i> 1. ¿Qué son las criptomonedas?</h2>
+    <!-- ============ MÓDULO 1 ============ -->
+    <div class="topic-card reveal" id="que-son-las-criptomonedas" data-module="1">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fab fa-bitcoin"></i> 1. ¿Qué son las criptomonedas?</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://www.youtube.com/embed/BM8oGWpmlo8?si=ZtzZglocDtTiLGrU" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="BM8oGWpmlo8" data-content>
+            <!-- placeholder de carga diferida -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>Las criptomonedas se basan en una serie de fundamentos tecnológicos y conceptuales que las distinguen de las monedas tradicionales. A continuación, exploramos los principios básicos que sustentan el funcionamiento de las criptomonedas:<br><br>
             <strong>1. Tecnología Blockchain</strong><br><br>
             La <strong>tecnología blockchain</strong> es la columna vertebral de las criptomonedas. Es un registro digital descentralizado que mantiene un historial de todas las transacciones realizadas con una criptomoneda. Este registro se organiza en bloques que están enlazados de manera segura utilizando criptografía, formando una cadena continua. La blockchain garantiza la transparencia, la seguridad y la inmutabilidad de los datos.<br><br>
@@ -349,18 +395,26 @@
             <strong>Ripple (XRP):</strong><br>
             Diseñada para facilitar pagos rápidos y económicos en tiempo real entre instituciones financieras.<br><br>
             En resumen, las criptomonedas representan una <strong>innovación tecnológica disruptiva</strong> que está transformando sectores financieros y más allá. Su capacidad para operar de manera descentralizada y segura a través de la tecnología blockchain las convierte en una alternativa intrigante y cada vez más popular a las monedas tradicionales controladas por gobiernos y bancos centrales</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~8 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="1" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 2 -->
-    <div class="topic-card reveal" id="historia-y-evolucion">
-        <div class="topic-head">
-            <h2><i class="fas fa-history"></i> 2. Historia y Evolución de las Criptomonedas</h2>
+    <!-- ============ MÓDULO 2 ============ -->
+    <div class="topic-card reveal" id="historia-y-evolucion" data-module="2">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-history"></i> 2. Historia y Evolución de las Criptomonedas</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://www.youtube.com/embed/xNVq0P9qWIQ" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="xNVq0P9qWIQ" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>Las criptomonedas han recorrido un largo camino desde su creación, transformándose de una idea teórica a una parte integral del sistema financiero global. Entender su historia y evolución nos ayuda a apreciar cómo han llegado a ser lo que son hoy.<br><br>
             <strong>1. Los Primeros Conceptos (Antes de 2009)</strong><br><br>
             Antes de la invención de Bitcoin, varias ideas y tecnologías se desarrollaron que sentaron las bases para las criptomonedas. En la década de 1980, el concepto de "dinero digital" empezó a surgir, con iniciativas como DigiCash, creado por David Chaum. DigiCash era una forma de dinero digital que usaba criptografía para proporcionar transacciones anónimas. Sin embargo, aunque innovador, DigiCash no logró una adopción significativa y finalmente fracasó.<br><br>
@@ -385,18 +439,26 @@
             El futuro de las criptomonedas es prometedor y lleno de potencial. Con el continuo desarrollo de la tecnología blockchain, las criptomonedas están preparadas para seguir transformando no solo el sector financiero, sino también otras industrias como la salud, la cadena de suministro y la gobernanza.<br><br>
             La regulación seguirá desempeñando un papel crucial en la evolución de las criptomonedas, proporcionando un marco legal claro y protecciones para los inversores. Además, la integración de criptomonedas con tecnologías emergentes como la inteligencia artificial y el Internet de las Cosas (IoT) podría abrir nuevas fronteras para la innovación.<br><br>
             En resumen, desde su nacimiento con Bitcoin en 2009 hasta la actualidad, las criptomonedas han evolucionado enormemente, superando numerosos desafíos y ganando aceptación global. A medida que continúan desarrollándose, prometen ofrecer soluciones innovadoras y transformar el panorama financiero mundial.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~7 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="2" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 3 -->
-    <div class="topic-card reveal" id="fundamentos-de-las-criptomonedas">
-        <div class="topic-head">
-            <h2><i class="fas fa-cube"></i> 3. Fundamentos de las Criptomonedas</h2>
+    <!-- ============ MÓDULO 3 ============ -->
+    <div class="topic-card reveal" id="fundamentos-de-las-criptomonedas" data-module="3">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-cube"></i> 3. Fundamentos de las Criptomonedas</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://www.youtube.com/embed/OszPTVw7UVc" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="OszPTVw7UVc" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>Las criptomonedas se basan en una serie de fundamentos tecnológicos y conceptuales que las distinguen de las monedas tradicionales. A continuación, exploramos los principios básicos que sustentan el funcionamiento de las criptomonedas:<br><br>
             <strong>1. Tecnología Blockchain</strong><br><br>
             La tecnología blockchain es la columna vertebral de las criptomonedas. Es un registro digital descentralizado que mantiene un historial de todas las transacciones realizadas con una criptomoneda. Este registro se organiza en bloques que están enlazados de manera segura utilizando criptografía, formando una cadena continua. La blockchain garantiza la transparencia, la seguridad y la inmutabilidad de los datos.<br><br>
@@ -418,18 +480,26 @@
             Las criptomonedas ofrecen diferentes niveles de privacidad y anonimato. Aunque las transacciones en la blockchain son públicas, la identidad de los usuarios no siempre está vinculada a sus direcciones. Algunas criptomonedas, como Monero y Zcash, están diseñadas específicamente para proporcionar un alto grado de privacidad y anonimato.<br><br>
             <strong>10. Usos y Aplicaciones</strong><br><br>
             Las criptomonedas tienen una amplia gama de usos y aplicaciones más allá de ser un medio de intercambio. Se utilizan para pagos y remesas internacionales, inversiones, comercio, contratos inteligentes, juegos en línea, y muchas otras aplicaciones en diversas industrias. Su capacidad para operar de manera segura y eficiente en un entorno descentralizado las convierte en una herramienta poderosa para la innovación.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~8 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="3" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 4 -->
-    <div class="topic-card reveal" id="conceptos-clave">
-        <div class="topic-head">
-            <h2><i class="fas fa-key"></i> 4. Conceptos clave en Criptomonedas</h2>
+    <!-- ============ MÓDULO 4 ============ -->
+    <div class="topic-card reveal" id="conceptos-clave" data-module="4">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-key"></i> 4. Conceptos clave en Criptomonedas</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://www.youtube.com/embed/kLQ10i6WQ-I" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="kLQ10i6WQ-I" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>Las criptomonedas introducen una serie de conceptos innovadores que son esenciales para entender su funcionamiento y potencial. A continuación, exploramos algunos de los conceptos clave de las criptomonedas:<br><br>
             <strong>1. Blockchain</strong><br><br>
             La blockchain es una tecnología de registro distribuido que permite la existencia de criptomonedas. Es un registro público y descentralizado que mantiene un historial de todas las transacciones. Cada conjunto de transacciones se agrupa en un bloque, y cada bloque está encadenado al anterior, formando una cadena de bloques. Esta estructura garantiza la integridad y seguridad de los datos, ya que modificar un bloque requeriría cambiar todos los bloques posteriores, lo cual es extremadamente difícil.<br><br>
@@ -451,18 +521,26 @@
             La Prueba de Trabajo (PoW) y la Prueba de Participación (PoS) son dos de los mecanismos de consenso más comunes utilizados por las criptomonedas para validar transacciones y asegurar la red. PoW, utilizado por Bitcoin, requiere que los mineros resuelvan problemas matemáticos complejos, mientras que PoS, utilizado por algunas criptomonedas como Ethereum 2.0, selecciona validadores en función de la cantidad de criptomonedas que poseen y están dispuestos a "apostar" como garantía.<br><br>
             <strong>10. Intercambios (Exchanges)</strong><br><br>
             Los intercambios de criptomonedas son plataformas donde los usuarios pueden comprar, vender y comerciar criptomonedas. Existen intercambios centralizados, que son operados por una entidad central y proporcionan mayor liquidez y servicios adicionales, e intercambios descentralizados (DEX), que permiten a los usuarios comerciar directamente entre sí sin intermediarios, ofreciendo mayor privacidad y control sobre sus fondos.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~7 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="4" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 5 -->
-    <div class="topic-card reveal" id="bitcoin-y-otras-criptomonedas">
-        <div class="topic-head">
-            <h2><i class="fab fa-bitcoin"></i> 5. Bitcoin y otras Criptomonedas Populares</h2>
+    <!-- ============ MÓDULO 5 ============ -->
+    <div class="topic-card reveal" id="bitcoin-y-otras-criptomonedas" data-module="5">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fab fa-bitcoin"></i> 5. Bitcoin y otras Criptomonedas Populares</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://www.youtube.com/embed/6Wr_CcIzYeI" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="6Wr_CcIzYeI" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p><strong>Bitcoin (BTC):</strong><br>
             La primera y más conocida criptomoneda, creada por una persona o grupo bajo el seudónimo de Satoshi Nakamoto en 2009. Bitcoin introdujo el concepto de una moneda digital descentralizada y segura a través de la tecnología blockchain.<br><br>
             <strong>Ethereum (ETH):</strong><br>
@@ -484,18 +562,26 @@
             <strong>Dogecoin (DOGE):</strong><br>
             Originalmente creada como una broma en 2013, Dogecoin se ha convertido en una criptomoneda popular gracias a su comunidad activa y a la promoción por parte de figuras conocidas como Elon Musk. Aunque comenzó sin una propuesta técnica seria, Dogecoin ha sido utilizada para microtransacciones y propinas en línea.<br><br>
             Estas criptomonedas representan solo una fracción del vasto y diverso ecosistema de monedas digitales disponibles en la actualidad. Cada una tiene características únicas y aplicaciones específicas que contribuyen a su popularidad y uso dentro del mundo de las criptomonedas.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~6 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="5" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 6 -->
-    <div class="topic-card reveal" id="tokens-y-icos">
-        <div class="topic-head">
-            <h2><i class="fas fa-coins"></i> 6. Tokens y ICOs</h2>
+    <!-- ============ MÓDULO 6 ============ -->
+    <div class="topic-card reveal" id="tokens-y-icos" data-module="6">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-coins"></i> 6. Tokens y ICOs</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://www.youtube.com/embed/fAcgOqtCKJE" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="fAcgOqtCKJE" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p><strong>Tokens:</strong><br>
             Los tokens son activos digitales que se crean y gestionan en una blockchain. A diferencia de las criptomonedas como Bitcoin o Ethereum, que funcionan como una moneda, los tokens pueden representar una amplia gama de activos y utilidades. Existen varios tipos de tokens, incluyendo:<br><br>
             <strong>Tokens de utilidad:</strong><br>
@@ -519,18 +605,26 @@
             <strong>Regulación y Futuro:</strong><br>
             A medida que las ICOs maduran, los reguladores de todo el mundo están desarrollando marcos legales para proteger a los inversores y asegurar la transparencia. El futuro de las ICOs podría ver una integración más estrecha con las regulaciones financieras tradicionales, proporcionando un entorno más seguro para la recaudación de fondos.<br><br>
             En resumen, los tokens y las ICOs han revolucionado la manera en que los proyectos de blockchain se financian y operan. Aunque presentan grandes oportunidades, también vienen con riesgos significativos que deben ser cuidadosamente gestionados.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~6 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="6" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 7 -->
-    <div class="topic-card reveal" id="aplicaciones-en-la-vida-diaria">
-        <div class="topic-head">
-            <h2><i class="fas fa-mobile-alt"></i> 7. Aplicaciones en la Vida Diaria</h2>
+    <!-- ============ MÓDULO 7 ============ -->
+    <div class="topic-card reveal" id="aplicaciones-en-la-vida-diaria" data-module="7">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-mobile-alt"></i> 7. Aplicaciones en la Vida Diaria</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://youtube.com/embed/G0Iw683tFM8" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="G0Iw683tFM8" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>Las criptomonedas y la tecnología blockchain no solo están revolucionando el sector financiero, sino que también están encontrando aplicaciones en diversas áreas de la vida diaria. Aquí exploramos algunas de las aplicaciones más destacadas:<br><br>
             <strong>Pagos y Transferencias:</strong><br>
             Una de las aplicaciones más comunes de las criptomonedas es la realización de pagos y transferencias. Las criptomonedas permiten transacciones rápidas, seguras y de bajo costo, especialmente para transferencias internacionales que tradicionalmente son costosas y lentas.<br><br>
@@ -555,18 +649,26 @@
             <strong>Votación Electrónica:</strong><br>
             Blockchain se está explorando como una solución para sistemas de votación electrónica seguros y transparentes, eliminando el fraude y aumentando la confianza en los procesos electorales.<br><br>
             En resumen, las aplicaciones de las criptomonedas y la tecnología blockchain en la vida diaria son vastas y variadas. Desde mejorar la eficiencia en las transacciones financieras hasta transformar industrias enteras como el juego y la atención médica, estas tecnologías están creando nuevas oportunidades y soluciones innovadoras.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~6 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="7" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 8 -->
-    <div class="topic-card reveal" id="inversion-y-trading">
-        <div class="topic-head">
-            <h2><i class="fas fa-chart-line"></i> 8. Inversión y Trading de Criptomonedas</h2>
+    <!-- ============ MÓDULO 8 ============ -->
+    <div class="topic-card reveal" id="inversion-y-trading" data-module="8">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-chart-line"></i> 8. Inversión y Trading de Criptomonedas</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://youtube.com/embed/D23nMlRk9lw" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="D23nMlRk9lw" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p><strong>Inversión vs. Trading:</strong><br>
             <em>Inversión:</em> Implica adquirir criptomonedas con la intención de mantenerlas a largo plazo, apostando por su potencial de aumento de valor en el futuro. Los inversores a largo plazo a menudo consideran las criptomonedas como una forma de diversificar su cartera de inversiones.<br>
             <em>Trading:</em> Consiste en la compra y venta frecuente de criptomonedas con el objetivo de obtener ganancias a corto plazo mediante la explotación de la volatilidad del mercado. Los traders utilizan análisis técnico y estrategias específicas para tomar decisiones de compra y venta.<br><br>
@@ -593,18 +695,26 @@
             <strong>Educación Continua:</strong><br>
             Dado que el mercado de criptomonedas evoluciona rápidamente, es fundamental mantenerse informado sobre nuevas tecnologías, tendencias de mercado y desarrollos regulatorios. La educación continua a través de cursos en línea, libros y comunidades en línea puede ayudar a mejorar las habilidades de inversión y trading.<br><br>
             En resumen, la inversión y el trading de criptomonedas ofrecen oportunidades emocionantes pero también requieren comprensión y gestión adecuada de riesgos. Para principiantes, comenzar con una comprensión básica de los conceptos y practicar con pequeñas cantidades puede ser una forma efectiva de aprender y crecer en este fascinante mercado digital.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~7 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="8" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 9 -->
-    <div class="topic-card reveal" id="regulacion-y-consideraciones-legales">
-        <div class="topic-head">
-            <h2><i class="fas fa-gavel"></i> 9. Regulación y Consideraciones Legales</h2>
+    <!-- ============ MÓDULO 9 ============ -->
+    <div class="topic-card reveal" id="regulacion-y-consideraciones-legales" data-module="9">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-gavel"></i> 9. Regulación y Consideraciones Legales</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://youtube.com/embed/uPDuKDwemZU" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="uPDuKDwemZU" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>La regulación y las consideraciones legales son aspectos críticos en el mundo de las criptomonedas, ya que la falta de claridad regulatoria puede afectar la seguridad jurídica y la adopción generalizada. Aquí exploramos los principales temas y consideraciones legales relacionados con las criptomonedas:<br><br>
             <strong>Naturaleza y Clasificación Legal:</strong><br>
             A nivel global, las criptomonedas son vistas de diferentes maneras por los reguladores:<br>
@@ -632,18 +742,26 @@
             <strong>Desafíos y Futuro:</strong><br>
             A medida que evoluciona la tecnología blockchain y las criptomonedas, los desafíos regulatorios continuarán siendo una parte integral del debate global. La colaboración entre reguladores, industria y usuarios será crucial para promover un entorno seguro y sostenible para la innovación financiera.<br><br>
             En resumen, la regulación y las consideraciones legales son fundamentales para el desarrollo responsable del mercado de criptomonedas. Los participantes deben estar informados y cumplir con las regulaciones locales e internacionales para mitigar riesgos legales y promover la adopción segura y ética de estas tecnologías emergentes.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~6 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="9" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 10 -->
-    <div class="topic-card reveal" id="seguridad-y-proteccion">
-        <div class="topic-head">
-            <h2><i class="fas fa-shield-alt"></i> 10. Seguridad y Protección de Activos</h2>
+    <!-- ============ MÓDULO 10 ============ -->
+    <div class="topic-card reveal" id="seguridad-y-proteccion" data-module="10">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-shield-alt"></i> 10. Seguridad y Protección de Activos</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://youtube.com/embed/wsoKBN2rJ1Y" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="wsoKBN2rJ1Y" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>La seguridad y protección son aspectos críticos cuando se trata de criptomonedas, ya que la naturaleza descentralizada y digital de estos activos presenta desafíos únicos en términos de seguridad cibernética y protección de activos. Aquí exploramos las principales consideraciones y medidas de seguridad para usuarios principiantes:<br><br>
             <strong>Seguridad de la Billetera:</strong><br>
             Las criptomonedas se almacenan en billeteras digitales, que pueden ser:<br>
@@ -676,18 +794,26 @@
             <strong>Educación Continua:</strong><br>
             Dado que la seguridad en el espacio de las criptomonedas evoluciona rápidamente, es crucial mantenerse informado sobre nuevas amenazas y soluciones de seguridad. La educación continua y la vigilancia son clave para proteger sus activos digitales de manera efectiva.<br><br>
             En resumen, la seguridad y protección son fundamentales para cualquier persona interesada en usar y comerciar con criptomonedas. Adoptar prácticas sólidas de seguridad, elegir billeteras confiables y mantenerse educado sobre las últimas amenazas son pasos cruciales para disfrutar de una experiencia segura y sin preocupaciones en el mundo de las criptomonedas.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~6 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="10" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Sección 11 -->
-    <div class="topic-card reveal" id="tendencias-y-desarrollos-futuros">
-        <div class="topic-head">
-            <h2><i class="fas fa-chart-simple"></i> 11. Tendencias y Desarrollos Futuros</h2>
+    <!-- ============ MÓDULO 11 ============ -->
+    <div class="topic-card reveal" id="tendencias-y-desarrollos-futuros" data-module="11">
+        <div class="topic-head" onclick="toggleModule(this)" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;" role="button" tabindex="0" aria-expanded="true">
+            <h2 style="pointer-events:none;"><i class="fas fa-chart-simple"></i> 11. Tendencias y Desarrollos Futuros</h2>
+            <span class="accordion-arrow" style="transition:transform .3s ease; font-size:.8rem; color:var(--gold);"><i class="fas fa-chevron-down"></i></span>
         </div>
-        <div class="topic-video">
-            <iframe src="https://youtube.com/embed/-l-ZHiQjVhQ" frameborder="0" allowfullscreen></iframe>
+        <div class="topic-video" data-video data-video-id="-l-ZHiQjVhQ" data-content>
+            <!-- placeholder -->
         </div>
-        <div class="topic-content">
+        <div class="topic-content" data-content>
             <p>Las criptomonedas han evolucionado rápidamente desde la creación del Bitcoin en 2009, y el panorama actual sugiere un futuro prometedor con innovaciones continuas y nuevas oportunidades. Aquí exploramos algunas de las tendencias y desarrollos futuros más relevantes en el mundo de las criptomonedas:<br><br>
             <strong>Adopción Institucional:</strong><br>
             En los últimos años, hemos visto un aumento significativo en la adopción de criptomonedas por parte de instituciones financieras tradicionales y corporaciones. Esto incluye la integración de Bitcoin y otras criptomonedas en los balances corporativos y la oferta de servicios financieros basados en blockchain.<br><br>
@@ -708,19 +834,32 @@
             <strong>Educación y Concientización:</strong><br>
             A medida que las criptomonedas continúan madurando, la educación y la concienciación pública sobre los beneficios, riesgos y oportunidades asociados son fundamentales. Se espera que programas educativos y campañas de sensibilización promuevan un uso más seguro y responsable de las criptomonedas.<br><br>
             En resumen, el futuro de las criptomonedas se presenta emocionante y lleno de potencial. A medida que la tecnología y la adopción continúan avanzando, las criptomonedas podrían transformar aún más diversos sectores económicos y sociales, ofreciendo nuevas formas de transaccionar, invertir y colaborar a nivel global.</p>
+            <div style="display:flex; justify-content:flex-end; align-items:center; gap:1rem; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+                <span style="font-size:.7rem; color:var(--text);"><i class="far fa-clock" style="margin-right:4px;"></i>Lectura: ~6 min</span>
+                <label style="display:flex; align-items:center; gap:.4rem; cursor:pointer; font-size:.75rem; color:var(--text);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text)'">
+                    <input type="checkbox" class="module-checkbox" data-module="11" onchange="updateProgress()" style="accent-color:var(--green);">
+                    <span>Marcar como completado</span>
+                </label>
+            </div>
         </div>
     </div>
 
-    <!-- Felicitaciones -->
-    <div class="topic-card reveal">
+    <!-- ============ FELICITACIONES ============ -->
+    <div class="topic-card reveal" id="felicitaciones">
         <div class="topic-head">
             <h2><i class="fas fa-trophy"></i> ¡FELICIDADES!</h2>
         </div>
         <div class="topic-content">
-            <p>¡Gracias y enhorabuena por completar nuestro Curso de Criptomonedas para Principiantes!<br><br>
-            Esperamos que hayas encontrado este curso informativo y útil para comprender mejor el mundo de las criptomonedas y la tecnología blockchain. Si tienes alguna pregunta adicional o necesitas asistencia relacionada con el contenido del curso, no dudes en contactarnos. Estamos aquí para ayudarte en tu viaje hacia el conocimiento de las criptomonedas.<br><br>
-            Para cualquier consulta o solicitud de ayuda, puedes hacer clic en la sección de Contacto en el menú principal o visitar.<br><br>
-            ¡Gracias de nuevo y te deseamos mucho éxito en tu aventura en el mundo de las criptomonedas!</p>
+            <div id="completion-message">
+                <p>¡Gracias y enhorabuena por completar nuestro Curso de Criptomonedas para Principiantes!<br><br>
+                Esperamos que hayas encontrado este curso informativo y útil para comprender mejor el mundo de las criptomonedas y la tecnología blockchain. Si tienes alguna pregunta adicional o necesitas asistencia relacionada con el contenido del curso, no dudes en contactarnos. Estamos aquí para ayudarte en tu viaje hacia el conocimiento de las criptomonedas.<br><br>
+                Para cualquier consulta o solicitud de ayuda, puedes hacer clic en la sección de Contacto en el menú principal o visitar.<br><br>
+                ¡Gracias de nuevo y te deseamos mucho éxito en tu aventura en el mundo de las criptomonedas!</p>
+            </div>
+            <div id="completion-stats" style="display:none; margin-top:1rem; padding:1rem; background:var(--green-dim); border-radius:8px; border:1px solid rgba(0,200,150,0.2);">
+                <p style="color:var(--green);"><i class="fas fa-check-circle"></i> <strong>¡Has completado los 11 módulos!</strong></p>
+                <p style="font-size:.85rem; color:var(--text2);">Has adquirido conocimientos fundamentales sobre blockchain, Bitcoin, Ethereum, trading, seguridad, y mucho más. ¡Estás listo para dar el siguiente paso en tu viaje cripto! 🚀</p>
+            </div>
         </div>
     </div>
 
@@ -734,7 +873,6 @@
     <div class="footer-grid">
         <div class="footer-brand">
             <div class="fb-logo">
-                
                 <span class="fb-logo-t">Onix Manager</span>
             </div>
             <p>Plataforma de educación financiera y cripto para inversores de todos los niveles. Aprendizaje práctico, herramientas reales.</p>
@@ -762,7 +900,6 @@
             <ul>
                 <li><a href="LandingPrincipal.html">Centro de ayuda</a></li>
                 <li><a href="comunidad.html">Comunidad</a></li>
-                
             </ul>
         </div>
     </div>
@@ -830,6 +967,263 @@ document.addEventListener('click', (e) => {
         document.body.style.overflow = '';
     }
 });
+
+// ============ NUEVA MAGIA: ACORDEONES, PROGRESO, ÍNDICE Y VÍDEOS DIFERIDOS ============
+
+const MODULE_TITLES = [
+    {icon:'fa-info-circle', title:'Introducción', id:'intro'},
+    {icon:'fab fa-bitcoin', title:'1. ¿Qué son las criptomonedas?', id:'que-son-las-criptomonedas'},
+    {icon:'fa-history', title:'2. Historia y Evolución', id:'historia-y-evolucion'},
+    {icon:'fa-cube', title:'3. Fundamentos', id:'fundamentos-de-las-criptomonedas'},
+    {icon:'fa-key', title:'4. Conceptos clave', id:'conceptos-clave'},
+    {icon:'fab fa-bitcoin', title:'5. Bitcoin y otras Crypto', id:'bitcoin-y-otras-criptomonedas'},
+    {icon:'fa-coins', title:'6. Tokens y ICOs', id:'tokens-y-icos'},
+    {icon:'fa-mobile-alt', title:'7. Aplicaciones Diarias', id:'aplicaciones-en-la-vida-diaria'},
+    {icon:'fa-chart-line', title:'8. Inversión y Trading', id:'inversion-y-trading'},
+    {icon:'fa-gavel', title:'9. Regulación Legal', id:'regulacion-y-consideraciones-legales'},
+    {icon:'fa-shield-alt', title:'10. Seguridad', id:'seguridad-y-proteccion'},
+    {icon:'fa-chart-simple', title:'11. Tendencias Futuras', id:'tendencias-y-desarrollos-futuros'},
+];
+
+// construir índice visual
+(function buildIndex(){
+    const container = document.getElementById('module-index');
+    MODULE_TITLES.forEach((m,i)=>{
+        const card = document.createElement('a');
+        card.href = '#' + m.id;
+        card.style.cssText = `
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:.9rem 1rem;
+            display:flex;
+            align-items:center;
+            gap:.6rem;
+            transition:all .25s;
+            cursor:pointer;
+            text-decoration:none;
+            color:var(--text2);
+            font-size:.8rem;
+            font-weight:500;
+        `;
+        card.innerHTML = `<i class="fas ${m.icon}" style="color:var(--gold); font-size:.85rem; width:20px; text-align:center;"></i>
+                          <span style="flex:1;">${m.title}</span>
+                          <span class="idx-check" data-idx="${i}" style="font-size:.65rem; color:var(--green); display:none;"><i class="fas fa-check-circle"></i></span>`;
+        card.addEventListener('mouseenter', ()=>{
+            card.style.borderColor = 'var(--border-g)';
+            card.style.background = 'var(--surface2)';
+        });
+        card.addEventListener('mouseleave', ()=>{
+            card.style.borderColor = 'var(--border)';
+            card.style.background = 'var(--surface)';
+        });
+        container.appendChild(card);
+    });
+})();
+
+// acordeón
+function toggleModule(headEl){
+    const card = headEl.closest('.topic-card');
+    const contents = card.querySelectorAll('[data-content]');
+    const arrow = headEl.querySelector('.accordion-arrow i');
+    const isOpen = contents[0]?.style.display !== 'none';
+    contents.forEach(el => { el.style.display = isOpen ? 'none' : ''; });
+    if(arrow){
+        arrow.style.transform = isOpen ? 'rotate(-90deg)' : 'rotate(0deg)';
+    }
+    // actualizar aria-expanded
+    headEl.setAttribute('aria-expanded', !isOpen);
+    // guardar estado
+    saveAccordionState();
+}
+
+function expandAll(){
+    document.querySelectorAll('[data-content]').forEach(el=>el.style.display='');
+    document.querySelectorAll('.accordion-arrow i').forEach(el=>el.style.transform='rotate(0deg)');
+    document.querySelectorAll('.topic-head[role="button"]').forEach(el=>el.setAttribute('aria-expanded','true'));
+    saveAccordionState();
+}
+function collapseAll(){
+    document.querySelectorAll('[data-content]').forEach(el=>el.style.display='none');
+    document.querySelectorAll('.accordion-arrow i').forEach(el=>el.style.transform='rotate(-90deg)');
+    document.querySelectorAll('.topic-head[role="button"]').forEach(el=>el.setAttribute('aria-expanded','false'));
+    saveAccordionState();
+}
+function saveAccordionState(){
+    const state = {};
+    document.querySelectorAll('.topic-card').forEach((card,i)=>{
+        const contents = card.querySelectorAll('[data-content]');
+        if(contents.length > 0){
+            state[i] = contents[0].style.display !== 'none';
+        }
+    });
+    localStorage.setItem('ccp_accordion', JSON.stringify(state));
+}
+function loadAccordionState(){
+    try{
+        const state = JSON.parse(localStorage.getItem('ccp_accordion'));
+        if(state){
+            document.querySelectorAll('.topic-card').forEach((card,i)=>{
+                if(state[i] === false){
+                    const contents = card.querySelectorAll('[data-content]');
+                    const arrow = card.querySelector('.accordion-arrow i');
+                    const head = card.querySelector('.topic-head[role="button"]');
+                    contents.forEach(el=>el.style.display='none');
+                    if(arrow) arrow.style.transform='rotate(-90deg)';
+                    if(head) head.setAttribute('aria-expanded','false');
+                }
+            });
+        }
+    }catch(e){}
+}
+
+// progreso
+function updateProgress(){
+    const checkboxes = document.querySelectorAll('.module-checkbox');
+    let completed = 0;
+    checkboxes.forEach(cb => { if(cb.checked) completed++; });
+    const total = checkboxes.length;
+    const pct = total > 0 ? Math.round((completed/total)*100) : 0;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = completed + ' de ' + total + ' módulos completados';
+
+    // actualizar índice visual
+    document.querySelectorAll('.idx-check').forEach((el,i)=>{
+        el.style.display = (checkboxes[i] && checkboxes[i].checked) ? 'inline' : 'none';
+    });
+
+    // mostrar mensaje especial si completó todos
+    const statsDiv = document.getElementById('completion-stats');
+    if(statsDiv && completed === total){
+        statsDiv.style.display = 'block';
+    } else if(statsDiv){
+        statsDiv.style.display = 'none';
+    }
+
+    // guardar en localStorage
+    const progress = [];
+    checkboxes.forEach(cb=>progress.push(cb.checked));
+    localStorage.setItem('ccp_progress', JSON.stringify(progress));
+}
+function loadProgress(){
+    try{
+        const progress = JSON.parse(localStorage.getItem('ccp_progress'));
+        if(progress && Array.isArray(progress)){
+            const checkboxes = document.querySelectorAll('.module-checkbox');
+            checkboxes.forEach((cb,i)=>{
+                if(progress[i]) cb.checked = true;
+            });
+            updateProgress();
+        }
+    }catch(e){}
+}
+function resetProgress(){
+    if(confirm('¿Reiniciar todo tu progreso? Esta acción no se puede deshacer.')){
+        document.querySelectorAll('.module-checkbox').forEach(cb=>cb.checked=false);
+        localStorage.removeItem('ccp_progress');
+        localStorage.removeItem('ccp_accordion');
+        updateProgress();
+        expandAll();
+        document.getElementById('completion-stats').style.display = 'none';
+    }
+}
+
+// lazy loading de vídeos
+function lazyLoadVideos(){
+    document.querySelectorAll('[data-video]').forEach(container=>{
+        const videoId = container.getAttribute('data-video-id');
+        if(!videoId) return;
+        // crear placeholder
+        const placeholder = document.createElement('div');
+        placeholder.style.cssText = `
+            width:100%; height:320px; border-radius:12px;
+            background:var(--surface2);
+            border:1px solid var(--border);
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            cursor:pointer; transition:border-color .3s; gap:.8rem;
+        `;
+        placeholder.innerHTML = `
+            <i class="fas fa-play-circle" style="font-size:3rem; color:var(--gold);"></i>
+            <span style="color:var(--text2); font-size:.85rem; font-weight:500;">Haz clic para cargar el vídeo</span>
+            <span style="color:var(--text); font-size:.7rem;">Resumen en vídeo del módulo</span>
+        `;
+        placeholder.addEventListener('mouseenter', ()=>{ placeholder.style.borderColor='var(--gold)'; });
+        placeholder.addEventListener('mouseleave', ()=>{ placeholder.style.borderColor='var(--border)'; });
+        placeholder.addEventListener('click', ()=>{
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=0&rel=0';
+            iframe.setAttribute('frameborder','0');
+            iframe.setAttribute('allowfullscreen','');
+            iframe.style.cssText = 'width:100%; height:320px; border-radius:12px; border:none;';
+            container.innerHTML = '';
+            container.appendChild(iframe);
+            // guardar que este vídeo ya fue cargado
+            saveVideoLoaded(videoId);
+        });
+        container.innerHTML = '';
+        container.appendChild(placeholder);
+        // restaurar si ya estaba cargado
+        if(wasVideoLoaded(videoId)){
+            placeholder.click();
+        }
+    });
+}
+function saveVideoLoaded(videoId){
+    try{
+        const loaded = JSON.parse(localStorage.getItem('ccp_videos_loaded')||'{}');
+        loaded[videoId] = true;
+        localStorage.setItem('ccp_videos_loaded', JSON.stringify(loaded));
+    }catch(e){}
+}
+function wasVideoLoaded(videoId){
+    try{
+        const loaded = JSON.parse(localStorage.getItem('ccp_videos_loaded')||'{}');
+        return !!loaded[videoId];
+    }catch(e){return false;}
+}
+
+// scroll spy para resaltar módulo activo en el índice
+function scrollSpy(){
+    const cards = document.querySelectorAll('.topic-card[data-module]');
+    const indexLinks = document.querySelectorAll('#module-index a');
+    const observer2 = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                const mod = entry.target.getAttribute('data-module');
+                indexLinks.forEach((link,i)=>{
+                    if(i == mod){
+                        link.style.borderColor = 'var(--gold)';
+                        link.style.background = 'var(--gold-dim)';
+                    } else {
+                        link.style.borderColor = 'var(--border)';
+                        link.style.background = 'var(--surface)';
+                    }
+                });
+            }
+        });
+    }, {threshold:.3, rootMargin:'-80px 0px -50% 0px'});
+    cards.forEach(card=>observer2.observe(card));
+}
+
+// responsive para vídeos placeholder
+function adjustVideoPlaceholders(){
+    const isMobile = window.innerWidth <= 768;
+    document.querySelectorAll('[data-video] > div').forEach(pl=>{
+        if(pl.querySelector('i.fa-play-circle')){
+            pl.style.height = isMobile ? '220px' : '320px';
+        }
+    });
+}
+window.addEventListener('resize', adjustVideoPlaceholders);
+
+// inicializar todo
+document.addEventListener('DOMContentLoaded', ()=>{
+    lazyLoadVideos();
+    loadAccordionState();
+    loadProgress();
+    scrollSpy();
+    adjustVideoPlaceholders();
+});
 </script>
 </body>
-        </html>
+</html>
