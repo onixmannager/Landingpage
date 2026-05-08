@@ -267,7 +267,7 @@
 <div class="hero reveal">
     <div class="hero-text">
         <h1>Onix Ai<em>Trader</em></h1>
-        <p>Predicciones precisas de precios de criptomonedas basadas en inteligencia artificial. Modelos MLPRegressor y RandomForest entrenados con datos históricos.</p>
+        <p>Sistema Dual de Trading Cuantitativo conectado a Binance vía WebSocket y REST API. Modelo Custodia-Cero: el bot opera sobre tus propios monederos sin retener tus activos.</p>
         <a href="IAPredictor.html" class="btn-ia"><i class="fas fa-robot"></i> Accede a la IA</a>
     </div>
     <div class="hero-image">
@@ -301,40 +301,47 @@
 <!-- Grid de información técnica -->
 <div class="info-grid">
     <div class="info-card reveal">
-        <div class="card-icon"><i class="fas fa-database"></i></div>
-        <h3>Obtención de Datos</h3>
-        <p><strong>API de CoinMarketCap:</strong> Recopilamos el precio actual de Bitcoin.<br>
-        <strong>Datos históricos:</strong> Archivo local con precios y volúmenes para análisis exhaustivo.</p>
+        <div class="card-icon"><i class="fas fa-plug"></i></div>
+        <h3>Sistema Dual de Conexión</h3>
+        <p><strong>WebSocket (WSS):</strong> Canal en tiempo real para Orderbook L2 y Tickers de Binance.<br>
+        <strong>REST API:</strong> Emisión y gestión de órdenes con latencia mínima.<br>
+        <strong>Custodia-Cero:</strong> El bot envía firmas criptográficas; tus fondos nunca abandonan tu wallet.</p>
     </div>
     <div class="info-card reveal">
-        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Preprocesamiento</h3>
-        <p><strong>Normalización:</strong> Escalamos los precios para mejorar la capacidad de los modelos.<br>
-        <strong>Características semanales:</strong> Generamos features temporales para optimizar el entrenamiento.</p>
+        <div class="card-icon"><i class="fas fa-code-branch"></i></div>
+        <h3>Flujo de Ejecución</h3>
+        <p><strong>1. Ingesta:</strong> Captura de Orderbook L2 y Tickers en tiempo real.<br>
+        <strong>2. Detección:</strong> Spread &gt; Fee (Arbitraje) o cruce de EMA (Tendencia).<br>
+        <strong>3. Risk Guard:</strong> Verificación de balance — máximo 30% comprometido.<br>
+        <strong>4. Ejecución:</strong> Emisión y fill de la orden de forma automática.</p>
     </div>
     <div class="info-card reveal">
-        <div class="card-icon"><i class="fas fa-brain"></i></div>
-        <h3>Modelos de IA</h3>
-        <p><strong>MLPRegressor:</strong> Red neuronal multicapa para predicciones precisas.<br>
-        <strong>RandomForestRegressor:</strong> Bosque aleatorio que complementa y robustece el pronóstico.<br>
-        <strong>Pipeline:</strong> Escalado y aplicación eficiente de los modelos.</p>
+        <div class="card-icon"><i class="fas fa-rotate"></i></div>
+        <h3>Arbitraje Triangular (HFT)</h3>
+        <p><strong>Ciclo de 3 pares:</strong> Detecta ineficiencias entre tres pares relacionados (ej: EUR → BTC → SOL → EUR).<br>
+        <strong>Umbral neto:</strong> Solo se activa cuando el beneficio supera el <strong>0.10%</strong> tras comisiones.<br>
+        <strong>TTL milisegundos:</strong> Las 3 órdenes se emiten secuencialmente en el menor tiempo posible. Con 1 o 2 pares configurados, este motor se deshabilita automáticamente.</p>
     </div>
     <div class="info-card reveal">
-        <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
-        <h3>Entrenamiento</h3>
-        <p><strong>TimeSeriesSplit:</strong> Validación respetando la secuencia temporal para asegurar precisión.</p>
+        <div class="card-icon"><i class="fas fa-wave-square"></i></div>
+        <h3>Swing &amp; Scalping</h3>
+        <p><strong>EMA(9/21):</strong> Analiza cruces en ventanas de 15 min y 4H para detectar momentum direccional.<br>
+        <strong>RSI(14):</strong> Compra estructurada en sobreventa (&lt;30) y venta programada en sobrecompra (&gt;70).<br>
+        <strong>Flexibilidad:</strong> Operable con 1, 2 o más pares de forma individualizada (ej: solo SOL/EUR).</p>
     </div>
     <div class="info-card reveal">
-        <div class="card-icon"><i class="fas fa-calendar-week"></i></div>
-        <h3>Predicciones</h3>
-        <p><strong>Predicción secuencial:</strong> Pronóstico de precios para los próximos 7 días.<br>
-        <strong>Consenso de modelos:</strong> Combinamos MLP y RandomForest para obtener un resultado más sólido.</p>
+        <div class="card-icon"><i class="fas fa-key"></i></div>
+        <h3>Configuración de API Key</h3>
+        <p><strong>Lectura:</strong> <span style="color:var(--green)">✔</span> Enable Reading.<br>
+        <strong>Operativa:</strong> <span style="color:var(--green)">✔</span> Enable Spot &amp; Margin Trading.<br>
+        <strong>Retiros:</strong> <span style="color:#e05c5c">✖</span> Enable Withdrawals — <strong>ESTRICTAMENTE PROHIBIDO</strong>.<br>
+        Pega API Key y Secret Key en el panel de <strong>Configuración API</strong> del Dashboard.</p>
     </div>
     <div class="info-card reveal">
-        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Estrategias de Trading</h3>
-        <p><strong>Precios óptimos:</strong> Determinamos puntos de compra/venta basados en las predicciones.<br>
-        <strong>Estrategia intradía:</strong> Aprovechamos pequeñas fluctuaciones para maximizar rendimiento.</p>
+        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Risk Guard Integral</h3>
+        <p><strong>Límite de exposición:</strong> El algoritmo nunca compromete más del <strong>30%</strong> de tus activos líquidos disponibles en una sola inyección de capital.<br>
+        <strong>Protección ante caídas:</strong> El sistema soporta fuertes correcciones del mercado sin riesgo de liquidación total de tu cartera.</p>
     </div>
 </div>
 
